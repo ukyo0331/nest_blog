@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+    id             String @id @default(uuid())
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @updatedAt
+    username       String @unique
+    email          String @unique
+    hashedPassword String
+    posts          Post[]
+    comments       Comment[]
+    categories     Category[]
+}
+
+model Post {
+    id         String @id @default(uuid())
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    title      String
+    desc       String　@db.Text
+    image      String?
+    likes      Int @default(0)
+    status     String
+    userId     String
+    user       User @relation(fields: [userId], references: [id])
+    comments   Comment[]
+    categories CategoriesOnPosts[]
+}
+
+model Comment {
+    id        String @id @default(uuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    username  String
+    desc      String
+    postId    String
+    post      Post @relation(fields: [postId], references: [id])
+    userId    String
+    user      User @relation(fields: [userId], references: [id])
+}
+
+model Category {
+    id     String @id @default(uuid())
+    name   String
+    posts  CategoriesOnPosts[]
+    userId String
+    user   User @relation(fields: [userId], references: [id])
+}
+
+model CategoriesOnPosts {
+  post       Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId     String
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([postId, categoryId])
+}
