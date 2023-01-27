@@ -25,14 +25,12 @@
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^9.0.0",
-    "@nestjs/mongoose": "^9.2.0",
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@prisma/client": "^4.4.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cookie-parser": "^1.4.3",
     "@types/csurf": "^1.11.2",
-    "@types/mongoose": "^5.11.97",
     "@types/passport-jwt": "^3.0.7",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.5.1",
@@ -40,8 +38,6 @@
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
     "dotenv": "^16.0.3",
-    "mongoose": "^6.6.3",
-    "nodemon": "^2.0.20",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
@@ -87,5 +83,9 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "volta": {
+    "node": "18.13.0",
+    "npm": "9.4.0"
   }
 }
