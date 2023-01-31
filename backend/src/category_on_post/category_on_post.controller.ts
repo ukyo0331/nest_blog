@@ -7,13 +7,13 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { CategoryOnPostService } from './category-on-post.service';
+import { CategoryOnPostService } from './category_on_post.service';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
 import { CategoryOnPostDto } from './dto/categoryOnPost.dto';
 
 @UseGuards(AuthGuard('jwt'))
-@Controller('category-on-post')
+@Controller('category_on_post')
 export class CategoryOnPostController {
   constructor(private readonly categoryOnPost: CategoryOnPostService) {}
   //投稿にカテゴリを付与

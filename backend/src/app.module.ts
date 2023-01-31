@@ -8,7 +8,7 @@ import { CommentModule } from './comment/comment.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { CategoryModule } from './category/category.module';
-import { CategoryOnPostModule } from './category-on-post/category-on-post.module';
+import { CategoryOnPostModule } from './category_on_post/category_on_post.module';
 
 @Module({
   imports: [

@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/frontend/pages/dashboard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/UserInfo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/post/useMutatePost.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/post/useQuertPosts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/user/useQueryUser.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/postStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/custom.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/custom.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/user/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/user/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/category-on-post/category-on-post.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/category-on-post/category-on-post.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/category-on-post/category-on-post.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/category-on-post/dto/categoryOnPost.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/category_on_post/dto/categoryOnPost.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/comment/comment.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/comment/comment.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/post/post.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/post/post.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/post/post.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/post/post.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/yuta-higa/myblog/my_blog/frontend/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/yuta-higa/myblog/my_blog/backend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -75,7 +75,8 @@
       <workItem from="1674858723311" duration="18000" />
       <workItem from="1674859101101" duration="2025000" />
       <workItem from="1674863460901" duration="19513000" />
-      <workItem from="1674998901645" duration="21270000" />
+      <workItem from="1674998901645" duration="22154000" />
+      <workItem from="1675169032267" duration="245000" />
     </task>
     <servers />
   </component>

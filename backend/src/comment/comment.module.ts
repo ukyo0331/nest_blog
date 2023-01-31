@@ -5,9 +5,9 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { PostModule } from '../post/post.module';
 import { PostService } from '../post/post.service';
 import { CategoryModule } from '../category/category.module';
-import { CategoryOnPostModule } from '../category-on-post/category-on-post.module';
+import { CategoryOnPostModule } from '../category_on_post/category_on_post.module';
 import { CategoryService } from '../category/category.service';
-import { CategoryOnPostService } from '../category-on-post/category-on-post.service';
+import { CategoryOnPostService } from '../category_on_post/category_on_post.service';
 
 @Module({
   imports: [PrismaModule, PostModule, CategoryModule, CategoryOnPostModule],

@@ -4,7 +4,7 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Post } from '@prisma/client';
 import { CategoryService } from '../category/category.service';
-import { CategoryOnPostService } from '../category-on-post/category-on-post.service';
+import { CategoryOnPostService } from '../category_on_post/category_on_post.service';
 
 @Injectable()
 export class PostService {
