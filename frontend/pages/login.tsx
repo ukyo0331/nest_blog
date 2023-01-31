@@ -47,7 +47,7 @@ const Login: NextPage = () => {
     }
     return (
         <Layout title={'ログインページ'} desc={'ブログのログインページです'}>
-            <div className='w-screen h-screen bg-gray-200 flex items-center justify-center'>
+            <div className='w-screen h-[calc(100vh-50px)] bg-gray-200 flex items-center justify-center'>
                 <form
                     className='p-5 bg-gray-400 flex flex-col justify-between'
                     onSubmit={form.onSubmit(handleSubmit)}
