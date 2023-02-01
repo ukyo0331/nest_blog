@@ -4,6 +4,7 @@ import axios from 'axios';
 import { UserInfo } from "../src/components/UserInfo";
 import { useQueryClient } from "@tanstack/react-query";
 import Layout from "../src/components/Layout";
+import {LogoutIcon} from "@heroicons/react/solid";
 
 const Dashboard: NextPage = () => {
     const router = useRouter();
@@ -16,11 +17,28 @@ const Dashboard: NextPage = () => {
     return (
         <>
             <Layout title='ダッシュボード' desc='ダッシュボードです'>
-                <button onClick={logout}>logout</button>
-                <button onClick={(e) => {
-                    e.preventDefault();
-                    router.push('/draftList')
-                }}>下書き一覧</button>
+                <aside className=''>
+                    <ul>
+                        <li>記事作成</li>
+                        <li>下書き一覧</li>
+                        <li>記事一覧</li>
+                        <li>コメント一覧</li>
+                        <li>
+                            <LogoutIcon
+                                className='mb-6 h-6 w-6 cursor-pointer text-blue-500'
+                                onClick={logout}
+                            />
+                        </li>
+                    </ul>
+                </aside>
+                {/*<LogoutIcon*/}
+                {/*   className='mb-6 h-6 w-6 cursor-pointer text-blue-500'*/}
+                {/*   onClick={logout}*/}
+                {/*/>*/}
+                {/*<button onClick={(e) => {*/}
+                {/*    e.preventDefault();*/}
+                {/*    router.push('/draftList')*/}
+                {/*}}>下書き一覧</button>*/}
                 <UserInfo />
             </Layout>
         </>
