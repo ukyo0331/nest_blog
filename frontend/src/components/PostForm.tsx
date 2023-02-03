@@ -46,69 +46,63 @@ export const PostForm = () => {
         }
     }
     return (
-        <div className='w-full h-auto pt-48 bg-gray-200 flex items-center justify-center min-h-calc(100vh - 40px)'>
-            <div className='h-70% w-min(92%,1166px)'>
-                <div className='flex flex-col'>
-                    <div>
-                        <dl>
-                            <dt>タイトル</dt>
-                            <dd>
-                                <input
-                                    className='w-6/12 h-12 mb-4 rounded border border-gray-400'
-                                    type="text"
-                                    name='blogTitle'
-                                    placeholder="タイトルを入力"
-                                    value={editedPost.title || ''}
-                                    onChange={(e) => update({...editedPost, title: e.target.value})}
-                                    autoComplete='off'
-                                />
-                            </dd>
-                            <dt>カテゴリー</dt>
-                            <dd>
-                                <input
-                                    className='w-6/12 h-12 mb-4 rounded border border-gray-400'
-                                    type="text"
-                                    name='blogCategory'
-                                    value={editedPost.name || ''}
-                                    onChange={(e) => update({...editedPost, name: e.target.value})}
-                                    placeholder='カテゴリーを入力'
-                                    autoComplete='off'
-                                />
-                            </dd>
-                        </dl>
+        <div className='bg-white p-6 rounded-lg'>
+            <div className='mb-4'>
+                <dl className='mb-4'>
+                    <dt className='text-lg font-medium'>タイトル</dt>
+                    <dd>
+                        <input
+                            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                            type="text"
+                            name='blogTitle'
+                            placeholder={"タイトルを入力"}
+                            value={editedPost.title || ''}
+                            onChange={(e) => update({...editedPost, title: e.target.value})}
+                            autoComplete='off'
+                        />
+                    </dd>
+                    <dt className='text-lg font-medium'>カテゴリー</dt>
+                    <dd>
+                        <input
+                            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                            type="text"
+                            name='blogCategory'
+                            value={editedPost.name || ''}
+                            onChange={(e) => update({...editedPost, name: e.target.value})}
+                            placeholder={'カテゴリーを入力'}
+                            autoComplete='off'
+                        />
+                    </dd>
+                </dl>
+                <div className='mb-4'>
+                    <div className='border border-gray-300 rounded'>
+                        <SimpleMDE
+                            value={editedPost.desc || 'init value'}
+                            onChange={(value) => {
+                                setMarkdownValue(value);
+                                update({...editedPost, desc: value})}
+                            }
+                            spellCheck={false}
+                        />
                     </div>
-                    <div>
-                        <div className='w-full'>
-                            <div className='w-min(92%,1166px)'>
-                                <SimpleMDE
-                                    value={editedPost.desc || 'init value'}
-                                    onChange={(value) => {
-                                        setMarkdownValue(value);
-                                        update({...editedPost, desc: value})
-                                    }}
-                                    spellCheck={false}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex justify-end mr-16'>
-                        <button
-                            className='bg-blue-500 text-white px-4 py-2 rounded mr-4 hover:bg-blue-700'
-                            onClick={(e) => {
-                                handleSubmit(e, {button: 'postedButton'})
-                            }}
-                        >
-                            {editedPost.id === '' ? '投稿する' : '編集する'}
-                        </button>
-                        <button
-                            className='bg-gray-400 text-black px-4 py-2 rounded hover:bg-gray-500'
-                            onClick={(e) => {
-                                handleSubmit(e, {button: 'draftSaveButton'})
-                            }}
-                        >
-                            下書きを保存
-                        </button>
-                    </div>
+                </div>
+                <div className='flex justify-end'>
+                    <button
+                        className='bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600'
+                        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                            handleSubmit(e, {button: 'postedButton'})
+                        }}
+                    >
+                        {editedPost.id === '' ? '投稿する' : '編集する'}
+                    </button>
+                    <button
+                        className='bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 ml-4'
+                        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                            handleSubmit(e, {button: 'draftSaveButton'})
+                        }}
+                    >
+                        下書きを保存
+                    </button>
                 </div>
             </div>
         </div>
