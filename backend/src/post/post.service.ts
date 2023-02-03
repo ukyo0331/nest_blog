@@ -14,12 +14,14 @@ export class PostService {
     private readonly categoryOnPostService: CategoryOnPostService,
   ) {}
   //ログインユーザーの全下書きを新しい順に取得
-  getAllDrafts(userId: string): Promise<Post[]> {
+  getAllDrafts(userId: string, skip: number, take: number): Promise<Post[]> {
     return this.prisma.post.findMany({
       where: {
         userId,
         status: 'draft',
       },
+      skip,
+      take,
       orderBy: {
         createdAt: 'desc',
       },
@@ -50,7 +52,8 @@ export class PostService {
     });
     return post;
   }
-  //新規投稿の作成（カテゴリー込み）
+  //新規投稿の作成（カテゴリー込み
+  //create, connectを使用してもっとスッキリとした記述に修正すること
   async createPost(
     userId: string,
     dto: CreatePostDto,
@@ -129,12 +132,14 @@ export class PostService {
     });
   }
   //一人のユーザーの全投稿を新しい順に取得、認証不要
-  getAllPosts(userId: string): Promise<Post[]> {
+  getAllPosts(userId: string, skip: number, take: number): Promise<Post[]> {
     return this.prisma.post.findMany({
       where: {
         userId,
         status: 'published',
       },
+      skip,
+      take,
       orderBy: {
         createdAt: 'desc',
       },
