@@ -1,9 +1,8 @@
 import { CategoryButtonType, CategoryProps} from "../../types";
-import CategoryImageFallback from "./CategoriImageFallback";
+import CategoryImageFallback from "./CategoryImageFallback";
+import { FC } from "react";
 
-const CategoryImageButton = (props: CategoryProps) => {
-    const { categories, onClick } = props;
-
+const CategoryImageButton: FC<CategoryProps> = ({categories, onClick}) => {
     return (
         <div>
             {categories?.map((arg: CategoryButtonType, index:number) => {

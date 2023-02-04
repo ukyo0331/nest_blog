@@ -30,6 +30,7 @@ export const ArticlePostsForm = () => {
     ) => {
         e.preventDefault();
         if (editedPost.id === '')
+            //新規投稿の場合
             createPostMutation.mutate({
                 title: editedPost.title,
                 desc: editedPost.desc,
@@ -37,6 +38,7 @@ export const ArticlePostsForm = () => {
                 status: props.button === 'postedButton' ? 'published' : 'draft',
             })
         else {
+            //更新（編集）の場合
             updatePostMutation.mutate({
                 id: editedPost.id,
                 title: editedPost.title,
