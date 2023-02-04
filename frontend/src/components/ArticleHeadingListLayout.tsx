@@ -10,44 +10,48 @@ type ArticleHeadingListLayoutType = {
 const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType) => {
     const router = useRouter();
     return (
-        recentPostData?.map((headline: PostType) => {
-            const { id, title, categories, likes, createdAt } = headline;
+        <>
+            {recentPostData?.map((headline: PostType) => {
+                const { id, title, categories, likes, createdAt } = headline;
 
-            return (
-                <a key={id}
-                   onClick={(e) => {
-                       e.preventDefault();
-                       router.push(`/post/${id}`)}
-                   }>
-                    <div>
+                return (
+                    <a key={id}
+                       onClick={(e) => {
+                           e.preventDefault();
+                           router.push(`/post/${id}`)
+                       }
+                       }>
                         <div>
                             <div>
-                                <CategoryButton
-                                    key={id}
-                                    categories={categories}
-                                    // onClick={(e) => {
-                                    //   e.preventDefault();
-                                    //   router.push('/test')
-                                    //}}
-                                />
-                            </div>
-                            <p>
-                                {title}
-                            </p>
-                            <div>
                                 <div>
-                                    ♡{likes}
+                                    <CategoryButton
+                                        key={id}
+                                        categories={categories}
+                                        // onClick={(e) => {
+                                        //   e.preventDefault();
+                                        //   router.push('/test')
+                                        //}}
+                                    />
                                 </div>
+                                <p>
+                                    {title}
+                                </p>
                                 <div>
-                                    {format(createdAt)}
+                                    <div>
+                                        ♡{likes}
+                                    </div>
+                                    <div>
+                                        {format(createdAt)}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            )
+                    </a>
+                )
 
-        })
+            })
+            }
+        </>
     )
 };
 

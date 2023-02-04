@@ -10,13 +10,16 @@ export default function CategoryImageFallback({ src, fallbackSrc }: CategoryImag
     const [isError, setIsError] = useState(false);
     return (
         <Image
-            height={20}
-            width={20}
             src={isError ? fallbackSrc: src}
             alt='カテゴリーのイメージ画像です'
             onError={(event) => {
                 event.preventDefault()
                 setIsError(true);
+            }}
+            width={20}
+            height={20}
+            style={{
+                objectFit: 'contain'
             }}
         />
     );
