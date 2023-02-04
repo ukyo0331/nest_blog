@@ -17,18 +17,20 @@ import { Request } from 'express';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Post as UserPost } from '@prisma/client';
-import { CategoryDto } from '../category/dto/category.dto';
+import { QueryPostDto } from './dto/query-posts.dto';
 
 @Controller('post')
 export class PostController {
-  constructor(private readonly postService: PostService) {
-  }
+  constructor(private readonly postService: PostService) {}
 
   //ログインユーザーの全下書きを新しい順に取得
   @UseGuards(AuthGuard('jwt'))
   @Get('draft')
-  getDrafts(@Req() req: Request): Promise<UserPost[]> {
-    return this.postService.getAllDrafts(req.user.id);
+  getDrafts(
+    @Req() req: Request,
+    @Body() dto: QueryPostDto,
+  ): Promise<UserPost[]> {
+    return this.postService.getAllDrafts(req.user.id, dto.skip, dto.take);
   }
 
   //ログインユーザーの一つの下書きを取得
@@ -77,8 +79,11 @@ export class PostController {
 
   //一人のユーザーの全投稿を新しい順に取得、認証不要
   @Get(':userId')
-  getPosts(@Param('userId') userId: string): Promise<UserPost[]> {
-    return this.postService.getAllPosts(userId);
+  getPosts(
+    @Param('userId') userId: string,
+    @Body() dto: QueryPostDto,
+  ): Promise<UserPost[]> {
+    return this.postService.getAllPosts(userId, dto.skip, dto.take);
   }
 
   //一つの投稿を取得、認証不要
