@@ -14,7 +14,8 @@ const SimpleMDE = dynamic(
         ssr: false,
     })
 
-export const PostForm = () => {
+//ブログ記事投稿フォーム
+export const ArticlePostsForm = () => {
     const { editedPost } = useStore();
     const update = useStore((state) => state.updateEditedPost);
     const { createPostMutation, updatePostMutation } = useMutatePost();
