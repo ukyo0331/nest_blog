@@ -11,7 +11,7 @@ import { PostType } from "../../types";
 import CategoryImageButton from "./CategoryImageButton";
 
 
-export const PostLayout: FC<Omit<PostType, 'userId'>> = (
+export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     {
         id,
         title,

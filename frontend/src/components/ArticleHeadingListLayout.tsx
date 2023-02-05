@@ -6,7 +6,7 @@ import { PostType } from "../../types";
 type ArticleHeadingListLayoutType = {
     recentPostData: Array<PostType>
 }
-
+//記事見出しのレイアウト
 const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType) => {
     const router = useRouter();
     return (
@@ -21,11 +21,10 @@ const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType
                            router.push(`/post/${id}`)
                        }
                        }>
-                        <div>
+                        <div className='border-gray-200 border border-solid-1 rounded h-48 relative m-3 cursor-pointer w-[380px]'>
                             <div>
                                 <div>
                                     <CategoryButton
-                                        key={id}
                                         categories={categories}
                                         // onClick={(e) => {
                                         //   e.preventDefault();
@@ -36,7 +35,7 @@ const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType
                                 <p>
                                     {title}
                                 </p>
-                                <div>
+                                <div className='flex'>
                                     <div>
                                         ♡{likes}
                                     </div>
@@ -48,9 +47,7 @@ const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType
                         </div>
                     </a>
                 )
-
-            })
-            }
+            })}
         </>
     )
 };
