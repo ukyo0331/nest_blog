@@ -5,35 +5,17 @@ import Custom404 from '../404'
 import { Loader } from "@mantine/core";
 import { ArticleLayout } from "../../src/components/ArticleLayout";
 import Layout from "../../src/components/Layout";
-import { useEffect, useState } from "react";
-import { PostType } from "../../types";
+import { useQueryPost } from "../../src/hooks/post/useQuertPosts";
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
+    //param postIdの利用
     const { postId } = router.query;
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [data, setData] = useState<PostType | null>(null);
 
-    useEffect(() => {
-        //postIdが取得される前なら脱出
-        if (!postId) return;
-
-        setLoading(true);
-        axios
-            .get(`${process.env.NEXT_PUBLIC_API_URL}/post/blog/${postId}`)
-            .then((res) => {
-                setData(res.data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                setError(true);
-                setLoading(false);
-            });
-    }, [postId]);
+    const { data, isLoading, error } = useQueryPost(postId ? postId.toString() : '');
 
     if (error) return <Custom404 />
-    if (loading) return <Loader />
+    if (isLoading) return <Loader />
     if (!data) return null;
 
     try {

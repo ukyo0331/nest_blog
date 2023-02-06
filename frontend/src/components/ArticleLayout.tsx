@@ -10,7 +10,7 @@ import "highlight.js/styles/github-dark-dimmed.css";
 import { PostType } from "../../types";
 import CategoryImageButton from "./CategoryImageButton";
 
-
+//個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     {
         id,

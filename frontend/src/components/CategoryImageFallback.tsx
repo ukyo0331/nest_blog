@@ -8,6 +8,10 @@ interface CategoryImageFallbackProps {
 //カテゴリーアイコンが存在しない場合はデフォルトの画像を表示する
 export default function CategoryImageFallback({ src, fallbackSrc }: CategoryImageFallbackProps) {
     const [isError, setIsError] = useState(false);
+    const handleClick = (e: MouseEvent) => {
+        e.preventDefault();
+
+    }
     return (
         <Image
             src={isError ? fallbackSrc: src}

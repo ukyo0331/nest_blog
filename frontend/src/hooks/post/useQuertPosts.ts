@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { PostType } from "../../../types";
 
 //下書きの取得
-//all
+//get all
 export const useQueryDrafts = (skip: number, take: number) => {
     const router = useRouter();
     const getDrafts = async () => {
@@ -44,9 +44,26 @@ export const useQueryDraft = (postId: string) => {
                 router.push('/login');
         }
     })
-
 }
+
 //postの取得
+//get one
+export const useQueryPost = (postId: string) => {
+    const getOnePost = async () => {
+        const { data } = await axios.get<PostType>(
+            `${process.env.NEXT_PUBLIC_API_URL}/post/blog/${postId}`
+        );
+        return data;
+    }
+    return useQuery<PostType, Error>({
+        queryKey: ['post', postId],
+        queryFn: getOnePost,
+        onError: (err: any) => {
+            console.error(err);
+        }
+    })
+}
+//get all
 export const useQueryPosts = (
     userId: string,
     skip: number,
@@ -67,7 +84,7 @@ export const useQueryPosts = (
         queryKey: ['posts'],
         queryFn: getPosts,
         onError: (err: any) => {
-            console.log(err)
+            console.error(err)
         },
     })
 }
