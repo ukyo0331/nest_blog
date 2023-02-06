@@ -85,7 +85,7 @@ export const ArticlePostsForm = () => {
                                 setMarkdownValue(value);
                                 update({...editedPost, desc: value})}
                             }
-                            spellCheck={false}
+                            textareaProps={{spellCheck: false}}
                         />
                     </div>
                 </div>
