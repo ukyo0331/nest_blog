@@ -37,13 +37,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const createTime = new Date(createdAt);
     const updateTime = new Date(updatedAt);
     //カテゴリを配列で取得
-    const inputCategoryArray = [];
-    if (categories) {
-        for (let i = 0; i < categories.length; i++) {
-            inputCategoryArray.push(categories[i].category.name)
-        }
-    }
-    const name = inputCategoryArray.join(', ')
+    const categoryNames = categories?.map((c) => c.category.name).join(", ") || "";
 
     return (
         <article key={id}>
@@ -60,16 +54,21 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
                 <button
                     onClick={() => {
                         update({
-                            id, title, desc, status, name
+                            id, title, desc, status, name: categoryNames
                         });
                         router.push('/dashboard')
                     }}
-                >編集</button>
+                >
+                    編集
+                </button>
                 <button
                     onClick={() => {
-                        deletePostMutation.mutate(id);
+                        deletePostMutation.mutate(id)
+                        router.push('/');
                     }}
-                >削除</button>
+                >
+                    削除
+                </button>
                 <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(marked(desc ? desc : 'not found'))}}></div>
                 <p>{likes}人が拍手しました</p>
             </div>
