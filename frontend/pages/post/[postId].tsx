@@ -1,53 +1,67 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { useRouter } from "next/router";
 import axios from "axios";
-// import useSWR from 'swr';
-//コンポーネント
 import Custom404 from '../404'
 import { Loader } from "@mantine/core";
 import { ArticleLayout } from "../../src/components/ArticleLayout";
+import Layout from "../../src/components/Layout";
+import { useEffect, useState } from "react";
+import { PostType } from "../../types";
 
-//記事読み込み
-const Post: NextPage = () => {
+const ArticlePage: NextPage = () => {
     const router = useRouter();
     const { postId } = router.query;
-    const { data, error } = useSWR(postId ? `${process.env.NEXT_PUBLIC_API_URL}/post/blog/${postId}` : null, axios);
-    // console.log(data)
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [data, setData] = useState<PostType | null>(null);
+
+    useEffect(() => {
+        //postIdが取得される前なら脱出
+        if (!postId) return;
+
+        setLoading(true);
+        axios
+            .get(`${process.env.NEXT_PUBLIC_API_URL}/post/blog/${postId}`)
+            .then((res) => {
+                setData(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setError(true);
+                setLoading(false);
+            });
+    }, [postId]);
+
     if (error) return <Custom404 />
-    if (!data){
-        return <Loader />
-    } else {
-        try {
-            const { id, title, categories, desc, image, likes, status, createdAt, updatedAt, comments } = data.data;
-            return (
-                <div>
-                    <Head>
-                        <title>{title}</title>
-                        <meta name="description" content="ブログのログインページです" />
-                    </Head>
-                    <main>
-                        <div>
-                            <ArticleLayout
-                                title={title}
-                                categories={categories}
-                                desc={desc}
-                                comments={comments}
-                                updatedAt={updatedAt}
-                                status={status}
-                                createdAt={createdAt}
-                                id={id}
-                                likes={likes}
-                                image={image}
-                            />
-                        </div>
-                    </main>
-                </div>
-            );
-        } catch (err) {
-            return <Custom404 />
-        }
+    if (loading) return <Loader />
+    if (!data) return null;
+
+    try {
+        const { id, title, categories, desc, image, likes, status, createdAt, updatedAt, comments } = data;
+        return (
+            <>
+                <Layout title='ブログ' desc='ブログ詳細' >
+                    <div>
+                        <ArticleLayout
+                            title={title}
+                            categories={categories}
+                            desc={desc}
+                            comments={comments}
+                            updatedAt={updatedAt}
+                            status={status}
+                            createdAt={createdAt}
+                            id={id}
+                            likes={likes}
+                            image={image}
+                        />
+                    </div>
+                </Layout>
+
+            </>
+        );
+    } catch (err) {
+        return <Custom404 />
     }
 };
 
-export default Post;
+export default ArticlePage;
