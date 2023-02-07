@@ -18,6 +18,7 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Post as UserPost } from '@prisma/client';
 import { QueryPostDto } from './dto/query-posts.dto';
+import { CategoryPostDto } from './dto/category-post.dto';
 
 @Controller('post')
 export class PostController {
@@ -95,12 +96,27 @@ export class PostController {
     return this.postService.getPostById(postId);
   }
 
+  //カテゴリ名からpostを取得（カテゴリ検索）認証不要
+  @Get(':userId/category/:categoryName')
+  getPostsByCategoryName(
+    @Param('userId') userId: string,
+    @Param('categoryName') categoryName: string,
+    @Body() dto: CategoryPostDto,
+  ): Promise<UserPost[]> {
+    return this.postService.getPostsByCategoryName(
+      userId,
+      categoryName,
+      dto.skip,
+      dto.take,
+    );
+  }
+
   //categoryIdからpostを取得、認証不要
   @Get('categorySearch/:userId/:categoryId')
   getPostsByCategoryId(
     @Param('userId') userId: string,
     @Param('categoryId') categoryId: string,
-  ): Promise<any> {
+  ): Promise<UserPost[]> {
     return this.postService.getPostsByCategoryId(userId, categoryId);
   }
 

@@ -9,6 +9,7 @@ export class CategoryService {
   //カテゴリーの作成
   async createCategory(userId: string, dto: CreatePostDto): Promise<string[]> {
     //カテゴリを配列に変換して、重複を削除する
+    //空白または,で文字列を分割し、空白を削除して配列に格納
     const splitCategory = Array.from(new Set(dto.name.split(/[,\s]+/))).filter(
       (s) => s.trim() !== '',
     );

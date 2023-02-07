@@ -152,31 +152,6 @@ export class PostService {
       },
     });
   }
-  // async getAllPosts(userId: string): Promise<any> {
-  //   const post = await this.prisma.post.findMany({
-  //     where: {
-  //       userId,
-  //       status: 'published',
-  //     },
-  //     orderBy: {
-  //       createdAt: 'desc',
-  //     },
-  //     include: {
-  //       categories: {
-  //         include: {
-  //           category: true,
-  //         },
-  //       },
-  //     },
-  //   });
-  //   const categoryArray: Array<any> = [];
-  //   post.map((arg, index: number) => {
-  //     for (let i = 0; i < post.length; i++) {
-  //       categoryArray[index] = post[index].categories[i].category.name;
-  //     }
-  //   });
-  //   return categoryArray;
-  // }
   //一つの投稿を取得、認証不要
   getPostById(postId: string): Promise<Post> {
     return this.prisma.post.findFirst({
@@ -193,28 +168,33 @@ export class PostService {
       },
     });
   }
-  // async getPostById(postId: string): Promise<any> {
-  //   const post = await this.prisma.post.findFirst({
-  //     where: {
-  //       id: postId,
-  //       status: 'published',
-  //     },
-  //     include: {
-  //       categories: {
-  //         include: {
-  //           category: true,
-  //         },
-  //       },
-  //     },
-  //   });
-  //   const categoryArray = [];
-  //   for (let i = 0; post.categories.length > i; i++) {
-  //     categoryArray.push(post.categories[i].category.name);
-  //   }
-  //   return { post, categoryArray };
-  // }
+  //カテゴリ名からpostを取得（カテゴリ検索）
+  getPostsByCategoryName(
+    userId: string,
+    categoryName: string,
+    skip: number,
+    take: number,
+  ): Promise<Post[]> {
+    return this.prisma.post.findMany({
+      where: {
+        userId,
+        status: 'published',
+        categories: {
+          some: {
+            category: {
+              name: {
+                contains: categoryName,
+              },
+            },
+          },
+        },
+      },
+      skip,
+      take,
+    });
+  }
   //categoryIdからpostを取得
-  getPostsByCategoryId(userId: string, categoryId: string): Promise<any> {
+  getPostsByCategoryId(userId: string, categoryId: string): Promise<Post[]> {
     return this.prisma.post.findMany({
       where: {
         userId: userId,
