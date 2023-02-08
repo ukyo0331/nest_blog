@@ -1,16 +1,21 @@
 import { CategoryButtonType, CategoryProps} from "../../types";
 import CategoryImageFallback from "./CategoryImageFallback";
 import { FC } from "react";
+import { useRouter } from "next/router";
 
 //用意されたカテゴリの画像を使用したボタン
-const CategoryImageButton: FC<CategoryProps> = ({categories, onClick}) => {
+const CategoryImageButton: FC<CategoryProps> = ({categories}) => {
+    const router = useRouter()
     return (
         <div className='w-auto h-8 flex justify-start'>
             {categories?.map((arg: CategoryButtonType, index:number) => {
                 return (
                     <div
                         key={index}
-                        onClick={() => onClick}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            router.push(`/blog/category/${arg.category.name}?skip=0&take=9`)
+                        }}
                         className='h-8 rounded-[16px] flex justify-between m-0 bg-amber-20　border-black border border-solid-1 cursor-pointer'
                     >
                         <figure className='mt-1 ml-1 w-6 h-6 mr-2 rounded-[100%] flex justify-center'>

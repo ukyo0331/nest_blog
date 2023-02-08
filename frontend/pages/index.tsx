@@ -8,7 +8,7 @@ import ArticleHeadingListLayout from "../src/components/ArticleHeadingListLayout
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     //最新の記事を6件取得
-    const allPostsData = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.USER_ID}`,{
+    const allPostsData = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}`,{
         data: {
             skip: 0,
             take: 6,

@@ -26,7 +26,6 @@ export type PostType = {
     comments: string[],
 }
 export type CategoryProps = {
-    onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
     categories?: Array<CategoryButtonType>;
 }
 export type CategoryButtonType = {

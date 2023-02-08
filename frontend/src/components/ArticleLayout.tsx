@@ -43,7 +43,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
         <article key={id}>
             <div>
                 <div>
-                    <CategoryImageButton onClick={(e) => e.preventDefault()} categories={categories}/>
+                    <CategoryImageButton categories={categories}/>
                 </div>
                 <h2>{title}{status === 'draft' && '（下書き）'}</h2>
                 <small>

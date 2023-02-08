@@ -1,24 +1,21 @@
 import type { NextPage } from 'next';
 import { useRouter } from "next/router";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import Custom404 from '../404'
 import { Loader } from "@mantine/core";
 import { ArticleLayout } from "../../src/components/ArticleLayout";
 import Layout from "../../src/components/Layout";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types";
-// import {useQueryPost} from "../../src/hooks/post/useQueryPosts";
+// import {useQueryPost} from "../../src/hooks/blog/useQueryPosts";
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
-    //param postIdの利用
-    const { postId } = router.query;
-    //useQueryPostを利用すると、ページリロード時にpostIdが渡されず、機能しない（400番エラー）
-    // const postIdStr = postId ? postId.toString() : '';
-    // const { data, isLoading, error } = useQueryPost(postIdStr);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [data, setData] = useState<PostType | null>(null);
+    //param postIdの利用
+    const { postId } = router.query;
 
     useEffect(() => {
         //postIdが取得される前なら脱出

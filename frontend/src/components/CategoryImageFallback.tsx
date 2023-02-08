@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 interface CategoryImageFallbackProps {
     src: string;
@@ -8,10 +9,7 @@ interface CategoryImageFallbackProps {
 //カテゴリーアイコンが存在しない場合はデフォルトの画像を表示する
 export default function CategoryImageFallback({ src, fallbackSrc }: CategoryImageFallbackProps) {
     const [isError, setIsError] = useState(false);
-    const handleClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-
-    }
+    const router = useRouter();
     return (
         <Image
             src={isError ? fallbackSrc: src}
@@ -25,7 +23,6 @@ export default function CategoryImageFallback({ src, fallbackSrc }: CategoryImag
             style={{
                 objectFit: 'contain'
             }}
-            onClick={handleClick}
         />
     );
 }

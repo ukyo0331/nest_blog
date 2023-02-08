@@ -18,7 +18,7 @@ const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType
                     <a key={id}
                        onClick={(e) => {
                            e.preventDefault();
-                           router.push(`/post/${id}`)
+                           router.push(`/blog/${id}`)
                        }
                        }>
                         <div className='border-gray-200 border border-solid-1 rounded h-48 relative m-3 cursor-pointer w-[380px]'>

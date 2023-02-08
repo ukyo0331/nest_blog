@@ -191,6 +191,13 @@ export class PostService {
       },
       skip,
       take,
+      include: {
+        categories: {
+          include: {
+            category: true,
+          },
+        },
+      },
     });
   }
   //categoryIdからpostを取得
@@ -233,7 +240,7 @@ export class PostService {
   }
   //特定ユーザーの投稿、下書きを一件取得
   // getPostOrDraftById(postId: string): Promise<Post> {
-  //   return this.prisma.post.findUnique({
+  //   return this.prisma.blog.findUnique({
   //     where: {
   //       id: postId,
   //     },
