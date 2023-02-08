@@ -13,6 +13,14 @@ export class PostService {
     private readonly categoryService: CategoryService,
     private readonly categoryOnPostService: CategoryOnPostService,
   ) {}
+  //ログインユーザーの下書き総数を取得
+  getAllDraftsCount(userId: string): Promise<number> {
+    return this.prisma.post.count({
+      where: {
+        userId,
+      },
+    });
+  }
   //ログインユーザーの全下書きを新しい順に取得
   getAllDrafts(userId: string, skip: number, take: number): Promise<Post[]> {
     return this.prisma.post.findMany({
@@ -134,6 +142,14 @@ export class PostService {
       },
     });
   }
+  //一人のユーザーの投稿数を取得、認証不要
+  getAllPostsCount(userId: string): Promise<number> {
+    return this.prisma.post.count({
+      where: {
+        userId,
+      },
+    });
+  }
   //一人のユーザーの全投稿を新しい順に取得、認証不要
   getAllPosts(userId: string, skip: number, take: number): Promise<Post[]> {
     return this.prisma.post.findMany({
@@ -203,6 +219,27 @@ export class PostService {
       },
       orderBy: {
         createdAt: 'desc',
+      },
+    });
+  }
+  //指定のカテゴリ名を含むpost数を取得
+  getPostCountByCategoryName(
+    userId: string,
+    categoryName: string,
+  ): Promise<number> {
+    return this.prisma.post.count({
+      where: {
+        userId,
+        status: 'published',
+        categories: {
+          some: {
+            category: {
+              name: {
+                contains: categoryName,
+              },
+            },
+          },
+        },
       },
     });
   }

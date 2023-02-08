@@ -23,7 +23,12 @@ import { CategoryPostDto } from './dto/category-post.dto';
 @Controller('post')
 export class PostController {
   constructor(private readonly postService: PostService) {}
-
+  //ログインユーザーの下書き総数を取得
+  @UseGuards(AuthGuard('jwt'))
+  @Get('count/draft')
+  getAllDraftsCount(@Req() req: Request): Promise<number> {
+    return this.postService.getAllDraftsCount(req.user.id);
+  }
   //ログインユーザーの全下書きを新しい順に取得
   @UseGuards(AuthGuard('jwt'))
   @Get('draft')
@@ -77,7 +82,11 @@ export class PostController {
   ): Promise<void> {
     return this.postService.deletePostById(req.user.id, postId);
   }
-
+  //一人のユーザーの投稿数を取得、認証不要
+  @Get('count/:userId')
+  getAllPostsCount(@Param('userId') userId: string): Promise<number> {
+    return this.postService.getAllPostsCount(userId);
+  }
   //一人のユーザーの全投稿を新しい順に取得、認証不要
   @Get(':userId')
   getPosts(
@@ -96,7 +105,7 @@ export class PostController {
     return this.postService.getPostById(postId);
   }
 
-  //カテゴリ名からpostを取得（カテゴリ検索）認証不要
+  //カテゴリ名からpostを取得（カテゴリ検索）、認証不要
   @Get(':userId/category/:categoryName')
   getPostsByCategoryName(
     @Param('userId') userId: string,
@@ -109,6 +118,14 @@ export class PostController {
       dto.skip,
       dto.take,
     );
+  }
+  //指定のカテゴリ名を含むpost数を取得
+  @Get(':userId/count/:categoryName')
+  getPostCountByCategoryName(
+    @Param('userId') userId: string,
+    @Param('categoryName') categoryName: string,
+  ): Promise<number> {
+    return this.postService.getPostCountByCategoryName(userId, categoryName);
   }
 
   //categoryIdからpostを取得、認証不要
