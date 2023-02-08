@@ -16,7 +16,6 @@ const ArticlePage: NextPage = () => {
     const [data, setData] = useState<PostType | null>(null);
     //param postIdの利用
     const { postId } = router.query;
-
     useEffect(() => {
         //postIdが取得される前なら脱出
         if (!postId) return;
@@ -33,7 +32,8 @@ const ArticlePage: NextPage = () => {
             });
     }, [postId]);
 
-    if (error) return <Custom404 />
+    // /blog/categoryにアクセスされた場合も404を返す
+    if (error || postId === 'category') return <Custom404 />
     if (loading) return <Loader />
     if (!data) return null;
 

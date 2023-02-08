@@ -252,5 +252,4 @@ export class PostService {
   //     },
   //   });
   // }
-  //pagination実装すること
 }
