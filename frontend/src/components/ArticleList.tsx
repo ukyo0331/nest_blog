@@ -2,8 +2,12 @@ import { FC } from "react";
 import { PostType } from "../../types";
 import CategoryImageButton from "./CategoryImageButton";
 
-const ArticleList: FC<PostType[]> = (props) => {
-   const {articles} = props
+type ArticleListProps = {
+    articles: PostType[];
+}
+
+const ArticleList: FC<ArticleListProps> = (props) => {
+   const { articles } = props
     return (
         <>
             {articles.map((article) => {
