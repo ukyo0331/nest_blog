@@ -7,7 +7,7 @@ import { ArticleLayout } from "../../src/components/ArticleLayout";
 import Layout from "../../src/components/Layout";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types";
-// import {useQueryPost} from "../../src/hooks/blog/useQueryPosts";
+// import {useQueryPost} from "../../src/hooks/post/useQueryPosts";
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();

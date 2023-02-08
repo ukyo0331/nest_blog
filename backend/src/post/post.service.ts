@@ -240,7 +240,7 @@ export class PostService {
   }
   //特定ユーザーの投稿、下書きを一件取得
   // getPostOrDraftById(postId: string): Promise<Post> {
-  //   return this.prisma.blog.findUnique({
+  //   return this.prisma.post.findUnique({
   //     where: {
   //       id: postId,
   //     },
