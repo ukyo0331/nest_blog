@@ -20,11 +20,14 @@ export class PostService {
         userId,
         status: 'draft',
       },
+      //pagination
       skip,
       take,
+      //createdAtの新しい順にソート
       orderBy: {
         createdAt: 'desc',
       },
+      //検索結果にcategoriesを含める
       include: {
         categories: {
           include: {
@@ -197,6 +200,9 @@ export class PostService {
             category: true,
           },
         },
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   }
