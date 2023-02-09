@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useRouter } from "next/router";
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 import Custom404 from '../404'
 import { Loader } from "@mantine/core";
 import { ArticleLayout } from "../../src/components/ArticleLayout";
@@ -14,7 +14,7 @@ const ArticlePage: NextPage = () => {
     const [error, setError] = useState(false);
     const [data, setData] = useState<PostType | null>(null);
     //param postIdの利用
-    const { postId } = router.query;
+    const {postId} = router.query;
     useEffect(() => {
         //postIdが取得される前なら脱出
         if (!postId) return;
@@ -32,15 +32,15 @@ const ArticlePage: NextPage = () => {
     }, [postId]);
 
     // /blog/categoryにアクセスされた場合も404を返す
-    if (error || postId === 'category') return <Custom404 />
-    if (loading) return <Loader />
+    if (error || postId === 'category') return <Custom404/>
+    if (loading) return <Loader/>
     if (!data) return null;
 
     try {
-        const { id, title, categories, desc, image, likes, status, createdAt, updatedAt, comments } = data;
+        const {id, title, categories, desc, image, likes, status, createdAt, updatedAt, comments} = data;
         return (
             <>
-                <Layout title='ブログ' desc='ブログ詳細' >
+                <Layout title='ブログ' desc='ブログ詳細'>
                     <div>
                         <ArticleLayout
                             title={title}
@@ -60,7 +60,7 @@ const ArticlePage: NextPage = () => {
             </>
         );
     } catch (err) {
-        return <Custom404 />
+        return <Custom404/>
     }
 };
 

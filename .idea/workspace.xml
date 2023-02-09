@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Pagination.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/defaultPostsPerPage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/post/post.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/post/post.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/post/post.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/post/post.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/blog.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/blog/[postId].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/blog/[postId].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/blog/category/[categoryName].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/blog/category/[categoryName].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +51,8 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/yuta-higa/myblog/my_blog/backend/node_modules/typescript/lib",
+    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "ts.external.directory.path": "/Users/yuta-higa/myblog/my_blog/frontend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -83,7 +87,9 @@
       <workItem from="1675829044592" duration="146000" />
       <workItem from="1675829200696" duration="411000" />
       <workItem from="1675829615758" duration="17000" />
-      <workItem from="1675829650741" duration="15519000" />
+      <workItem from="1675829650741" duration="18017000" />
+      <workItem from="1675908668933" duration="3450000" />
+      <workItem from="1675912185630" duration="6032000" />
     </task>
     <servers />
   </component>

@@ -42,7 +42,7 @@ function MyApp({Component, pageProps }: AppProps) {
         >
           <Component {...pageProps} />
         </MantineProvider>
-        <ReactQueryDevtools />
+        {/*<ReactQueryDevtools />*/}
       </QueryClientProvider>
   );
 }

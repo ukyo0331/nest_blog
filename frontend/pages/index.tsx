@@ -3,6 +3,7 @@ import Head from 'next/head';
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import ArticleHeadingListLayout from "../src/components/ArticleHeadingListLayout";
+import Pagination from '../src/components/Pagination';
 //コンポーネント
 
 
@@ -35,6 +36,7 @@ const Home: NextPage<SSRProps> = ({recentPostData}) => {
           <link rel="icon" href="/frontend/public/favicon.ico" />
         </Head>
           <ArticleHeadingListLayout recentPostData={recentPostData}/>
+          <Pagination postsPerPage={12} totalPage={5}/>
       </>
   );
 };

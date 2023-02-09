@@ -9,11 +9,12 @@ import { useEffect, useState } from "react";
 import { PostType } from "../../../types";
 import { GetServerSideProps } from "next";
 import ArticleList from "../../../src/components/ArticleList";
+import { defaultPostsPerPage } from "../../../src/defaultPostsPerPage";
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     const categoryName = context.query.categoryName;
     const skip = parseInt(context.query.skip as string) || 0;
-    const take = parseInt(context.query.take as string) || 12;
+    const take = parseInt(context.query.take as string) || defaultPostsPerPage;
 
     const data = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}/category/${categoryName}`,{
         data: {
