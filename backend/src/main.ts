@@ -20,6 +20,7 @@ import { SSM } from 'aws-sdk';
 //   process.env.DATABASE_URL = parameter.toString();
 // }
 // getParameterFromSSM();
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.disable('x-powered-by');
