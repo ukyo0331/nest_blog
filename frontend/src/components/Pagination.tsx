@@ -1,21 +1,23 @@
 import React, { FC, useState } from "react";
 import { useRouter } from "next/router";
 
+
 type PaginationPropsType = {
     totalPage: number;
     postsPerPage: number
 }
-
 const Pagination: FC<PaginationPropsType> = ({totalPage, postsPerPage}) => {
     const router = useRouter();
-    const currentPath = router.pathname;
     const [currentPage, setCurrentPage] = useState<number>(1);
-
+    //ページNo.の表示個数制限を5に設定
+    const limit = 5;
+    const start = Math.max(1, currentPage - Math.floor(limit / 2));
+    const end = Math.min(totalPage, start + limit - 1);
+    const pageNumberArray = Array.from({length: end - start + 1}, (_, i) => i + start);
     //ページ移動のロジック
-    const handlePageChange = (e: React.MouseEvent, num: number) => {
-        e.preventDefault();
+    const handlePageChange = (num: number) => {
         setCurrentPage(num);
-        router.push(`${currentPath}?skip=${(num - 1) * postsPerPage}&take=${postsPerPage}`)
+        router.push(`${router.pathname}?skip=${(num - 1) * postsPerPage}&take=${postsPerPage}`);
     }
 
     return (
@@ -23,30 +25,32 @@ const Pagination: FC<PaginationPropsType> = ({totalPage, postsPerPage}) => {
             <li>
                 <a
                     onClick={(e) => {
-                        handlePageChange(e, 1);
+                        handlePageChange(1);
                     }}
                 >
-                    ＜
+                    <span>＜</span>
                 </a>
             </li>
-            {
-                Array.from({ length: totalPage }, (_, i) => (
-                    <li key={i}>
+            {pageNumberArray.map((num, index) => {
+                return (
+                    <li key={index}>
                         <a onClick={(e) => {
-                            handlePageChange(e, i + 1)
+                            handlePageChange(num)
                         }}>
-                            {i + 1}
+                            <span
+                            className={`${num === currentPage ? 'bg-amber-400' : ''}`}
+                                >{num}</span>
                         </a>
                     </li>
-                ))
-            }
+                )
+            })}
             <li>
                 <a
                     onClick={(e) => {
-                        handlePageChange(e, totalPage);
+                        handlePageChange(totalPage);
                     }}
                 >
-                    ＞
+                    <span>＞</span>
                 </a>
             </li>
         </ul>

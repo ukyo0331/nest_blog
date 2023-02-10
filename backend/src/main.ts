@@ -4,9 +4,25 @@ import { ValidationPipe } from '@nestjs/common';
 import { Request } from 'express';
 import * as cookieParser from 'cookie-parser';
 import * as csurf from 'csurf';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { SSM } from 'aws-sdk';
 
+// const ssm = new SSM();
+// async function getParameter(name: string) {
+//   const params = {
+//     Name: name,
+//   };
+//   const data = await ssm.getParameter(params).promise();
+//   return data.Parameter.Value;
+// }
+// async function getParameterFromSSM() {
+//   const parameter = await getParameter('database_id');
+//   process.env.DATABASE_URL = parameter.toString();
+// }
+// getParameterFromSSM();
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.disable('x-powered-by');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.enableCors({
     credentials: true,
