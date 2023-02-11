@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService} from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import { PrismaClient } from '@prisma/client';
 import { SSM } from 'aws-sdk';
 
@@ -14,7 +14,7 @@ async function getParameter(name: string) {
   return data.Parameter.Value;
 }
 async function getParameterFromSSM() {
-  return await getParameter('database_id');
+  return await getParameter('database_id_test');
 }
 const parameter = getParameterFromSSM();
 
