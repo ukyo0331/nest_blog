@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="0cdafe21-f41b-4daa-85af-824df5bce5b4" name="aws-myblog">
-        <fileTransfer accessType="SFTP" host="13.208.245.198" port="22" sshConfigId="d3af4cb8-eb68-4daf-a155-d7ae59abf739" sshConfig="ec2-user@13.208.245.198:22 key" keyPair="true">
+        <fileTransfer accessType="SFTP" host="15.168.42.160" port="22" sshConfigId="d3af4cb8-eb68-4daf-a155-d7ae59abf739" sshConfig="ec2-user@15.168.42.160:22 key" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

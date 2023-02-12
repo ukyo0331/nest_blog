@@ -9,6 +9,7 @@ import highlightjs from "highlight.js";
 import "highlight.js/styles/github-dark-dimmed.css";
 import { PostType } from "../../types";
 import CategoryImageButton from "./CategoryImageButton";
+import { useQueryUserWithoutRedirect } from '../hooks/user/useQueryUser'
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -26,6 +27,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const update = useStore((state) => state.updateEditedPost);
     const { deletePostMutation } = useMutatePost();
     const router = useRouter();
+    const { data: user } = useQueryUserWithoutRedirect()
 
     //コードのハイライト設定
     marked.setOptions({
@@ -51,24 +53,30 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
                     作成:{createTime.getFullYear()}年{createTime.getMonth()+1}月{createTime.getDate()}日
                 </small>
                 <small>{format(createdAt)}</small>
-                <button
-                    onClick={() => {
+                {user ?
+                  <>
+                    <button
+                      onClick={() => {
                         update({
-                            id, title, desc, status, name: categoryNames
+                          id, title, desc, status, name: categoryNames
                         });
                         router.push('/dashboard')
-                    }}
-                >
-                    編集
-                </button>
-                <button
-                    onClick={() => {
+                      }}
+                    >
+                      編集
+                    </button>
+                    <button
+                      onClick={() => {
                         deletePostMutation.mutate(id)
                         router.push('/');
-                    }}
-                >
-                    削除
-                </button>
+                      }}
+                    >
+                      削除
+                    </button>
+                  </>
+                  : ''
+                }
+
                 <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(marked(desc ? desc : 'not found'))}}></div>
                 <p>{likes}人が拍手しました</p>
             </div>
