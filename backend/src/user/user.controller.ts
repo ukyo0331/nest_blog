@@ -1,4 +1,12 @@
-import { Controller, Body, Get, Patch, Req, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Body,
+  Get,
+  Patch,
+  Req,
+  UseGuards,
+  Injectable,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
 import { UserService } from './user.service';
@@ -8,8 +16,18 @@ import { User } from '@prisma/client';
 interface RequestWithUser extends Request {
   user: User;
 }
-
-@UseGuards(AuthGuard('jwt'))
+//user情報取得時に、認証から弾かれた際にエラーコンソールを出さない
+//カスタムのAuthGuard
+@Injectable()
+export class CustomAuthGuard extends AuthGuard('jwt') {
+  handleRequest(err: any, user: any) {
+    if (err || !user) {
+      return null;
+    }
+    return user;
+  }
+}
+@UseGuards(CustomAuthGuard)
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
