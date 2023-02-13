@@ -29,7 +29,7 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
     return (
         <>
             <ArticleList articles={recentPostData}/>
-            <Pagination postsPerPage={defaultPostsPerPage} totalPage={5} />
+            <Pagination postsPerPage={defaultPostsPerPage} totalPage={10} />
         </>
     )
 }

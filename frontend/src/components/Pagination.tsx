@@ -8,6 +8,7 @@ type PaginationPropsType = {
 }
 const Pagination: FC<PaginationPropsType> = ({totalPage, postsPerPage}) => {
     const router = useRouter();
+    const skip = parseInt(router.query.skip as string) || 0;
     const [currentPage, setCurrentPage] = useState<number>(1);
     //ページNo.の表示個数制限を5に設定
     const limit = 5;
@@ -38,7 +39,7 @@ const Pagination: FC<PaginationPropsType> = ({totalPage, postsPerPage}) => {
                             handlePageChange(num)
                         }}>
                             <span
-                            className={`${num === currentPage ? 'bg-amber-400' : ''}`}
+                            className={`${num === skip / postsPerPage + 1 ? 'bg-amber-400' : ''}`}
                                 >{num}</span>
                         </a>
                     </li>
