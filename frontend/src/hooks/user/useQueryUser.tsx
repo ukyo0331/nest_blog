@@ -3,7 +3,7 @@ import axios from "axios";
 import { User } from '@prisma/client';
 import { useQuery } from "@tanstack/react-query";
 
-const getUser = async () => {
+export const getUser = async () => {
     const { data } = await axios.get<Omit<User, 'hashedPassword'>>(
       `${process.env.NEXT_PUBLIC_API_URL}/user`
     )
@@ -26,7 +26,7 @@ export const useQueryUserWithoutRedirect = () => {
         queryKey: ['user'],
         queryFn: getUser,
         onError: (err: any) => {
-            console.error(err);
+            return null;
         },
     })
 }

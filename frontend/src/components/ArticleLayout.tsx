@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 import useStore from "../store/postStore";
 import { useMutatePost } from "../hooks/post/useMutatePost";
 import { useRouter } from "next/router";
@@ -9,7 +9,7 @@ import highlightjs from "highlight.js";
 import "highlight.js/styles/github-dark-dimmed.css";
 import { PostType } from "../../types";
 import CategoryImageButton from "./CategoryImageButton";
-import { useQueryUserWithoutRedirect } from '../hooks/user/useQueryUser'
+import { useQueryUserWithoutRedirect } from '../hooks/user/useQueryUser';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -27,7 +27,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const update = useStore((state) => state.updateEditedPost);
     const { deletePostMutation } = useMutatePost();
     const router = useRouter();
-    const { data: user } = useQueryUserWithoutRedirect()
+    const { data: user } = useQueryUserWithoutRedirect();
 
     //コードのハイライト設定
     marked.setOptions({
@@ -53,7 +53,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
                     作成:{createTime.getFullYear()}年{createTime.getMonth()+1}月{createTime.getDate()}日
                 </small>
                 <small>{format(createdAt)}</small>
-                {user ?
+                {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
                   <>
                     <button
                       onClick={() => {

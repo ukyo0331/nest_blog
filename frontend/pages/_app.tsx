@@ -12,7 +12,8 @@ const queryClient = new QueryClient({
       //APIへのfetchに失敗した場合のリトライを無効化
       retry: false,
       //windowにfocusを当てた際のfetchを無効化
-      refetchOnWindowFocus: false
+      refetchOnWindowFocus: false,
+      staleTime: Infinity,
     },
   },
 });
@@ -42,7 +43,7 @@ function MyApp({Component, pageProps }: AppProps) {
         >
           <Component {...pageProps} />
         </MantineProvider>
-        {/*<ReactQueryDevtools />*/}
+        <ReactQueryDevtools />
       </QueryClientProvider>
   );
 }

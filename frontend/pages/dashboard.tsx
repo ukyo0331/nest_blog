@@ -5,8 +5,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import Layout from "../src/components/Layout";
 import { LogoutIcon } from "@heroicons/react/solid";
 import { ArticlePostsForm } from "../src/components/ArticlePostsForm";
-import { Loader } from '@mantine/core'
-import { useQueryUser } from '../src/hooks/user/useQueryUser'
+import { Loader } from '@mantine/core';
+import { useQueryUser } from '../src/hooks/user/useQueryUser';
 
 const Dashboard: NextPage = () => {
     const router = useRouter();

@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/prisma/prisma.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/prisma/prisma.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/auth/strategy/jwt.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/auth/strategy/jwt.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/user/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/user/user.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticleLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/UserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/UserInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/hooks/user/useQueryUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/user/useQueryUser.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +92,7 @@
       <workItem from="1675829615758" duration="17000" />
       <workItem from="1675829650741" duration="18017000" />
       <workItem from="1675908668933" duration="3450000" />
-      <workItem from="1675912185630" duration="63635000" />
+      <workItem from="1675912185630" duration="79357000" />
     </task>
     <servers />
   </component>

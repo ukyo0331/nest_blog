@@ -40,7 +40,7 @@ const Login: NextPage = () => {
                 });
             form.reset();
             //loginに成功したらdashboardへ
-            router.push('/dashboard')
+            router.push('/dashboard');
         } catch (e: any) {
             setError(e.response.data.message)
         }

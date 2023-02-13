@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) 
             take: 6,
         }
     });
-    const recentPostData = allPostsData.data
+    const recentPostData = allPostsData.data;
   return {
     props: {
         recentPostData
