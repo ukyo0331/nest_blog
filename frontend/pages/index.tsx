@@ -36,7 +36,6 @@ const Home: NextPage<SSRProps> = ({recentPostData}) => {
           <link rel="icon" href="/frontend/public/favicon.ico" />
         </Head>
           <ArticleHeadingListLayout recentPostData={recentPostData}/>
-          <Pagination postsPerPage={12} totalPage={10}/>
       </>
   );
 };

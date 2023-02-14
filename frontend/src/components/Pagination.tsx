@@ -1,14 +1,15 @@
 import React, { FC, useState } from "react";
 import { useRouter } from "next/router";
-
+import Custom404 from '../../pages/404';
 
 type PaginationPropsType = {
     totalPage: number;
     postsPerPage: number
 }
+
 const Pagination: FC<PaginationPropsType> = ({totalPage, postsPerPage}) => {
     const router = useRouter();
-    const skip = parseInt(router.query.skip as string) || 0;
+    const page = parseInt(router.query.page as string) || 1;
     const [currentPage, setCurrentPage] = useState<number>(1);
     //ページNo.の表示個数制限を5に設定
     const limit = 5;
@@ -18,9 +19,8 @@ const Pagination: FC<PaginationPropsType> = ({totalPage, postsPerPage}) => {
     //ページ移動のロジック
     const handlePageChange = (num: number) => {
         setCurrentPage(num);
-        router.push(`${router.pathname}?skip=${(num - 1) * postsPerPage}&take=${postsPerPage}`);
+        router.push(`${router.pathname}?page=${num}`);
     }
-
     return (
         <ul className='flex '>
             <li>
@@ -39,7 +39,7 @@ const Pagination: FC<PaginationPropsType> = ({totalPage, postsPerPage}) => {
                             handlePageChange(num)
                         }}>
                             <span
-                            className={`${num === skip / postsPerPage + 1 ? 'bg-amber-400' : ''}`}
+                            className={`${num === page ? 'bg-amber-400' : ''}`}
                                 >{num}</span>
                         </a>
                     </li>
