@@ -14,7 +14,7 @@ const CategoryImageButton: FC<CategoryProps> = ({categories}) => {
                         key={index}
                         onClick={(e) => {
                             e.preventDefault();
-                            router.push(`/blog/category/${arg.category.name}?skip=0&take=9`)
+                            router.push(`/blog/category/${arg.category.name}`)
                         }}
                         className='h-8 rounded-[16px] flex justify-between m-0 bg-amber-20　border-black border border-solid-1 cursor-pointer'
                     >

@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/blog.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/blog/category/[categoryName].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/blog/category/[categoryName].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CategoryImageButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CategoryImageButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Pagination.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,7 @@
       <workItem from="1675829615758" duration="17000" />
       <workItem from="1675829650741" duration="18017000" />
       <workItem from="1675908668933" duration="3450000" />
-      <workItem from="1675912185630" duration="86954000" />
+      <workItem from="1675912185630" duration="96204000" />
     </task>
     <servers />
   </component>
