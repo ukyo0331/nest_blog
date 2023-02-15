@@ -20,7 +20,7 @@ const Dashboard: NextPage = () => {
     if (status === 'loading') return <Loader/>
     return (
         <>
-            {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
+            {true ?
               <Layout title='ダッシュボード' desc='ダッシュボードです'>
                   <aside className=''>
                       <ul>
