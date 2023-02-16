@@ -6,7 +6,16 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-image': "url('../public/heroImage.jpg')",
+        'profile-image01': "url('../public/profile01.jpg')",
+        'profile-image02': "url('../public/profile02.jpg')"
+      },
+      fontFamily: {
+        'mont': ['Montserrat']
+      }
+    },
   },
   plugins: [],
 }

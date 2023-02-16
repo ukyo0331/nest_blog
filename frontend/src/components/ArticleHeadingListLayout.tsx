@@ -26,10 +26,6 @@ const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType
                                 <div>
                                     <CategoryButton
                                         categories={categories}
-                                        // onClick={(e) => {
-                                        //   e.preventDefault();
-                                        //   router.push('/test')
-                                        //}}
                                     />
                                 </div>
                                 <p>
