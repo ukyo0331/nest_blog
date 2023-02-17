@@ -16,4 +16,15 @@
     html {
         font-family: 'Montserrat', sans-serif;
     }
+    code {
+        display: block;
+        overflow-x:scroll;
+        background: #343434;
+        color: #fff;
+        padding: 30px;
+        line-height: 2rem;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: VL Gothic Font Family, serif;
+    }
 }
