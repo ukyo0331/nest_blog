@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .hidden-scrollbar {
+        -ms-overflow-style: none; /* IE, Edge 対応 */
+        scrollbar-width: none; /* Firefox 対応 */
+    }
+    .hidden-scrollbar::-webkit-scrollbar {
+        /* Chrome, Safari 対応 */
+        display: none;
+    }
+}
+.star {
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.star-clicked img {
+    animation: star 0.5s ease-in-out;
+}
+
+@keyframes star {
+    0% {
+        filter: url(#glow);
+        transform: scale(1);
+    }
+    50% {
+        filter: url(#glow);
+        transform: scale(1.3);
+    }
+    100% {
+        filter: url(#glow);
+        transform: scale(1);
+    }
+}
