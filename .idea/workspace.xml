@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/blog/[postId].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/blog/[postId].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticleHeadingListLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticleHeadingListLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CategoryImageButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CategoryImageButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CategoryImageFallback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CategoryImageFallback.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +87,7 @@
       <workItem from="1675829615758" duration="17000" />
       <workItem from="1675829650741" duration="18017000" />
       <workItem from="1675908668933" duration="3450000" />
-      <workItem from="1675912185630" duration="136656000" />
+      <workItem from="1675912185630" duration="141847000" />
     </task>
     <servers />
   </component>

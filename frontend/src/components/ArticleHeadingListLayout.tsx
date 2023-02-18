@@ -24,6 +24,7 @@ const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType
             return (
               <a key={id}
                  onClick={(e) => {
+                   e.stopPropagation();
                    e.preventDefault();
                    router.push(`/blog/${id}`)
                  }

@@ -13,6 +13,7 @@ const CategoryImageButton: FC<CategoryProps> = ({categories}) => {
                     <div
                         key={index}
                         onClick={(e) => {
+                            e.stopPropagation();
                             e.preventDefault();
                             router.push(`/blog/category/${arg.category.name}`)
                         }}

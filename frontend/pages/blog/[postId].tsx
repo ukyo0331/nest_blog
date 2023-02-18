@@ -40,7 +40,7 @@ const ArticlePage: NextPage = () => {
         const {id, title, categories, desc, image, likes, status, createdAt, updatedAt, comments} = data;
         return (
             <>
-                <Layout title='ブログ' desc='ブログ詳細'>
+                <Layout title={title} desc='ブログのdescription'>
                     <div>
                         <ArticleLayout
                             title={title}
