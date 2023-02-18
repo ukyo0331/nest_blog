@@ -3,13 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/category_icon/Next.js.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/static/category_icon/Next.js.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/category_icon/Node.js.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/static/category_icon/Node.js.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/category_icon/React.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/static/category_icon/React.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/category_icon/Styled-Components.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/static/category_icon/Styled-Components.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/category_icon/jwt.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/static/category_icon/jwt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/category_icon/noImage.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/static/category_icon/noImage.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CategoryImageFallback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CategoryImageFallback.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/static/category_icon/Next.js.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/category_icon/Next.js.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/static/category_icon/Node.js.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/category_icon/Node.js.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/static/category_icon/React.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/category_icon/React.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/static/category_icon/Styled-Components.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/category_icon/Styled-Components.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/static/category_icon/jwt.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/category_icon/jwt.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/static/category_icon/noImage.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/category_icon/noImage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticleHeadingListLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticleHeadingListLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CategoryImageButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CategoryImageButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/HeroArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HeroArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +61,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/public/static" />
       <recent name="$PROJECT_DIR$/frontend/src/components" />
       <recent name="$PROJECT_DIR$/frontend/pages/blog" />
     </key>
@@ -91,7 +95,7 @@
       <workItem from="1675829650741" duration="18017000" />
       <workItem from="1675908668933" duration="3450000" />
       <workItem from="1675912185630" duration="142999000" />
-      <workItem from="1676715851275" duration="1097000" />
+      <workItem from="1676715851275" duration="4560000" />
     </task>
     <servers />
   </component>

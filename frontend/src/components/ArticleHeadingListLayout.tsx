@@ -31,7 +31,7 @@ const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType
                  }>
                 <div className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3'>
                   <div className='h-full flex flex-col'>
-                    <div className='overflow-scroll hidden-scrollbar ml-2 mt-2'>
+                    <div className='overflow-scroll hidden-scrollbar ml-2 mt-2 mr-2'>
                       <CategoryButton
                         categories={categories}
                       />
