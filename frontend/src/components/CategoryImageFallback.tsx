@@ -12,7 +12,7 @@ export default function CategoryImageFallback({ src, fallbackSrc }: CategoryImag
     const router = useRouter();
     return (
         <Image
-            src={isError ? fallbackSrc : src}
+            src={src}
             alt='カテゴリーのイメージ画像です'
             onError={(event) => {
                 event.preventDefault()
