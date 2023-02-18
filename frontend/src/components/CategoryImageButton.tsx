@@ -21,8 +21,8 @@ const CategoryImageButton: FC<CategoryProps> = ({categories}) => {
                     >
                         <figure className='mt-1 ml-1 w-6 h-6 mr-2 rounded-[100%] flex justify-center'>
                             <CategoryImageFallback
-                                src={`/category_icon/${arg.category.name}.png`}
-                                fallbackSrc={`/category_icon/noImage.png`}
+                                src={`/static/category_icon/${arg.category.name}.png`}
+                                fallbackSrc={`/static/category_icon/noImage.png`}
                             />
                         </figure>
                         <div className='mt-1 mr-2 whitespace-nowrap'>
