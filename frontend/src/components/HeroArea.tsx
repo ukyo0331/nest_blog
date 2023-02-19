@@ -8,6 +8,7 @@ const HeroArea = () => {
              height={360}
              alt='hero image'
              className='absolute'
+             priority={true}
       />
       <section className='w-full h-full flex flex-col justify-center items-center absolute'>
         <h1 className='text-white min-h-0 font-bold mb-10 text-center text-[clamp(48px,5vw,68px)]'>
