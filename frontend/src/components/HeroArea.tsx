@@ -4,10 +4,10 @@ const HeroArea = () => {
   return (
     <div className='w-full h-screen bg-center bg-cover bg-fixed relative'>
       <Image src='/heroImage.jpg'
-             width={360}
-             height={360}
              alt='hero image'
              className='absolute'
+             fill
+             style={{ objectFit: 'cover'}}
              priority={true}
       />
       <section className='w-full h-full flex flex-col justify-center items-center absolute'>
