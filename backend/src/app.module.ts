@@ -9,10 +9,15 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { CategoryModule } from './category/category.module';
 import { CategoryOnPostModule } from './category_on_post/category_on_post.module';
+import { ImageModule } from './image/image.module';
+import configuration from './config/configuration';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      load: [configuration],
+      isGlobal: true,
+    }),
     AuthModule,
     UserModule,
     PostModule,
@@ -20,6 +25,7 @@ import { CategoryOnPostModule } from './category_on_post/category_on_post.module
     PrismaModule,
     CategoryModule,
     CategoryOnPostModule,
+    ImageModule,
   ],
   controllers: [AppController],
   providers: [AppService],

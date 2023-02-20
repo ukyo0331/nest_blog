@@ -5,9 +5,17 @@ import { Request } from 'express';
 import * as cookieParser from 'cookie-parser';
 import * as csurf from 'csurf';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { ConfigService } from '@nestjs/config';
+import { config } from 'aws-sdk';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const configService = app.get(ConfigService);
+  config.update({
+    accessKeyId: configService.get('aws.accessKey'),
+    secretAccessKey: configService.get('aws.secretKey'),
+    region: configService.get('aws.region'),
+  });
   app.disable('x-powered-by');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.enableCors({
