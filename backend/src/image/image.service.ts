@@ -30,10 +30,31 @@ export class ImageService {
       Expires: 60 * 5,
     };
 
-    const url = s3.getSignedUrl('getObject', params);
-    return {
-      key,
-      preSignedUrl: url,
-    };
+    try {
+      const url = s3.getSignedUrl('getObject', params);
+      await this.checkUrl(url);
+      return {
+        key,
+        preSignedUrl: url,
+      };
+    } catch (err) {
+      //アイコンが存在しない場合はnoimage.pngのpreSignedURLを返す
+      const url = s3.getSignedUrl('getObject', {
+        Bucket: this.configService.get('aws.s3BucketName'),
+        Key: 'noimage.png',
+        Expires: 60 * 5,
+      });
+      return {
+        key,
+        preSignedUrl: url,
+      };
+    }
+  }
+  //URLがNOT FOUNDかどうか調べる = アイコンの存在チェック
+  async checkUrl(url: string) {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error, status = ${response.status}`);
+    }
   }
 }

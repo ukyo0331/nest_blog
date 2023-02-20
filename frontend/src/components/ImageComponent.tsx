@@ -10,12 +10,19 @@ const ImageComponent: FC<ImageComponentType> = ({ imageKey }) => {
 
   useEffect(() => {
     async function getImage() {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/image/preSignedUrlForGet?key=${imageKey.toLowerCase()}`).then((_) => _.json());
-      console.log(response.preSignedUrl);
-      setImageUrl(response.preSignedUrl)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/image/preSignedUrlForGet?key=${imageKey.toLowerCase()}`);
+      if (!response.ok || response.status !== 200) {
+        const fallbackResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/image/preSignedUrlForGet?key=noImage.png`);
+        const fallbackJson = await fallbackResponse.json();
+        setImageUrl(fallbackJson.preSignedUrl);
+      } else {
+        const json = await response.json();
+        setImageUrl(json.preSignedUrl);
+      }
     }
     getImage();
   }, [imageKey]);
+
 
   if (!imageUrl) return <Loader />
 
