@@ -4,26 +4,38 @@ import { S3 } from 'aws-sdk';
 
 @Injectable()
 export class ImageService {
-  constructor(private readonly configService: ConfigService) {}
-
-  getPreSignedUrlForPut(filename: string) {
-    const s3 = new S3();
-    const key = `category-icon/${filename}`;
-    const params = {
-      Bucket: this.configService.get('aws.s3BucketName'),
-      Key: key,
-      Expires: 60 * 5,
-    };
-
-    const url = s3.getSignedUrl('putObject', params);
-    return {
-      key,
-      preSignedUrl: url,
-    };
+  private s3: S3;
+  constructor(private readonly configService: ConfigService) {
+    this.s3 = new S3();
   }
 
+  //ファイルをアップロード
+  async uploadFile(dataBuffer: Buffer, filename: string) {
+    const uploadResult = await this.s3
+      .upload({
+        Bucket: this.configService.get('aws.s3BucketName'),
+        Body: dataBuffer,
+        Key: `${filename}`,
+      })
+      .promise();
+  }
+  // getPreSignedUrlForPut(filename: string) {
+  //   const key = `category-icon/${filename}`;
+  //   const params = {
+  //     Bucket: this.configService.get('aws.s3BucketName'),
+  //     Key: key,
+  //     Expires: 60 * 5,
+  //   };
+  //
+  //   const url = this.s3.getSignedUrl('putObject', params);
+  //   return {
+  //     key,
+  //     preSignedUrl: url,
+  //   };
+  // }
+
+  //s3から画像ファイルのSignedURLを取得
   async getPreSignedUrlForGet(key: string) {
-    const s3 = new S3();
     const params = {
       Bucket: this.configService.get('aws.s3BucketName'),
       Key: key,
@@ -31,7 +43,7 @@ export class ImageService {
     };
 
     try {
-      const url = s3.getSignedUrl('getObject', params);
+      const url = this.s3.getSignedUrl('getObject', params);
       await this.checkUrl(url);
       return {
         key,
@@ -39,7 +51,7 @@ export class ImageService {
       };
     } catch (err) {
       //アイコンが存在しない場合はnoimage.pngのpreSignedURLを返す
-      const url = s3.getSignedUrl('getObject', {
+      const url = this.s3.getSignedUrl('getObject', {
         Bucket: this.configService.get('aws.s3BucketName'),
         Key: 'noimage.png',
         Expires: 60 * 5,

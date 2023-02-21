@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 import ArticleHeadingListLayout from "../src/components/ArticleHeadingListLayout";
 import Layout from '../src/components/Layout';
 import HeroArea from '../src/components/HeroArea';
-import ImageComponent from '../src/components/ImageComponent';
+import ImageComponent from '../src/components/CategoryImageComponent';
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     //最新の記事を6件取得

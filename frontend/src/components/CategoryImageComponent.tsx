@@ -5,7 +5,7 @@ import { Loader } from '@mantine/core';
 type ImageComponentType = {
   imageKey: string;
 }
-const ImageComponent: FC<ImageComponentType> = ({ imageKey }) => {
+const CategoryImageComponent: FC<ImageComponentType> = ({ imageKey }) => {
   const [imageUrl, setImageUrl] = useState<string>('');
 
   useEffect(() => {
@@ -29,4 +29,4 @@ const ImageComponent: FC<ImageComponentType> = ({ imageKey }) => {
   return <Image src={imageUrl} alt={'カテゴリアイコン'}　width={20} height={20}/>
 }
 
-export default ImageComponent;
+export default CategoryImageComponent;
