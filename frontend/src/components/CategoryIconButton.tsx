@@ -1,11 +1,10 @@
 import { CategoryButtonType, CategoryProps} from "../../types";
-import CategoryImageFallback from "./CategoryImageFallback";
 import { FC } from "react";
 import { useRouter } from "next/router";
-import ImageComponent from './CategoryImageComponent';
+import ImageComponent from './CategoryIconImageComponent';
 
 //用意されたカテゴリの画像を使用したボタン
-const CategoryImageButton: FC<CategoryProps> = ({categories}) => {
+const CategoryIconButton: FC<CategoryProps> = ({categories}) => {
     const router = useRouter()
     return (
         <div className='w-auto h-8 flex justify-start'>
@@ -22,10 +21,6 @@ const CategoryImageButton: FC<CategoryProps> = ({categories}) => {
                     >
                         <figure className='mt-1 ml-1 w-6 h-6 mr-2 rounded-[100%] flex justify-center'>
                             <ImageComponent imageKey={`${arg.category.name}.png`}/>
-                            {/*<CategoryImageFallback*/}
-                            {/*    src={`/category_icon/${arg.category.name}.png`}*/}
-                            {/*    fallbackSrc={`/category_icon/noImage.png`}*/}
-                            {/*/>*/}
                         </figure>
                         <div className='mt-1 mr-2 whitespace-nowrap'>
                             {arg.category.name}
@@ -37,4 +32,4 @@ const CategoryImageButton: FC<CategoryProps> = ({categories}) => {
     );
 };
 
-export default CategoryImageButton;
+export default CategoryIconButton;

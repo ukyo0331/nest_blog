@@ -36,4 +36,10 @@ export class ImageController {
     const key = request.query.key;
     return this.imageService.getPreSignedUrlForGet(key);
   }
+
+  //オブジェクト一覧を取得
+  @Get('getListObjects')
+  async getListObject() {
+    return this.imageService.getListObjects();
+  }
 }

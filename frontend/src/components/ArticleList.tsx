@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { PostType } from "../../types";
-import CategoryImageButton from "./CategoryImageButton";
+import CategoryIconButton from "./CategoryIconButton";
 
 type ArticleListProps = {
     articles: PostType[];
@@ -15,7 +15,7 @@ const ArticleList: FC<ArticleListProps> = (props) => {
                 return (
                     <div key={id}>
                         {title}
-                        <CategoryImageButton categories={categories}/>
+                        <CategoryIconButton categories={categories}/>
                     </div>
                 )
             })}

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { format } from "timeago.js";
-import CategoryButton from "./CategoryImageButton";
+import CategoryButton from "./CategoryIconButton";
 import { PostType } from "../../types";
 
 type ArticleHeadingListLayoutType = {

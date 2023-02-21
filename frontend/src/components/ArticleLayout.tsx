@@ -8,7 +8,7 @@ import { marked } from "marked";
 import highlightjs from "highlight.js";
 import "highlight.js/styles/github-dark-dimmed.css";
 import { PostType } from "../../types";
-import CategoryImageButton from "./CategoryImageButton";
+import CategoryIconButton from "./CategoryIconButton";
 import { useQueryUserWithoutRedirect } from '../hooks/user/useQueryUser';
 
 //個々のブログ記事のレイアウト
@@ -45,7 +45,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
         <article key={id}>
             <div>
                 <div>
-                    <CategoryImageButton categories={categories}/>
+                    <CategoryIconButton categories={categories}/>
                 </div>
                 <h2>{title}{status === 'draft' && '（下書き）'}</h2>
                 <small>

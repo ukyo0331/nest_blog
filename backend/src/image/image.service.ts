@@ -5,6 +5,7 @@ import { S3 } from 'aws-sdk';
 @Injectable()
 export class ImageService {
   private s3: S3;
+
   constructor(private readonly configService: ConfigService) {
     this.s3 = new S3();
   }
@@ -18,7 +19,11 @@ export class ImageService {
         Key: `${filename}`,
       })
       .promise();
+
+    console.log('Key:', uploadResult.Key);
+    console.log('url:', uploadResult.Location);
   }
+
   // getPreSignedUrlForPut(filename: string) {
   //   const key = `category-icon/${filename}`;
   //   const params = {
@@ -62,11 +67,28 @@ export class ImageService {
       };
     }
   }
+
   //URLがNOT FOUNDかどうか調べる = アイコンの存在チェック
   async checkUrl(url: string) {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error, status = ${response.status}`);
     }
+  }
+
+  //オブジェクト一覧を取得
+  async getListObjects() {
+    return this.s3
+      .listObjects({
+        Bucket: this.configService.get('aws.s3BucketName'),
+      })
+      .promise()
+      .then((res) => {
+        const resultArr = [];
+        for (const data of res.Contents) {
+          resultArr.push(data.Key);
+        }
+        return resultArr;
+      });
   }
 }
