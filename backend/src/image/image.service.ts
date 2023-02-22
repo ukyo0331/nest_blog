@@ -10,19 +10,28 @@ export class ImageService {
     this.s3 = new S3();
   }
 
-  //ファイルをアップロード
-  async uploadFile(dataBuffer: Buffer, filename: string) {
-    const uploadResult = await this.s3
-      .upload({
-        Bucket: this.configService.get('aws.s3BucketName'),
-        Body: dataBuffer,
-        Key: `${filename}`,
-      })
-      .promise();
-
-    console.log('Key:', uploadResult.Key);
-    console.log('url:', uploadResult.Location);
+  async uploadFile(params: any) {
+    this.s3.putObject(params, function (err, data) {
+      if (err) {
+        console.error(err);
+      } else {
+        return data;
+      }
+    });
   }
+  //ファイルをアップロード
+  // async uploadFile(dataBuffer: Buffer, filename: string) {
+  // const uploadResult = await this.s3
+  //   .upload({
+  //     Bucket: this.configService.get('aws.s3BucketName'),
+  //     Body: dataBuffer,
+  //     Key: `${filename}`,
+  //   })
+  //   .promise();
+  //
+  // console.log('Key:', uploadResult.Key);
+  // console.log('url:', uploadResult.Location);
+  // }
 
   // getPreSignedUrlForPut(filename: string) {
   //   const key = `category-icon/${filename}`;

@@ -6,7 +6,7 @@ import axios from 'axios';
 type ImageComponentType = {
   imageKey: string;
 }
-const CategoryIconImageComponent: FC<ImageComponentType> = ({ imageKey }) => {
+const CategoryIconComponent: FC<ImageComponentType> = ({ imageKey }) => {
   const [imageUrl, setImageUrl] = useState<string>('');
 
   useEffect(() => {
@@ -25,4 +25,4 @@ const CategoryIconImageComponent: FC<ImageComponentType> = ({ imageKey }) => {
   return <Image src={imageUrl} alt={'カテゴリアイコン'}　width={20} height={20}/>
 }
 
-export default CategoryIconImageComponent;
+export default CategoryIconComponent;

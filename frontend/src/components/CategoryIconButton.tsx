@@ -1,7 +1,7 @@
 import { CategoryButtonType, CategoryProps} from "../../types";
 import { FC } from "react";
 import { useRouter } from "next/router";
-import ImageComponent from './CategoryIconImageComponent';
+import ImageComponent from './CategoryIconComponent';
 
 //用意されたカテゴリの画像を使用したボタン
 const CategoryIconButton: FC<CategoryProps> = ({categories}) => {

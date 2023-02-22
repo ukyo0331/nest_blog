@@ -29,7 +29,7 @@ const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType
                    router.push(`/blog/${id}`)
                  }
                  }>
-                <div className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3'>
+                <div className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs'>
                   <div className='h-full flex flex-col'>
                     <div className='overflow-scroll hidden-scrollbar ml-2 mt-2 mr-2'>
                       <CategoryButton
