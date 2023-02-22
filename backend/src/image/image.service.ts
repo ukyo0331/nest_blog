@@ -10,28 +10,21 @@ export class ImageService {
     this.s3 = new S3();
   }
 
-  async uploadFile(params: any) {
-    this.s3.putObject(params, function (err, data) {
-      if (err) {
-        console.error(err);
-      } else {
-        return data;
-      }
-    });
+  // imageをアップロード
+  async uploadImage(file: Express.Multer.File) {
+    try {
+      const params = {
+        Bucket: this.configService.get('aws.s3BucketName'),
+        Key: file.originalname.toLowerCase(),
+        Body: file.buffer,
+        ContentType: file.mimetype,
+      };
+      await this.s3.upload(params).promise();
+      return { success: true };
+    } catch (err) {
+      return console.error(err);
+    }
   }
-  //ファイルをアップロード
-  // async uploadFile(dataBuffer: Buffer, filename: string) {
-  // const uploadResult = await this.s3
-  //   .upload({
-  //     Bucket: this.configService.get('aws.s3BucketName'),
-  //     Body: dataBuffer,
-  //     Key: `${filename}`,
-  //   })
-  //   .promise();
-  //
-  // console.log('Key:', uploadResult.Key);
-  // console.log('url:', uploadResult.Location);
-  // }
 
   // getPreSignedUrlForPut(filename: string) {
   //   const key = `category-icon/${filename}`;
