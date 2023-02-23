@@ -22,7 +22,12 @@ const CategoryIconComponent: FC<ImageComponentType> = ({ imageKey }) => {
 
   if (!imageUrl) return <Loader />
 
-  return <Image src={imageUrl} alt={'カテゴリアイコン'}　width={20} height={20}/>
+  return <Image
+    src={imageUrl}
+    alt={'カテゴリアイコン'}　
+    width={100}
+    height={100}
+  />
 }
 
 export default CategoryIconComponent;
