@@ -15,10 +15,7 @@ export class ImageController {
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(
-    @UploadedFile() file: Express.Multer.File,
-    @Req() request: Request,
-  ) {
+  async uploadFile(@UploadedFile() file: Express.Multer.File) {
     if (!file) {
       return { success: false, error: '画像がありません' };
     }

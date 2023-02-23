@@ -5,14 +5,15 @@ import { CategoryButtonType } from '../../types';
 
 const CategoryIconEditor = () => {
   const [iconData, setIconData] = useState<Array<string>>([]);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [result, setResult] = useState('');
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [result, setResult] = useState<string>('');
 
 
-  const handleFileInputChange = (e) => {
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    if (e.target.files)
     setSelectedImage(e.target.files[0]);
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     if (!selectedImage) {
