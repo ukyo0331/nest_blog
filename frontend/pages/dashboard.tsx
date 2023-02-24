@@ -7,8 +7,18 @@ import { LogoutIcon } from "@heroicons/react/solid";
 import { ArticlePostsForm } from "../src/components/ArticlePostsForm";
 import { Loader } from '@mantine/core';
 import { useQueryUser } from '../src/hooks/user/useQueryUser';
+import { useState } from 'react';
+import CategoryIconEditor from '../src/components/CategoryIconEditor';
 
 const Dashboard: NextPage = () => {
+    //レンダリングする画面のコントロール
+    const [renderScreen, setRenderScreen] = useState<string>('create');
+    const handleMenuClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const clickedMenu = (e.target as HTMLInputElement).id;
+        setRenderScreen(clickedMenu);
+    }
+
     const router = useRouter();
     const { data: user, status } = useQueryUser();
     const queryClient = useQueryClient();
@@ -22,29 +32,42 @@ const Dashboard: NextPage = () => {
         <>
             {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
               <Layout title='ダッシュボード' desc='ダッシュボードです'>
-                  <aside className=''>
-                      <ul>
-                          <li>記事作成</li>
-                          <li>下書き一覧</li>
-                          <li>記事一覧</li>
-                          <li>コメント一覧</li>
-                          <li>
-                              <LogoutIcon
-                                className='mb-6 h-6 w-6 cursor-pointer text-blue-500'
-                                onClick={logout}
-                              />
-                          </li>
-                      </ul>
-                  </aside>
-                  <ArticlePostsForm />
-                  {/*<LogoutIcon*/}
-                  {/*   className='mb-6 h-6 w-6 cursor-pointer text-blue-500'*/}
-                  {/*   onClick={logout}*/}
-                  {/*/>*/}
-                  {/*<button onClick={(e) => {*/}
-                  {/*    e.preventDefault();*/}
-                  {/*    router.push('/draftList')*/}
-                  {/*}}>下書き一覧</button>*/}
+                  <div className='flex bg-amber-600 w-full h-screen'>
+                      <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen'>
+                          <ul className='flex flex-col items-center pt-12'>
+                              <li id='create' onClick={e => handleMenuClick(e)} className='custom-button'>記事作成</li>
+                              <li id='draft' onClick={e => handleMenuClick(e)} className='custom-button'>下書き一覧</li>
+                              <li id='article' onClick={e => handleMenuClick(e)} className='custom-button'>記事一覧</li>
+                              <li id='comment' onClick={e => handleMenuClick(e)} className='custom-button'>コメント一覧</li>
+                              <li id='addIcon' onClick={e => handleMenuClick(e)} className='custom-button'>アイコン追加</li>
+                              <li className='custom-button'>
+                                  <span>ログアウト</span>
+                                  <LogoutIcon
+                                    className='h-6 w-6 cursor-pointer text-blue-500'
+                                    onClick={logout}
+                                  />
+                              </li>
+                          </ul>
+                      </aside>
+                      <div className='bg-amber-50 flex items-center flex-grow'>
+                          {
+                              renderScreen === 'create'
+                                ?
+                            <div className='mx-auto'>
+                                <ArticlePostsForm />
+                            </div>
+                                : null
+                          }
+                          {
+                              renderScreen === 'addIcon'
+                                ?
+                                <div>
+                                    <CategoryIconEditor />
+                                </div>
+                                : null
+                          }
+                      </div>
+                  </div>
               </Layout>
               : <Loader />
             }

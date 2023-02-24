@@ -52,14 +52,17 @@ const CategoryIconEditor = () => {
       <form onSubmit={handleSubmit}>
         <input type='file' accept='image/png' required onChange={handleFileInputChange}/>
         <button type='submit'>アイコンをアップロードする</button>
+        <p>{result}</p>
       </form>
-      <CategoryIconButton
-        categories={iconData.map(category => ({
-          category: {
-            name: category.replace('.png', '')
-          }
-        }) as unknown as CategoryButtonType)
-      }/>
+      <div className='overflow-auto'>
+        <CategoryIconButton
+          categories={iconData.map(category => ({
+            category: {
+              name: category.replace('.png', '')
+            }
+          }) as unknown as CategoryButtonType)
+          }/>
+      </div>
     </>
   )
 }
