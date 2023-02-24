@@ -39,13 +39,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
-        font-weight: bold;
+        position: relative;
     }
     .custom-button:hover {
         background: #945908;
     }
-    .custom-button span::after {
+    .custom-button:active span::after {
         position: absolute;
         top: 50%;
         left: 50%;

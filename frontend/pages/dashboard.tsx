@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
+import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import axios from 'axios';
-import { useQueryClient } from "@tanstack/react-query";
-import Layout from "../src/components/Layout";
-import { LogoutIcon } from "@heroicons/react/solid";
-import { ArticlePostsForm } from "../src/components/ArticlePostsForm";
+import { useQueryClient } from '@tanstack/react-query';
+import Layout from '../src/components/Layout';
+import { LogoutIcon } from '@heroicons/react/solid';
+import { ArticlePostsForm } from '../src/components/ArticlePostsForm';
 import { Loader } from '@mantine/core';
 import { useQueryUser } from '../src/hooks/user/useQueryUser';
 import { useState } from 'react';
@@ -15,7 +15,7 @@ const Dashboard: NextPage = () => {
     const [renderScreen, setRenderScreen] = useState<string>('create');
     const handleMenuClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        const clickedMenu = (e.target as HTMLInputElement).id;
+        const clickedMenu = (e.currentTarget as HTMLInputElement).id;
         setRenderScreen(clickedMenu);
     }
 
@@ -32,14 +32,35 @@ const Dashboard: NextPage = () => {
         <>
             {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
               <Layout title='ダッシュボード' desc='ダッシュボードです'>
-                  <div className='flex bg-amber-600 w-full h-screen'>
+                  <div className='flex bg-amber-600 w-full h-auto'>
                       <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen'>
                           <ul className='flex flex-col items-center pt-12'>
-                              <li id='create' onClick={e => handleMenuClick(e)} className='custom-button'>記事作成</li>
-                              <li id='draft' onClick={e => handleMenuClick(e)} className='custom-button'>下書き一覧</li>
-                              <li id='article' onClick={e => handleMenuClick(e)} className='custom-button'>記事一覧</li>
-                              <li id='comment' onClick={e => handleMenuClick(e)} className='custom-button'>コメント一覧</li>
-                              <li id='addIcon' onClick={e => handleMenuClick(e)} className='custom-button'>アイコン追加</li>
+                              <li>
+                                  <button id='create' onClick={e => handleMenuClick(e)} className='custom-button'>
+                                      <span>記事作成</span>
+                                  </button>
+                              </li>
+                              <li>
+                                  <button id='draft' onClick={e => handleMenuClick(e)} className='custom-button'>
+                                      <span className='font-bold'>下書き一覧</span>
+                                  </button>
+                              </li>
+                              <li>
+                                  <button id='article' onClick={e => handleMenuClick(e)} className='custom-button'>
+                                      <span>記事一覧</span>
+                                  </button>
+                              </li>
+                              <li>
+                                  <button id='comment' onClick={e => handleMenuClick(e)} className='custom-button'>
+                                      <span>コメント一覧</span>
+                                  </button>
+                              </li>
+                              <li>
+                                  <button id='addIcon' onClick={e => handleMenuClick(e)} className='custom-button'>
+                                    <span>アイコン追加</span>
+                                  </button>
+                              </li>
+
                               <li className='custom-button'>
                                   <span>ログアウト</span>
                                   <LogoutIcon
