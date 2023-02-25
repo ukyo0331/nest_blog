@@ -20,7 +20,9 @@ const Dashboard: NextPage = () => {
     }
 
     const router = useRouter();
+    //ログインユーザ情報取得
     const { data: user, status } = useQueryUser();
+    //ログアウト処理
     const queryClient = useQueryClient();
     const logout = async () => {
         queryClient.removeQueries(['user'])
@@ -28,12 +30,14 @@ const Dashboard: NextPage = () => {
         await router.push('/login');
     }
     if (status === 'loading') return <Loader/>
+
     return (
         <>
+            {/*ログインユーザのみ表示*/}
             {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
               <Layout title='ダッシュボード' desc='ダッシュボードです'>
-                  <div className='flex bg-amber-600 w-full h-auto'>
-                      <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen'>
+                  <div className='flex bg-amber-600 w-full h-screen'>
+                      <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen fixed w-[30%]'>
                           <ul className='flex flex-col items-center pt-12'>
                               <li>
                                   <button id='create' onClick={e => handleMenuClick(e)} className='custom-button'>
@@ -70,11 +74,11 @@ const Dashboard: NextPage = () => {
                               </li>
                           </ul>
                       </aside>
-                      <div className='bg-amber-50 flex items-center flex-grow'>
+                      <div className='bg-amber-50 flex items-start flex-grow h-fit min-h-screen'>
                           {
                               renderScreen === 'create'
                                 ?
-                            <div className='mx-auto'>
+                            <div className='md:ml-[calc((100%-30%)/2)] my-16 mx-auto'>
                                 <ArticlePostsForm />
                             </div>
                                 : null
@@ -82,7 +86,7 @@ const Dashboard: NextPage = () => {
                           {
                               renderScreen === 'addIcon'
                                 ?
-                                <div>
+                                <div className='md:ml-[calc((100%-30%)/2)] my-16 mx-auto'>
                                     <CategoryIconEditor />
                                 </div>
                                 : null

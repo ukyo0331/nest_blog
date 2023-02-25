@@ -41,6 +41,9 @@
         align-items: center;
         position: relative;
     }
+    .custom-button span {
+        font-weight: bold;
+    }
     .custom-button:hover {
         background: #945908;
     }
