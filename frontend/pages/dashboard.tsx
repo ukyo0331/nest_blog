@@ -11,6 +11,8 @@ import { useState } from 'react';
 import CategoryIconEditor from '../src/components/CategoryIconEditor';
 
 const Dashboard: NextPage = () => {
+    //メニューボタンが押されたかどうかを判定するstate
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     //レンダリングする画面のコントロール
     const [renderScreen, setRenderScreen] = useState<string>('create');
     const handleMenuClick = (e: React.MouseEvent) => {
@@ -36,7 +38,23 @@ const Dashboard: NextPage = () => {
             {/*ログインユーザのみ表示*/}
             {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
               <Layout title='ダッシュボード' desc='ダッシュボードです'>
-                  <div className='flex bg-amber-600 w-full h-screen'>
+                  <div className='flex bg-amber-600 w-full h-screen relative'>
+                      <button onClick={() => setIsMenuOpen(true)}>test</button>
+
+                      {isMenuOpen
+                        ?
+                        <aside className='md:hidden absolute'>
+                            <ul>
+                                <li>
+                                    <button id='create' onClick={e => handleMenuClick(e)}>
+                                        記事作成
+                                    </button>
+                                </li>
+                            </ul>
+                        </aside>
+                        :
+                        null
+                      }
                       <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen fixed w-[30%]'>
                           <ul className='flex flex-col items-center pt-12'>
                               <li>
