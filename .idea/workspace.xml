@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/HamburgerMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/DashboardSidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/DraftList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticleList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticleList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/HamburgerMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HamburgerMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,7 @@
       <workItem from="1675912185630" duration="142999000" />
       <workItem from="1676715851275" duration="8527000" />
       <workItem from="1676810061518" duration="63480000" />
-      <workItem from="1677071585536" duration="39644000" />
+      <workItem from="1677071585536" duration="45454000" />
     </task>
     <servers />
   </component>
