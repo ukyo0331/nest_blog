@@ -6,8 +6,7 @@ type ArticleListProps = {
     articles: PostType[];
 }
 
-const ArticleList: FC<ArticleListProps> = (props) => {
-   const { articles } = props
+const ArticleList: FC<ArticleListProps> = ({articles}) => {
     return (
         <>
             {articles.map((article) => {

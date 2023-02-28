@@ -9,10 +9,9 @@ import { Loader } from '@mantine/core';
 import { useQueryUser } from '../src/hooks/user/useQueryUser';
 import { useState } from 'react';
 import CategoryIconEditor from '../src/components/CategoryIconEditor';
+import HamburgerMenu from '../src/components/HamburgerMenu';
 
 const Dashboard: NextPage = () => {
-    //メニューボタンが押されたかどうかを判定するstate
-    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     //レンダリングする画面のコントロール
     const [renderScreen, setRenderScreen] = useState<string>('create');
     const handleMenuClick = (e: React.MouseEvent) => {
@@ -39,22 +38,7 @@ const Dashboard: NextPage = () => {
             {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
               <Layout title='ダッシュボード' desc='ダッシュボードです'>
                   <div className='flex bg-amber-600 w-full h-screen relative'>
-                      <button onClick={() => setIsMenuOpen(true)}>test</button>
-
-                      {isMenuOpen
-                        ?
-                        <aside className='md:hidden absolute'>
-                            <ul>
-                                <li>
-                                    <button id='create' onClick={e => handleMenuClick(e)}>
-                                        記事作成
-                                    </button>
-                                </li>
-                            </ul>
-                        </aside>
-                        :
-                        null
-                      }
+                     <HamburgerMenu handleMenuClick={handleMenuClick}/>
                       <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen fixed w-[30%]'>
                           <ul className='flex flex-col items-center pt-12'>
                               <li>
@@ -93,6 +77,7 @@ const Dashboard: NextPage = () => {
                           </ul>
                       </aside>
                       <div className='bg-amber-50 flex items-start flex-grow h-fit min-h-screen'>
+                          {/*以下、Menuのボタンをクリックした際の表示の出し分け*/}
                           {
                               renderScreen === 'create'
                                 ?
