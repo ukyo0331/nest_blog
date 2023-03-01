@@ -1,5 +1,6 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC } from 'react';
 import { useRouter } from 'next/router';
+import useHandleClickToCloseMenu from '../hooks/dashboard/useHandleClickToCloseMenu';
 
 type HamburgerMenuType = {
   handleMenuClick: (e: React.MouseEvent) => void
@@ -7,21 +8,8 @@ type HamburgerMenuType = {
 
 const DashboardHamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
   const router = useRouter();
-  //メニューボタンが押されたかどうかを判定するstate
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  //メニュー外がクリックされた場合にメニューを閉じるロジック
-  const menuListRef = useRef<HTMLUListElement>(null);
-  useEffect(() => {
-    const handleClickToCloseMenu = (e: any) => {
-      const element = menuListRef.current;
-      if (!isMenuOpen || element?.contains(e.target)) return;
-      setIsMenuOpen(false);
-    };
-    window.addEventListener('click', handleClickToCloseMenu);
-    return () => {
-      window.removeEventListener('click', handleClickToCloseMenu);
-    };
-  }, [isMenuOpen, menuListRef])
+  //menu枠外をクリックした際にmenuを閉じるHook
+  const {menuListRef, isMenuOpen, setIsMenuOpen} = useHandleClickToCloseMenu();
   return (
     <aside ref={menuListRef}>
       <button
