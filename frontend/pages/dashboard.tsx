@@ -1,26 +1,18 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import axios from 'axios';
-import { useQueryClient } from '@tanstack/react-query';
 import Layout from '../src/components/Layout';
-import { LogoutIcon } from '@heroicons/react/solid';
 import { ArticlePostsForm } from '../src/components/ArticlePostsForm';
 import { Loader } from '@mantine/core';
 import { useQueryUser } from '../src/hooks/user/useQueryUser';
-import { useState } from 'react';
 import CategoryIconEditor from '../src/components/CategoryIconEditor';
-import HamburgerMenu from '../src/components/HamburgerMenu';
+import DashboardHamburgerMenu from '../src/components/DashboardHamburgerMenu';
 import DashboardSidebar from '../src/components/DashboardSidebar';
+import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
 
 const Dashboard: NextPage = () => {
     const router = useRouter();
     //レンダリングする画面のコントロール
-    const [renderScreen, setRenderScreen] = useState<string>('create');
-    const handleMenuClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        const clickedMenu = (e.currentTarget as HTMLInputElement).id;
-        setRenderScreen(clickedMenu);
-    }
+    const { renderScreen, handleMenuClick } = useHandleMenuClick();
     //ログインユーザ情報取得
     const { data: user, status } = useQueryUser();
 
@@ -32,7 +24,7 @@ const Dashboard: NextPage = () => {
             {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
               <Layout title='ダッシュボード' desc='ダッシュボードです'>
                   <div className='flex bg-amber-600 w-full h-screen relative'>
-                      <HamburgerMenu handleMenuClick={handleMenuClick} />
+                      <DashboardHamburgerMenu handleMenuClick={handleMenuClick} />
                       <DashboardSidebar handleMenuClick={handleMenuClick} />
                       <div className='bg-amber-50 flex items-start flex-grow h-fit min-h-screen'>
                           {/*以下、Menuのボタンをクリックした際の表示の出し分け*/}

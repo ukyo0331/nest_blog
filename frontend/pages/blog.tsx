@@ -7,6 +7,10 @@ import Pagination from "../src/components/Pagination";
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Custom404 from './404';
+import DashboardSidebar from '../src/components/DashboardSidebar';
+import DashboardHamburgerMenu from '../src/components/DashboardHamburgerMenu';
+import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
+import usePagination from '../src/hooks/pagination/usePagination';
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     const page = parseInt(context.query.page as string) || 1;
@@ -28,20 +32,14 @@ export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) 
         },
     };
 };
+
 type SSRProps = {
     recentPostData: PostType[]
 }
+
 const Blog: NextPage<SSRProps> = ({recentPostData}) => {
     const router = useRouter();
-    const [ totalPage, setTotalPage ] = useState<number>(0)
-    const fetchTotalPage = async () => {
-        const data: number = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/post/count/${process.env.NEXT_PUBLIC_USER_ID}`).then((_) => _.data);
-        setTotalPage(Math.ceil(data / defaultPostsPerPage));
-    }
-
-    useEffect(() => {
-        fetchTotalPage()
-    }, []);
+    const totalPage = usePagination(`${process.env.NEXT_PUBLIC_API_URL}/post/count/${process.env.NEXT_PUBLIC_USER_ID}`)
 
     //ページ移動のロジック
     const handlePageChange = (num: number) => {
@@ -49,8 +47,12 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
             router.push(`${router.pathname}?page=${num}`);
         }
     };
+    //レンダリングする画面のコントロール
+    const { handleMenuClick } = useHandleMenuClick();
     return (
         <>
+            <DashboardHamburgerMenu handleMenuClick={e => handleMenuClick(e)}/>
+            <DashboardSidebar handleMenuClick={e => handleMenuClick(e)}/>
             <ArticleList articles={recentPostData}/>
             <Pagination totalPage={totalPage} onPageChange={handlePageChange}/>
         </>

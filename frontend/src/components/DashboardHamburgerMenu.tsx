@@ -5,7 +5,7 @@ type HamburgerMenuType = {
   handleMenuClick: (e: React.MouseEvent) => void
 }
 
-const HamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
+const DashboardHamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
   const router = useRouter();
   //メニューボタンが押されたかどうかを判定するstate
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -82,4 +82,4 @@ const HamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
   )
 }
 
-export default HamburgerMenu;
+export default DashboardHamburgerMenu;

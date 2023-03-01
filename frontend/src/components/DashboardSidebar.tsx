@@ -1,13 +1,14 @@
 import { LogoutIcon } from '@heroicons/react/solid';
-import { router } from 'next/client';
 import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { FC, useState } from 'react';
+import { useRouter } from 'next/router';
 
 type DashboardSidebarType = {
   handleMenuClick: (e: React.MouseEvent) => void
 }
 const DashboardSidebar: FC<DashboardSidebarType> = ({handleMenuClick}) => {
+  const router = useRouter();
   //ログアウト処理
   const queryClient = useQueryClient();
   const logout = async () => {
@@ -16,12 +17,21 @@ const DashboardSidebar: FC<DashboardSidebarType> = ({handleMenuClick}) => {
     await router.push('/login');
   }
 
+  const redirectToDashboard = (e: React.MouseEvent) => {
+    handleMenuClick(e);
+    if (!(router.pathname === '/dashboard'))
+      router.push('/dashboard');
+  }
+
   return (
     <>
       <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen fixed w-[30%]'>
         <ul className='flex flex-col items-center pt-12'>
           <li className='custom-button'>
-            <button id='create' onClick={e => handleMenuClick(e)}>
+            <button
+              id='create'
+              onClick={e => redirectToDashboard(e)}
+            >
               記事作成
             </button>
           </li>
