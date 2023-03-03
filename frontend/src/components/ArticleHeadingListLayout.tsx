@@ -2,23 +2,31 @@ import { useRouter } from "next/router";
 import { format } from "timeago.js";
 import CategoryButton from "./CategoryIconButton";
 import { PostType } from "../../types";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, createRef, RefObject } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 
 type ArticleHeadingListLayoutType = {
   recentPostData: Array<PostType>,
-  options: any,
+  options: Object,
 }
 
 //記事見出しのレイアウト
 const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
   const router = useRouter();
-  const { options, recentPostData, ...rest } = prop;
-  const tilt = useRef(null);
-
+  const { options, recentPostData } = prop;
+  //vanilla tiltのセットアップ
+  const tiltRefs = useRef<RefObject<any>[]>(recentPostData.map(() => createRef()));
+  recentPostData.forEach((_, index) => {
+    tiltRefs.current[index] = createRef<any>();
+  })
   useEffect(() => {
-    VanillaTilt.init(tilt.current, options);
-  }, [options]);
+    for (let i = 0; i < recentPostData.length; i++) {
+      if (tiltRefs.current[i].current) {
+        VanillaTilt.init(tiltRefs.current[i].current, options);
+      }
+    }
+  }, [options, recentPostData, tiltRefs.current]);
+
 
   return (
     <section className='pt-[100px] pl-0 pr-0'>
@@ -28,7 +36,7 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
           <span className='block text-lg text-[#666]'>最近の投稿</span>
         </h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 m-3'>
-          {recentPostData?.map((headline: PostType) => {
+          {recentPostData?.map((headline: PostType, index) => {
             const { id, title, categories, likes, createdAt } = headline;
             return (
               <a key={id}
@@ -38,7 +46,10 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
                    router.push(`/blog/${id}`)
                  }
                  }>
-                <div className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs'>
+                <div
+                  className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs'
+                  ref={tiltRefs.current[index]}
+                >
                   <div className='h-full flex flex-col'>
                     <div className='overflow-scroll hidden-scrollbar ml-2 mt-2 mr-2'>
                       <CategoryButton

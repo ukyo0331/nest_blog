@@ -26,6 +26,7 @@ type SSRProps = {
 }
 
 const Home: NextPage<SSRProps> = ({recentPostData}) => {
+  //vanilla tiltのオプション
   const options = {
     scale: 1.2,
     speed: 1000,
@@ -37,6 +38,7 @@ const Home: NextPage<SSRProps> = ({recentPostData}) => {
           <HeroArea/>
           <ArticleHeadingListLayout
             recentPostData={recentPostData}
+            options={options}
           />
         </Layout>
       </>
