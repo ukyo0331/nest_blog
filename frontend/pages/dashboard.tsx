@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import Layout from '../src/components/Layout';
 import { ArticlePostsForm } from '../src/components/ArticlePostsForm';
 import { Loader } from '@mantine/core';
@@ -9,8 +8,19 @@ import DashboardHamburgerMenu from '../src/components/DashboardHamburgerMenu';
 import DashboardSidebar from '../src/components/DashboardSidebar';
 import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
 
+//menu毎の表記させるコンポーネントを配列で管理
+const menuList = [
+    {
+        renderScreen: 'createPost',
+        component: ArticlePostsForm,
+    },
+    {
+        renderScreen: 'addIcon',
+        component: CategoryIconEditor,
+    },
+]
+
 const Dashboard: NextPage = () => {
-    const router = useRouter();
     //レンダリングする画面のコントロール
     const { renderScreen, handleMenuClick } = useHandleMenuClick();
     //ログインユーザ情報取得
@@ -27,19 +37,16 @@ const Dashboard: NextPage = () => {
                       <DashboardHamburgerMenu handleMenuClick={handleMenuClick} />
                       <DashboardSidebar handleMenuClick={handleMenuClick} />
                       <div className='bg-amber-50 flex items-start flex-grow h-fit min-h-screen'>
-                          {/*以下、Menuのボタンをクリックした際の表示の出し分け*/}
-                          {
-                              renderScreen === 'create' &&
-                            <div className='md:ml-[calc((100%-30%)/2)] my-16 mx-auto'>
-                                <ArticlePostsForm />
-                            </div>
-                          }
-                          {
-                              renderScreen === 'addIcon' &&
-                            <div className='md:ml-[calc((100%-30%)/2)] my-16 mx-auto'>
-                                    <CategoryIconEditor />
-                            </div>
-                          }
+
+                          {/*Menuのボタンをクリックした際の表示の出し分け*/}
+                          {menuList.map((_, index) => {
+                              return (
+                                renderScreen === _.renderScreen &&
+                                <div className='md:ml-[calc((100%-30%)/2)] my-16 mx-auto' key={index}>
+                                    <_.component/>
+                                </div>
+                              )
+                          })}
                       </div>
                   </div>
               </Layout>

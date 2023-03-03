@@ -7,6 +7,7 @@ import { PostType } from '../../../types';
 import ArticleList from '../../../src/components/ArticleList';
 import { defaultPostsPerPage } from '../../../src/defaultPostsPerPage';
 import Pagination from '../../../src/components/Pagination';
+import usePagination from '../../../src/hooks/pagination/usePagination'
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     const categoryName = context.params?.categoryName as string;
@@ -33,16 +34,7 @@ type SSRProps = {
 }
 const CategoryPostListPage: NextPage<SSRProps> = ({recentPostData, categoryName}) => {
     const router = useRouter();
-    // const categoryName = router.query.categoryName;
-    const [ totalPage, setTotalPage ] = useState<number>(0);
-    const fetchTotalPage = async () => {
-        const data: number = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}/count/${categoryName}`).then((_) => _.data);
-        setTotalPage(Math.ceil(data / defaultPostsPerPage));
-
-    }
-    useEffect(() => {
-        fetchTotalPage()
-    }, []);
+    const totalPage = usePagination(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}/count/${categoryName}`)
     // ページ移動のロジック
     const handlePageChange = (num: number) => {
         if (num >= 1 && num <= totalPage) {

@@ -2,14 +2,23 @@ import { useRouter } from "next/router";
 import { format } from "timeago.js";
 import CategoryButton from "./CategoryIconButton";
 import { PostType } from "../../types";
+import { useEffect, useRef } from 'react';
+import VanillaTilt from 'vanilla-tilt';
 
 type ArticleHeadingListLayoutType = {
-  recentPostData: Array<PostType>
+  recentPostData: Array<PostType>,
+  options: any,
 }
 
 //記事見出しのレイアウト
-const ArticleHeadingListLayout = ({recentPostData}: ArticleHeadingListLayoutType) => {
+const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
   const router = useRouter();
+  const { options, recentPostData, ...rest } = prop;
+  const tilt = useRef(null);
+
+  useEffect(() => {
+    VanillaTilt.init(tilt.current, options);
+  }, [options]);
 
   return (
     <section className='pt-[100px] pl-0 pr-0'>

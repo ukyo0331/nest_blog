@@ -18,19 +18,17 @@ export class PostService {
     return this.prisma.post.count({
       where: {
         userId,
+        status: 'draft',
       },
     });
   }
   //ログインユーザーの全下書きを新しい順に取得
-  getAllDrafts(userId: string, skip: number, take: number): Promise<Post[]> {
+  getAllDrafts(userId: string): Promise<Post[]> {
     return this.prisma.post.findMany({
       where: {
         userId,
         status: 'draft',
       },
-      //pagination
-      skip,
-      take,
       //createdAtの新しい順にソート
       orderBy: {
         createdAt: 'desc',
@@ -147,6 +145,7 @@ export class PostService {
     return this.prisma.post.count({
       where: {
         userId,
+        status: 'published',
       },
     });
   }

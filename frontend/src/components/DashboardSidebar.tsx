@@ -4,9 +4,36 @@ import axios from 'axios';
 import { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 
+//menuを配列で管理
+export const menuList = [
+  {
+    title: '記事作成',
+    id: 'createPost',
+  },
+  {
+    title: '下書き一覧',
+    id: 'draftList',
+    goto: '/draft',
+  },
+  {
+    title: '記事一覧',
+    id: 'articleList',
+    goto: '/blog',
+  },
+  {
+    title: 'コメント一覧',
+    id: 'commentList',
+  },
+  {
+    title: 'アイコン追加',
+    id: 'addIcon',
+  },
+]
+
 type DashboardSidebarType = {
   handleMenuClick: (e: React.MouseEvent) => void
 }
+
 const DashboardSidebar: FC<DashboardSidebarType> = ({handleMenuClick}) => {
   const router = useRouter();
   //ログアウト処理
@@ -17,51 +44,31 @@ const DashboardSidebar: FC<DashboardSidebarType> = ({handleMenuClick}) => {
     await router.push('/login');
   }
 
-  const redirectToDashboard = (e: React.MouseEvent) => {
-    handleMenuClick(e);
-    if (!(router.pathname === '/dashboard'))
-      router.push('/dashboard');
-  }
-
   return (
     <>
       <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen fixed w-[30%]'>
         <ul className='flex flex-col items-center pt-12'>
-          <li className='custom-button'>
-            <button
-              id='create'
-              onClick={e => redirectToDashboard(e)}
-            >
-              記事作成
-            </button>
-          </li>
-          <li className='custom-button'>
-            <button id='draft' onClick={e => handleMenuClick(e)} className='custom-button'>
-              下書き一覧
-            </button>
-          </li>
-          <li className='custom-button'>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                router.push('/blog')
-              }}
-              className='custom-button'>
-              記事一覧
-            </button>
-          </li>
-          <li className='custom-button'>
-            <button id='comment' onClick={e => handleMenuClick(e)} className='custom-button'>
-              コメント一覧
-            </button>
-          </li>
-          <li className='custom-button'>
-            <button id='addIcon' onClick={e => handleMenuClick(e)} className='custom-button'>
-              アイコン追加
-            </button>
-          </li>
-
-          <li className='custom-button'>
+          {menuList.map((_, index) => {
+            return (
+              <li key={index}
+                  className='w-full h-12 flex justify-center relative font-bold hover:text-amber-600 hover:bg-amber-700'
+              >
+                <button
+                 className='w-full'
+                 id={_.id}
+                 onClick={e => {
+                   handleMenuClick(e);
+                   if (_.goto) router.push(_.goto)
+                 }}
+                >
+                  {_.title}
+                </button>
+              </li>
+            )
+          })}
+          <li
+            className='h-12 w-full flex justify-center items-center cursor-pointer font-bold hover:text-amber-600 hover:bg-amber-700'
+          >
             ログアウト
             <LogoutIcon
               className='h-6 w-6 cursor-pointer text-blue-500'

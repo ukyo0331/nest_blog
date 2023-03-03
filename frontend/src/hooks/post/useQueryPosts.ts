@@ -5,16 +5,11 @@ import { PostType } from "../../../types";
 
 //下書きの取得
 //get all
-export const useQueryDrafts = (skip: number, take: number) => {
+export const useQueryDrafts = () => {
     const router = useRouter();
     const getDrafts = async () => {
         const { data } = await axios.get<PostType[]>(
-            `${process.env.NEXT_PUBLIC_API_URL}/post/draft`, {
-                data: {
-                    skip: skip,
-                    take: take,
-                }
-            }
+            `${process.env.NEXT_PUBLIC_API_URL}/post/getAllDrafts`
         );
         return data;
     }
@@ -73,8 +68,8 @@ export const useQueryPosts = (
         const { data } = await axios.get<PostType[]>(
             `${process.env.NEXT_PUBLIC_API_URL}/post/${userId}`, {
                 data: {
-                    skip: skip,
-                    take: take,
+                    skip,
+                    take,
                 }
             }
         );

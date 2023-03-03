@@ -27,7 +27,7 @@ const DashboardHamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
             <li>
               <button id='create' onClick={(e) => {
                 e.preventDefault();
-                router.push('/blog')
+                router.push('/dashboard')
               }}>
                 記事作成
               </button>

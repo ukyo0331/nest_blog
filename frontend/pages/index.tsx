@@ -26,11 +26,18 @@ type SSRProps = {
 }
 
 const Home: NextPage<SSRProps> = ({recentPostData}) => {
+  const options = {
+    scale: 1.2,
+    speed: 1000,
+    max: 10
+  }
   return (
       <>
         <Layout title='YUTA code .' desc='YUTAのエンジニアブログです'>
           <HeroArea/>
-          <ArticleHeadingListLayout recentPostData={recentPostData}/>
+          <ArticleHeadingListLayout
+            recentPostData={recentPostData}
+          />
         </Layout>
       </>
   );

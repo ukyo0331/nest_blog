@@ -9,8 +9,8 @@ type ArticleListProps = {
 const ArticleList: FC<ArticleListProps> = ({articles}) => {
     return (
         <>
-            {articles.map((article) => {
-                const { id, title, categories, likes, createdAt } = article;
+            {articles?.map((article) => {
+                const { id, title, categories, likes, createdAt, desc } = article;
                 return (
                     <div key={id}>
                         {title}

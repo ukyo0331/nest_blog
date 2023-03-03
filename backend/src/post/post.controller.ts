@@ -29,19 +29,17 @@ export class PostController {
   getAllDraftsCount(@Req() req: Request): Promise<number> {
     return this.postService.getAllDraftsCount(req.user.id);
   }
+
   //ログインユーザーの全下書きを新しい順に取得
   @UseGuards(AuthGuard('jwt'))
-  @Get('draft')
-  getDrafts(
-    @Req() req: Request,
-    @Body() dto: QueryPostDto,
-  ): Promise<UserPost[]> {
-    return this.postService.getAllDrafts(req.user.id, dto.skip, dto.take);
+  @Get('getAllDrafts')
+  getAllDrafts(@Req() req: Request): Promise<UserPost[]> {
+    return this.postService.getAllDrafts(req.user.id);
   }
 
   //ログインユーザーの一つの下書きを取得
   @UseGuards(AuthGuard('jwt'))
-  @Get('draft/:id')
+  @Get('getOneDraft/:id')
   getDraftById(
     @Req() req: Request,
     @Param('id') postId: string,
@@ -99,7 +97,7 @@ export class PostController {
   //一つの投稿を取得、認証不要
   @Get('blog/:postId')
   getPostById(
-    @Req() req: Request,
+    // @Req() req: Request,
     @Param('postId') postId: string,
   ): Promise<UserPost> {
     return this.postService.getPostById(postId);
