@@ -36,7 +36,11 @@ type SSRProps = {
 const Blog: NextPage<SSRProps> = ({recentPostData}) => {
     const router = useRouter();
     const totalPage = usePagination(`${process.env.NEXT_PUBLIC_API_URL}/post/count/${process.env.NEXT_PUBLIC_USER_ID}`)
-    console.log(totalPage);
+    const options = {
+        scale: 1.2,
+        speed: 1000,
+        max: 10
+    }
     //ページ移動のロジック
     const handlePageChange = (num: number) => {
         if (num >= 1 && num <= totalPage) {
@@ -49,7 +53,7 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
         <>
             {/*<DashboardHamburgerMenu handleMenuClick={e => handleMenuClick(e)}/>*/}
             {/*<DashboardSidebar handleMenuClick={e => handleMenuClick(e)}/>*/}
-            <ArticleList articles={recentPostData}/>
+            <ArticleList articles={recentPostData} options={options}/>
             <Pagination totalPage={totalPage} onPageChange={handlePageChange}/>
         </>
     )

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const HeroArea = () => {
   return (
-    <div className='w-full h-screen bg-center bg-cover bg-fixed relative'>
+    <div className='w-full h-screen bg-center bg-cover relative'>
       <Image src='/heroImage.jpg'
              alt='hero image'
              className='absolute'
