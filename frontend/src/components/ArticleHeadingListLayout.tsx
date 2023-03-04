@@ -16,18 +16,6 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
   const router = useRouter();
   const { options, recentPostData } = prop;
   const { tiltRefs } = useTilt(recentPostData, options);
-  //vanilla tiltのセットアップ
-  // const tiltRefs = useRef<RefObject<any>[]>(recentPostData.map(() => createRef()));
-  // recentPostData.forEach((_, index) => {
-  //   tiltRefs.current[index] = createRef<any>();
-  // })
-  // useEffect(() => {
-  //   for (let i = 0; i < recentPostData.length; i++) {
-  //     if (tiltRefs.current[i].current) {
-  //       VanillaTilt.init(tiltRefs.current[i].current, options);
-  //     }
-  //   }
-  // }, [options, recentPostData, tiltRefs.current]);
 
   return (
     <section className='pt-[100px] pl-0 pr-0 w-[80%]'>

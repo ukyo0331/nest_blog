@@ -16,13 +16,15 @@ const ArticleList: FC<ArticleListProps> = ({articles, options}) => {
     return (
         <>
             {articles?.map((article, index) => {
-                const { id, title, categories, likes, createdAt, desc } = article;
+                const { id, title, categories, likes, createdAt, desc, status } = article;
                 return (
                   <a key={id}
                      onClick={(e) => {
                          e.stopPropagation();
                          e.preventDefault();
-                         router.push(`/blog/${id}`)
+                         status === 'published'
+                           ? router.push(`/blog/${id}`)
+                           : router.push(`/draft/${id}`)
                      }
                      }>
                       <div

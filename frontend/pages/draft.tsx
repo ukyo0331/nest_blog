@@ -1,11 +1,10 @@
 import { NextPage } from 'next';
 import { PostType } from '../types';
 import ArticleList from '../src/components/ArticleList';
-import { useRouter } from 'next/router';
 import { useQueryDrafts } from '../src/hooks/post/useQueryPosts';
+import { Loader } from '@mantine/core';
 
 const Draft: NextPage = () => {
-  const router = useRouter();
   const options = {
     scale: 1.2,
     speed: 1000,
@@ -13,6 +12,7 @@ const Draft: NextPage = () => {
   }
   //レンダリングする画面のコントロール
   const { data } = useQueryDrafts();
+  if (!data) return <Loader />
   return (
     <>
       <ArticleList articles={data as PostType[]} options={options}/>
