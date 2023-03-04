@@ -34,7 +34,12 @@ type SSRProps = {
 }
 const CategoryPostListPage: NextPage<SSRProps> = ({recentPostData, categoryName}) => {
     const router = useRouter();
-    const totalPage = usePagination(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}/count/${categoryName}`)
+    const totalPage = usePagination(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}/count/${categoryName}`);
+    const options = {
+        scale: 1.2,
+        speed: 1000,
+        max: 10
+    }
     // ページ移動のロジック
     const handlePageChange = (num: number) => {
         if (num >= 1 && num <= totalPage) {
@@ -48,7 +53,7 @@ const CategoryPostListPage: NextPage<SSRProps> = ({recentPostData, categoryName}
     };
     return (
         <>
-            <ArticleList articles={recentPostData}></ArticleList>
+            <ArticleList articles={recentPostData} options={options}></ArticleList>
             <Pagination totalPage={totalPage} onPageChange={handlePageChange}/>
         </>
     )
