@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 //サイドバーやハンバーガーメニューをクリックした際のレンダリングの出し分けのためのHook
 const useHandleMenuClick = () => {
   const router = useRouter();
-  const [renderScreen, setRenderScreen] = useState<string>('create');
+  const [renderScreen, setRenderScreen] = useState<string>('createPost');
   const handleMenuClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const clickedMenu = (e.currentTarget as HTMLInputElement).id;
@@ -14,7 +14,7 @@ const useHandleMenuClick = () => {
       router.push('/dashboard');
   }
   return {
-    renderScreen, handleMenuClick
+    renderScreen, handleMenuClick, setRenderScreen
   };
 };
 

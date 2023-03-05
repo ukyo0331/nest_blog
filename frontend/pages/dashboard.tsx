@@ -7,12 +7,17 @@ import CategoryIconEditor from '../src/components/CategoryIconEditor';
 import DashboardHamburgerMenu from '../src/components/DashboardHamburgerMenu';
 import DashboardSidebar from '../src/components/DashboardSidebar';
 import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
+import DraftList from '../src/components/DraftList';
 
 //menu毎の表記させるコンポーネントを配列で管理
 const menuList = [
     {
         renderScreen: 'createPost',
         component: ArticlePostsForm,
+    },
+    {
+        renderScreen: 'draftList',
+        component: DraftList,
     },
     {
         renderScreen: 'addIcon',
@@ -27,6 +32,7 @@ const Dashboard: NextPage = () => {
     const { data: user, status } = useQueryUser();
 
     if (status === 'loading') return <Loader/>
+    console.log(renderScreen);
 
     return (
         <>

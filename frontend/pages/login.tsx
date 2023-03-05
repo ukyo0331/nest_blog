@@ -9,6 +9,7 @@ import {Alert, Button, Group, PasswordInput, TextInput} from "@mantine/core";
 import { IconDatabase } from "@tabler/icons";
 import { ExclamationCircleIcon } from "@heroicons/react/outline";
 import Layout from "../src/components/Layout";
+import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
 
 const schema = Yup.object().shape({
     email: Yup.string().email('invalid email')
@@ -30,6 +31,7 @@ const Login: NextPage = () => {
             password: '',
         },
     })
+    const { setRenderScreen } = useHandleMenuClick();
     //ログイン処理
     const handleSubmit = async () => {
         try {
@@ -40,6 +42,7 @@ const Login: NextPage = () => {
                 });
             form.reset();
             //loginに成功したらdashboardへ
+            setRenderScreen('createPost');
             router.push('/dashboard');
         } catch (e: any) {
             setError(e.response.data.message)

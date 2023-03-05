@@ -10,6 +10,7 @@ import "highlight.js/styles/github-dark-dimmed.css";
 import { PostType } from "../../types";
 import CategoryIconButton from "./CategoryIconButton";
 import { useQueryUserWithoutRedirect } from '../hooks/user/useQueryUser';
+import useHandleMenuClick from '../hooks/dashboard/useHandleMenuClick';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -40,7 +41,8 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const updateTime = new Date(updatedAt);
     //カテゴリを配列で取得
     const categoryNames = categories?.map((c) => c.category.name).join(", ") || "";
-
+    //
+    const { setRenderScreen } = useHandleMenuClick();
     return (
         <article key={id}>
             <div>
@@ -60,6 +62,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
                         update({
                           id, title, desc, status, name: categoryNames
                         });
+                        setRenderScreen('createPost');
                         router.push('/dashboard')
                       }}
                     >

@@ -13,7 +13,6 @@ export const menuList = [
   {
     title: '下書き一覧',
     id: 'draftList',
-    goto: '/draft',
   },
   {
     title: '記事一覧',
