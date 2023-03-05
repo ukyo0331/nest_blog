@@ -32,9 +32,9 @@ const ArticlePage: NextPage = () => {
     }, [postId]);
 
     // /blog/categoryにアクセスされた場合も404を返す
-    if (error || postId === 'category') return <Custom404/>
     if (loading) return <Loader/>
-    if (!data) return null;
+    if (error || postId === 'category' || !data) return <Custom404/>
+
 
     try {
         const {id, title, categories, desc, image, likes, status, createdAt, updatedAt, comments} = data;

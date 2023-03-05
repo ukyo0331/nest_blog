@@ -56,4 +56,5 @@ const ArticleList: FC<ArticleListProps> = ({articles, options}) => {
         </>
     )
 }
+
 export default ArticleList;

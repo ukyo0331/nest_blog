@@ -31,9 +31,8 @@ const ArticlePage: NextPage = () => {
       });
   }, [postId]);
 
-  if (error) return <Custom404/>
   if (loading) return <Loader/>
-  if (!data) return null;
+  if (!data || error) return <Custom404/>;
 
   try {
     const {id, title, categories, desc, image, likes, status, createdAt, updatedAt, comments} = data;

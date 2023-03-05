@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { PostType } from '../../../types';
 import ArticleList from '../../../src/components/ArticleList';
 import { defaultPostsPerPage } from '../../../src/defaultPostsPerPage';
@@ -43,8 +42,6 @@ const CategoryPostListPage: NextPage<SSRProps> = ({recentPostData, categoryName}
     // ページ移動のロジック
     const handlePageChange = (num: number) => {
         if (num >= 1 && num <= totalPage) {
-            // setCurrentPage(num);
-            // router.push(`${router.pathname}?page=${num}`);
             router.push({
                 pathname: router.pathname,
                 query: { page: num, categoryName: router.query.categoryName }
