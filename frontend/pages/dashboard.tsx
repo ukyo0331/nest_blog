@@ -42,12 +42,11 @@ const Dashboard: NextPage = () => {
                       <DashboardHamburgerMenu handleMenuClick={handleMenuClick} />
                       <DashboardSidebar handleMenuClick={handleMenuClick} />
                       <div className='bg-amber-50 flex items-start flex-grow h-fit min-h-screen'>
-
                           {/*Menuのボタンをクリックした際の表示の出し分け*/}
                           {menuList.map((_, index) => {
                               return (
                                 renderScreen === _.renderScreen &&
-                                <div className='md:ml-[calc((100%-30%)/2)] my-16 mx-auto' key={index}>
+                                <div className='my-16 mx-auto' key={index}>
                                     <_.component/>
                                 </div>
                               )

@@ -9,7 +9,7 @@ type HamburgerMenuType = {
 const DashboardHamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
   const router = useRouter();
   //menu枠外をクリックした際にmenuを閉じるHook
-  const {menuListRef, isMenuOpen, setIsMenuOpen} = useHandleClickToCloseMenu();
+  const { menuListRef, isMenuOpen, setIsMenuOpen } = useHandleClickToCloseMenu();
   return (
     <aside ref={menuListRef}>
       <button
@@ -25,7 +25,7 @@ const DashboardHamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
         >
           <ul>
             <li>
-              <button id='create' onClick={(e) => {
+              <button id='createPost' onClick={(e) => {
                 e.preventDefault();
                 router.push('/dashboard')
               }}>
@@ -33,17 +33,17 @@ const DashboardHamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
               </button>
             </li>
             <li>
-              <button id='draft' onClick={e => handleMenuClick(e)}>
+              <button id='draftList' onClick={e => handleMenuClick(e)}>
                 下書き一覧
               </button>
             </li>
             <li>
-              <button id='article' onClick={e => handleMenuClick(e)}>
+              <button id='articleList' onClick={e => handleMenuClick(e)}>
                 記事一覧
               </button>
             </li>
             <li>
-              <button id='comment' onClick={e => handleMenuClick(e)}>
+              <button id='commentList' onClick={e => handleMenuClick(e)}>
                 コメント一覧
               </button>
             </li>
@@ -53,7 +53,7 @@ const DashboardHamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
               </button>
             </li>
             <li>
-              <button id='create' onClick={e => handleMenuClick(e)}>
+              <button onClick={e => handleMenuClick(e)}>
                 ログアウト
               </button>
             </li>
