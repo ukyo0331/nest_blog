@@ -20,7 +20,9 @@ const DraftList: NextPage = () => {
           下書き一覧
         </h1>
       </div>
-      <ArticleList articles={data as PostType[]} options={options}/>
+      <div className='grid gap-3 grid-cols-2'>
+        <ArticleList articles={data as PostType[]} options={options}/>
+      </div>
     </>
   )
 }

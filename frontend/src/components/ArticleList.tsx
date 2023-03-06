@@ -17,6 +17,7 @@ const ArticleList: FC<ArticleListProps> = ({articles, options}) => {
         <>
             {articles?.map((article, index) => {
                 const { id, title, categories, likes, createdAt, desc, status } = article;
+                const sliceTitle = title.slice(0, 40);
                 return (
                   <a key={id}
                      onClick={(e) => {
@@ -28,7 +29,7 @@ const ArticleList: FC<ArticleListProps> = ({articles, options}) => {
                      }
                      }>
                       <div
-                        className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs'
+                        className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs bg-white'
                         ref={tiltRefs.current[index]}
                       >
                           <div className='h-full flex flex-col'>
@@ -38,7 +39,7 @@ const ArticleList: FC<ArticleListProps> = ({articles, options}) => {
                                   />
                               </div>
                               <p className='text-2xl ml-3 mt-1 flex-1 overflow-hidden overflow-ellipsis'>
-                                  {title}
+                                  {sliceTitle}
                               </p>
                               <div className='flex'>
                                   <div className='absolute bottom-1 left-1'>

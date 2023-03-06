@@ -32,7 +32,6 @@ const Dashboard: NextPage = () => {
     const { data: user, status } = useQueryUser();
 
     if (status === 'loading') return <Loader/>
-    console.log(renderScreen);
 
     return (
         <>
