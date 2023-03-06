@@ -45,7 +45,7 @@ const DashboardSidebar: FC<DashboardSidebarType> = ({handleMenuClick}) => {
 
   return (
     <>
-      <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen fixed w-[30%] opacity-20'>
+      <aside className='hidden md:inline-block bg-amber-400 max-w-[300px] flex-grow h-screen fixed w-[30%]'>
         <ul className='flex flex-col items-center pt-12'>
           {menuList.map((_, index) => {
             return (
@@ -76,7 +76,7 @@ const DashboardSidebar: FC<DashboardSidebarType> = ({handleMenuClick}) => {
           </li>
         </ul>
       </aside>
-      <div className='hidden md:inline-block max-w-[300px] h-screen w-[30%] bg-black'></div>
+      <div className='hidden md:inline-block max-w-[300px] h-screen w-[30%]'></div>
     </>
   )
 }
