@@ -19,15 +19,18 @@ const ArticleList: FC<ArticleListProps> = ({articles, options}) => {
                 const { id, title, categories, likes, createdAt, desc, status } = article;
                 const sliceTitle = title.slice(0, 40);
                 return (
-                  <a key={id}
-                     onClick={(e) => {
-                         e.stopPropagation();
-                         e.preventDefault();
-                         status === 'published'
-                           ? router.push(`/blog/${id}`)
-                           : router.push(`/draft/${id}`)
+                  <a
+                    key={id}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        status === 'published'
+                          ? router.push(`/blog/${id}`)
+                          : router.push(`/draft/${id}`)
                      }
-                     }>
+                     }
+                    className='border-none'
+                  >
                       <div
                         className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs bg-white'
                         ref={tiltRefs.current[index]}
@@ -42,7 +45,7 @@ const ArticleList: FC<ArticleListProps> = ({articles, options}) => {
                                   {sliceTitle}
                               </p>
                               <div className='flex'>
-                                  <div className='absolute bottom-1 left-1'>
+                                  <div className='absolute bottom-1 left-3'>
                                       ♡{likes}
                                   </div>
                                   <small className='absolute bottom-1 right-2'>

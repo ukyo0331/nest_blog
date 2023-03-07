@@ -29,13 +29,15 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
             {recentPostData?.map((headline: PostType, index) => {
               const { id, title, categories, likes, createdAt } = headline;
               return (
-                <a key={id}
-                   onClick={(e) => {
-                     e.stopPropagation();
-                     e.preventDefault();
-                     router.push(`/blog/${id}`)
-                   }
-                   }>
+                <a
+                  key={id}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    router.push(`/blog/${id}`)
+                  }}
+                  className='border-none'
+                >
                   <div
                     className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3'
                     ref={tiltRefs.current[index]}

@@ -16,7 +16,7 @@ const Pagination: FC<PaginationPropsType> = ({totalPage,onPageChange}) => {
     const pageNumberArray = Array.from({length: end - start + 1}, (_, i) => i + start);
 
     return (
-        <ul className='flex cursor-pointer justify-center'>
+        <ul className='flex cursor-pointer justify-center my-3'>
             <li className=''>
                 <a
                     onClick={(e) => {
