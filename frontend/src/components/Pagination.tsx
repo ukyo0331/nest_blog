@@ -9,7 +9,6 @@ type PaginationPropsType = {
 const Pagination: FC<PaginationPropsType> = ({totalPage,onPageChange}) => {
     const router = useRouter();
     const page = parseInt(router.query.page as string) || 1;
-    // const [currentPage, setCurrentPage] = useState<number>(1);
     //ページNo.の表示個数制限を5に設定
     const limit = 5;
     const start = Math.max(1, page - Math.floor(limit / 2));
@@ -17,14 +16,14 @@ const Pagination: FC<PaginationPropsType> = ({totalPage,onPageChange}) => {
     const pageNumberArray = Array.from({length: end - start + 1}, (_, i) => i + start);
 
     return (
-        <ul className='flex '>
-            <li>
+        <ul className='flex cursor-pointer justify-center'>
+            <li className=''>
                 <a
                     onClick={(e) => {
                         onPageChange(1);
                     }}
                 >
-                    <span>＜</span>
+                    <span className='inline-block w-10 h-8 flex justify-center items-center rounded border-2 mx-1 font-bold text-gray-500'><small>＜</small></span>
                 </a>
             </li>
             {pageNumberArray.map((num, index) => {
@@ -34,7 +33,10 @@ const Pagination: FC<PaginationPropsType> = ({totalPage,onPageChange}) => {
                             onPageChange(num)
                         }}>
                             <span
-                            className={`${num === page ? 'bg-amber-400' : ''}`}
+                            className={
+                              `inline-block  w-10 h-8 flex justify-center items-center rounded border-2 font-bold mx-1
+                            ${num === page && 'bg-blue-500 text-amber-50'}`
+                            }
                                 >{num}</span>
                         </a>
                     </li>
@@ -46,7 +48,7 @@ const Pagination: FC<PaginationPropsType> = ({totalPage,onPageChange}) => {
                         onPageChange(totalPage);
                     }}
                 >
-                    <span>＞</span>
+                    <span className='inline-block w-10 h-8 flex justify-center items-center rounded border-2 mx-1 font-bold text-gray-500'><small>＞</small></span>
                 </a>
             </li>
         </ul>
