@@ -7,6 +7,7 @@ import Pagination from "../src/components/Pagination";
 import { useRouter } from 'next/router';
 import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
 import usePagination from '../src/hooks/pagination/usePagination';
+import RightBar from '../src/components/RightBar';
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     const page = parseInt(context.query.page as string) || 1;
@@ -53,7 +54,12 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
         <>
             {/*<DashboardHamburgerMenu handleMenuClick={e => handleMenuClick(e)}/>*/}
             {/*<DashboardSidebar handleMenuClick={e => handleMenuClick(e)}/>*/}
-            <ArticleList articles={recentPostData} options={options}/>
+            <div className='flex'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+                    <ArticleList articles={recentPostData} options={options}/>
+                </div>
+                <RightBar />
+            </div>
             <Pagination totalPage={totalPage} onPageChange={handlePageChange}/>
         </>
     )

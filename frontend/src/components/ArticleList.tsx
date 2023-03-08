@@ -17,7 +17,7 @@ const ArticleList: FC<ArticleListProps> = ({articles, options}) => {
         <>
             {articles?.map((article, index) => {
                 const { id, title, categories, likes, createdAt, desc, status } = article;
-                const sliceTitle = title.slice(0, 40);
+                const sliceTitle = title.slice(0, 20);
                 return (
                   <a
                     key={id}
