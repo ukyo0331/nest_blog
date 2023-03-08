@@ -8,7 +8,8 @@ const DraftList: NextPage = () => {
   const options = {
     scale: 1.2,
     speed: 1000,
-    max: 10
+    max: 10,
+    glare: true,
   }
   //レンダリングする画面のコントロール
   const { data } = useQueryDrafts();

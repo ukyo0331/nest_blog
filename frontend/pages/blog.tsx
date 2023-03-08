@@ -54,8 +54,8 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
         <>
             {/*<DashboardHamburgerMenu handleMenuClick={e => handleMenuClick(e)}/>*/}
             {/*<DashboardSidebar handleMenuClick={e => handleMenuClick(e)}/>*/}
-            <div className='flex'>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+            <div className='flex min-h-full'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 min-h-full'>
                     <ArticleList articles={recentPostData} options={options}/>
                 </div>
                 <RightBar />
