@@ -31,7 +31,13 @@ const Dashboard: NextPage = () => {
     //ログインユーザ情報取得
     const { data: user, status } = useQueryUser();
 
-    if (status === 'loading') return <Loader/>
+    if (status === 'loading') {
+        return (
+          <div className='flex justify-center items-center h-screen'>
+              <Loader />
+          </div>
+        );
+    }
 
     return (
         <>
@@ -41,7 +47,7 @@ const Dashboard: NextPage = () => {
                   <div className='flex bg-amber-600 w-full h-screen relative'>
                       <DashboardHamburgerMenu handleMenuClick={handleMenuClick} />
                       <DashboardSidebar handleMenuClick={handleMenuClick} />
-                      <div className='bg-amber-50 flex items-start flex-grow h-fit min-h-screen'>
+                      <div className='bg-amber-50 flex items-center flex-grow h-fit min-h-screen'>
                           {/*Menuのボタンをクリックした際の表示の出し分け*/}
                           {menuList.map((_, index) => {
                               return (
@@ -49,7 +55,7 @@ const Dashboard: NextPage = () => {
                                 <div className='my-16 mx-auto' key={index}>
                                     <_.component/>
                                 </div>
-                              )
+                              );
                           })}
                       </div>
                   </div>

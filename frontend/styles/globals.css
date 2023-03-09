@@ -32,4 +32,8 @@
     a {
         border-bottom: gray 2px solid;
     }
+    * {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
 }

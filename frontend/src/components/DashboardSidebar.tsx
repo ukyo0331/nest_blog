@@ -1,7 +1,7 @@
 import { LogoutIcon } from '@heroicons/react/solid';
 import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useRouter } from 'next/router';
 
 //menuを配列で管理
@@ -76,7 +76,7 @@ const DashboardSidebar: FC<DashboardSidebarType> = ({handleMenuClick}) => {
           </li>
         </ul>
       </aside>
-      <div className='hidden md:inline-block max-w-[300px] h-screen w-[30%]'></div>
+      <div className='hidden md:inline-block max-w-[300px] w-[30%]'></div>
     </>
   )
 }

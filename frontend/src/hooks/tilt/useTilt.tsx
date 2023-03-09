@@ -13,9 +13,9 @@ const useTilt = (arrayData: Array<PostType>, options: Object) => {
       if (ref.current) {
         VanillaTilt.init(ref.current, options);
       }
-    })
+    });
   }, [options, arrayData, tiltRefs.current]);
   return { tiltRefs }
-}
+};
 
 export default useTilt;

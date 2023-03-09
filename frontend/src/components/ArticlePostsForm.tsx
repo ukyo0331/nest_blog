@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from 'react';
 import useStore from "../store/postStore";
 import { useMutatePost } from '../hooks/post/useMutatePost';
 import "easymde/dist/easymde.min.css";
@@ -48,6 +48,13 @@ export const ArticlePostsForm = () => {
             })
         }
     }
+    //SimpleMDEのオプションはuseMemoでラップする
+    const options = useMemo(() => {
+        return {
+            spellChecker: false,
+            maxHeight: '300px',
+        };
+    }, [])
     return (
         <div className='bg-white p-6 rounded-lg'>
             <div className='mb-4'>
@@ -78,14 +85,14 @@ export const ArticlePostsForm = () => {
                     </dd>
                 </dl>
                 <div className='mb-4'>
-                    <div className='border border-gray-300 rounded'>
+                    <div className='border border-gray-300 rounded w-[450px]'>
                         <SimpleMDE
-                            value={editedPost.desc || 'init value'}
+                            value={editedPost.desc || 'Hello world'}
                             onChange={(value) => {
                                 setMarkdownValue(value);
-                                update({...editedPost, desc: value})}
-                            }
-                            textareaProps={{spellCheck: false}}
+                                update({...editedPost, desc: value})
+                            }}
+                            options={options}
                         />
                     </div>
                 </div>
