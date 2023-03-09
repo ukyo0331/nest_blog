@@ -11,8 +11,8 @@ const RightBar = () => {
         src='/profile02.jpg'
         alt='hero image'
         className='absolute'
-        width={200}
-        height={200}
+        width={150}
+        height={150}
         style={{ objectFit: 'cover' }}
       />
     </div>

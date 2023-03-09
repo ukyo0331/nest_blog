@@ -17,7 +17,8 @@ const ArticleList: FC<ArticleListProps> = ({ articles, options }) => {
         <>
             {articles?.map((article, index) => {
                 const { id, title, categories, likes, createdAt, desc, status } = article;
-                const sliceTitle = title.slice(0, 40);
+                //記事一覧に表示するヘッドラインを40文字以内に収める
+                const headline = title.length < 40 ? title: `${title.slice(0, 40)}...`
                 return (
                   <a
                     key={id}
@@ -42,7 +43,7 @@ const ArticleList: FC<ArticleListProps> = ({ articles, options }) => {
                                   />
                               </div>
                               <p className='text-xl ml-3 mt-1 flex-1 overflow-hidden overflow-ellipsis'>
-                                  {sliceTitle}
+                                  {headline}
                               </p>
                               <div className='flex'>
                                   <div className='absolute bottom-1 left-3'>
