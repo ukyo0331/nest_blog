@@ -20,7 +20,7 @@ const CodeBlock: FC<CodeProps> = ({ className, children = '' }) => {
   const handleClick = () => {
     setStyleTooltip('opacity-1 inline-block');
     setTimeout(() => {
-      setStyleTooltip('opacity-0 hidden')
+      setStyleTooltip('opacity-0 hidden');
     }, 3000);
   };
   return (
