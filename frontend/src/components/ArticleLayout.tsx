@@ -3,14 +3,14 @@ import useStore from "../store/postStore";
 import { useMutatePost } from "../hooks/post/useMutatePost";
 import { useRouter } from "next/router";
 import { format } from "timeago.js";
-import DOMPurify from "dompurify";
-import { marked } from "marked";
-import highlightjs from "highlight.js";
-import "highlight.js/styles/github-dark-dimmed.css";
 import { PostType } from "../../types";
 import CategoryIconButton from "./CategoryIconButton";
 import { useQueryUserWithoutRedirect } from '../hooks/user/useQueryUser';
 import useHandleMenuClick from '../hooks/dashboard/useHandleMenuClick';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import CodeBlock from './CodeBlock';
+import { CodeProps } from 'react-markdown/lib/ast-to-react';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -30,12 +30,6 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const router = useRouter();
     const { data: user } = useQueryUserWithoutRedirect();
 
-    //コードのハイライト設定
-    marked.setOptions({
-        highlight: (code, lang) => {
-            return highlightjs.highlightAuto(code, [lang]).value;
-        },
-    });
     //時間の取り扱い
     const createTime = new Date(createdAt);
     const updateTime = new Date(updatedAt);
@@ -79,8 +73,14 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
                   </>
                   : ''
                 }
-
-                <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(marked(desc ? desc : 'not found'))}}></div>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  code: (props: CodeProps) => <CodeBlock {...props}/>,
+                }}
+              >
+                {desc}
+              </ReactMarkdown>
                 <p>{likes}人が拍手しました</p>
             </div>
         </article>

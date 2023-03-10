@@ -33,7 +33,7 @@ const ArticleList: FC<ArticleListProps> = ({ articles, options }) => {
                     className='border-none'
                   >
                       <div
-                        className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs bg-white'
+                        className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs bg-white w-60'
                         ref={tiltRefs.current[index]}
                       >
                           <div className='h-full flex flex-col'>
