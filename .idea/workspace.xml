@@ -5,13 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/blog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticleList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticleList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticlePostsForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticlePostsForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/tilt/useTilt.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/tilt/useTilt.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CodeBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CodeBlock.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +93,7 @@
       <workItem from="1677071585536" duration="79692000" />
       <workItem from="1677771137896" duration="182000" />
       <workItem from="1677771334934" duration="1062000" />
-      <workItem from="1677772409020" duration="58327000" />
+      <workItem from="1677772409020" duration="72465000" />
     </task>
     <servers />
   </component>
