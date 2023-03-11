@@ -30,7 +30,6 @@ const ArticleList: FC<ArticleListProps> = ({ articles, options }) => {
                           : router.push(`/draft/${id}`)
                      }
                      }
-                    className='border-none'
                   >
                       <div
                         className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs bg-white w-60'

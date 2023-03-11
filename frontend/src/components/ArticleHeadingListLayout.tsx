@@ -36,7 +36,6 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
                     e.preventDefault();
                     router.push(`/blog/${id}`)
                   }}
-                  className='border-none'
                 >
                   <div
                     className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3'

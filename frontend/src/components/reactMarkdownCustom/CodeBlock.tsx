@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import CopyToClipboard from 'react-copy-to-clipboard'
 
-type CodeProps = {
+export type CodeProps = {
   className?: string;
   children?: React.ReactNode;
 };

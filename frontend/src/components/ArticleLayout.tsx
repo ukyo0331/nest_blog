@@ -9,8 +9,11 @@ import { useQueryUserWithoutRedirect } from '../hooks/user/useQueryUser';
 import useHandleMenuClick from '../hooks/dashboard/useHandleMenuClick';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import CodeBlock from './CodeBlock';
-import { CodeProps } from 'react-markdown/lib/ast-to-react';
+import CodeBlock from './reactMarkdownCustom/CodeBlock';
+import { CodeProps } from './reactMarkdownCustom/CodeBlock';
+import { H1Props } from './reactMarkdownCustom/H1Block';
+import H1Block from './reactMarkdownCustom/H1Block';
+import TableOfContents from './TableOfContents';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -35,10 +38,10 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const updateTime = new Date(updatedAt);
     //カテゴリを配列で取得
     const categoryNames = categories?.map((c) => c.category.name).join(", ") || "";
-    //
     const { setRenderScreen } = useHandleMenuClick();
     return (
         <article key={id}>
+          <TableOfContents desc={desc}/>
             <div>
                 <div>
                     <CategoryIconButton categories={categories}/>
@@ -77,6 +80,8 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
                 remarkPlugins={[remarkGfm]}
                 components={{
                   code: (props: CodeProps) => <CodeBlock {...props}/>,
+                  h1: (props: H1Props) => <H1Block {...props}/>,
+
                 }}
               >
                 {desc}
