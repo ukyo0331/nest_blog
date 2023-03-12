@@ -41,7 +41,7 @@ const ArticlePage: NextPage = () => {
         return (
             <>
                 <Layout title={title} desc='ブログのdescription'>
-                    <div>
+                    <div className='flex justify-center sm:w-[80%] w-full'>
                         <ArticleLayout
                             title={title}
                             categories={categories}
