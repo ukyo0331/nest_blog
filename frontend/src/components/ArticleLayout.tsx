@@ -14,6 +14,7 @@ import { CodeProps } from './reactMarkdownCustomComponents/CodeBlock';
 import { H1Props } from './reactMarkdownCustomComponents/H1Block';
 import H1Block from './reactMarkdownCustomComponents/H1Block';
 import TableOfContents from './TableOfContents';
+import H2Block, { H2Props } from './reactMarkdownCustomComponents/H2Block';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -41,7 +42,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const { setRenderScreen } = useHandleMenuClick();
     return (
         <article key={id} className='sm:w-[95%] w-full'>
-          {/*<TableOfContents desc={desc}/>*/}
+          <TableOfContents desc={desc}/>
           <div>
               <div>
                   <CategoryIconButton categories={categories}/>
@@ -81,7 +82,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
               components={{
                 code: (props: CodeProps) => <CodeBlock {...props}/>,
                 h1: (props: H1Props) => <H1Block {...props}/>,
-
+                h2: (props: H2Props) => <H2Block {...props}/>,
               }}
             >
               {desc}
