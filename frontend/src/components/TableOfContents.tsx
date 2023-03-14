@@ -19,7 +19,7 @@ const CustomH1: FC<CustomH1Props> = ({node, children= ''}) => {
           <div className='absolute top-1'>
             <span className='block w-2 h-2 rounded bg-blue-400'/>
           </div>
-          <p className='ml-3 text-gray-400 border-l-2 border-blue-400 translate-y-3 translate-x-[-9px] pl-3 hover:text-black'>{children}</p>
+          <p className='ml-3 text-gray-400 border-l-2 border-blue-400 translate-y-2 translate-x-[-9px] pl-3 hover:text-black'>{children}</p>
         </div>
       </a>
     </li>

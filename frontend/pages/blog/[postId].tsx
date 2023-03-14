@@ -32,7 +32,13 @@ const ArticlePage: NextPage = () => {
     }, [postId]);
 
     // /blog/categoryにアクセスされた場合も404を返す
-    if (loading) return <Loader/>
+    if (loading) {
+        return (
+          <div className='h-full flex justify-center items-center'>
+              <Loader/>
+          </div>
+    )
+    }
     if (error || postId === 'category' || !data) return <Custom404/>
 
 

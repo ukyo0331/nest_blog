@@ -10,7 +10,7 @@ const H2Block: FC<H2Props> = ({ node, children = '' }) => {
   return (
     <div className='block'>
       <h3
-        className='text-xl'
+        className='text-xl border-l-4 m-4 pl-4'
         id={node?.position?.start.line.toString()}
       >
         {children}

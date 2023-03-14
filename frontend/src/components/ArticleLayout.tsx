@@ -15,6 +15,7 @@ import { H1Props } from './reactMarkdownCustomComponents/H1Block';
 import H1Block from './reactMarkdownCustomComponents/H1Block';
 import TableOfContents from './TableOfContents';
 import H2Block, { H2Props } from './reactMarkdownCustomComponents/H2Block';
+import ABlock, { AProps } from './reactMarkdownCustomComponents/ABlock';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -83,6 +84,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
                 code: (props: CodeProps) => <CodeBlock {...props}/>,
                 h1: (props: H1Props) => <H1Block {...props}/>,
                 h2: (props: H2Props) => <H2Block {...props}/>,
+                a: (props: AProps) => <ABlock {...props}/>,
               }}
             >
               {desc}
