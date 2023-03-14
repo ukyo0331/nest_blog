@@ -10,6 +10,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { CategoryModule } from './category/category.module';
 import { CategoryOnPostModule } from './category_on_post/category_on_post.module';
 import { ImageModule } from './image/image.module';
+import { OgpModule } from './ogp/ogp.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -26,6 +27,7 @@ import configuration from './config/configuration';
     CategoryModule,
     CategoryOnPostModule,
     ImageModule,
+    OgpModule,
   ],
   controllers: [AppController],
   providers: [AppService],

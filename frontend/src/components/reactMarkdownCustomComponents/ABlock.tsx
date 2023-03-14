@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Node } from 'unist';
 import axios from 'axios';
-import { Helmet } from 'react-helmet';
 
 export interface AProps {
   node?: Node;
@@ -27,25 +26,45 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
   useEffect(() => {
     const fetchMeta = async (url: string) => {
       try {
-        const data  = await fetch(`https://api.linkpreview.net?key=1bd3f88e5f7e7597b5cc51586c961f33&q=${url}`);
+        const data = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/ogp`,{
+            url
+          }
+          );
         console.log(data);
+
+        // const response = await fetch(url);
+        // const html = await response.text();
+        // const parser = new DOMParser();
+        // const doc = parser.parseFromString(html, 'text/html');
+        // const titleMeta = doc.querySelector('meta[property="og:title"]');
+        // const descMeta = doc.querySelector('meta[property="og:description"]');
+        // const faviconUrl = doc.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]');
+        // console.log(faviconUrl);
+        // setMeta({
+        //   title: titleMeta?.getAttribute('content'),
+        //   description: descMeta?.getAttribute('content'),
+        // });
       } catch (err) {
-        console.error(err);
+        setMeta({
+          title: '',
+          description: '',
+        })
       }
     }
     fetchMeta(url ?? '');
   }, []);
+  const description = meta?.description ?? '';
+  console.log(description);
   return (
-    <div>
-      <Helmet>
-        <title>{meta.title}</title>
-        <meta name="description" content={meta.description} />
-        <link rel="shortcut icon" href={meta.favicon} />
-      </Helmet>
-      <h2>{meta.title}</h2>
-      <p>{meta.description}</p>
-      <img src={meta.image} alt={meta.title} />
-    </div>
+    <>
+      <a href={`${elementNode?.properties?.href}`}>
+        <span>
+          {meta?.title}
+        </span>
+      </a>
+      {description}
+    </>
   );
 };
 
