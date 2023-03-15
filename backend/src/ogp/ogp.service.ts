@@ -59,4 +59,10 @@ export class OgpService {
     }
     return meta;
   }
+  //OGPの内容を更新
+  async updateOgp(url: string, postId: string): Promise<any> {
+    const meta = await this.getOgpData(url);
+    await this.setOgpData(postId, meta);
+    return meta;
+  }
 }
