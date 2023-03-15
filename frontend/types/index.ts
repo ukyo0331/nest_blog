@@ -39,3 +39,13 @@ export type CommentType = {
 export type EditedComment = {
 
 }
+
+type OgpMetaData = {
+    id: string
+    encodedUrl: string
+    title: string
+    image: string
+    favicon: string
+    description: string
+    postId: string
+}

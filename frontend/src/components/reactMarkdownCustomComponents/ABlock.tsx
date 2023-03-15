@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { Node } from 'unist';
 import axios from 'axios';
+import Image from 'next/image';
 
 export interface AProps {
   node?: Node;
@@ -17,12 +18,16 @@ interface ElementNode extends Node {
 type MetaState = {
   title: string | null | undefined;
   description: string | null | undefined;
+  favicon: string | null | undefined;
+  image: string | null | undefined;
 }
 
 const ABlock: FC<AProps> = ({ node, children = '' }) => {
   const elementNode = node as ElementNode;
   const url = elementNode?.properties?.href;
-  const [meta, setMeta] = useState<MetaState>({title: '', description: ''});
+  const [meta, setMeta] = useState<MetaState>({
+    title: '仮タイトル', description: 'ロード中...', favicon: '/favicon.ico', image: ''
+  });
   useEffect(() => {
     const fetchMeta = async (url: string) => {
       try {
@@ -32,7 +37,10 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
           }
           );
         console.log(data);
-
+        const { title, description, favicon, image } = data.data.hybridGraph;
+        setMeta({
+          title, image, favicon, description
+        })
         // const response = await fetch(url);
         // const html = await response.text();
         // const parser = new DOMParser();
@@ -48,22 +56,35 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
       } catch (err) {
         setMeta({
           title: '',
-          description: '',
+          description: 'リンク先の情報の読み取りに失敗しました',
+          favicon: '/favicon.ico',
+          image: '',
         })
       }
     }
-    fetchMeta(url ?? '');
+    url && fetchMeta(url );
   }, []);
-  const description = meta?.description ?? '';
-  console.log(description);
+  //div等は使えない様子なので代用としてspan要素にblockを付与してスタイリング
   return (
     <>
       <a href={`${elementNode?.properties?.href}`}>
-        <span>
-          {meta?.title}
+        <span className='block border-2 h-32'>
+          <span className='block flex '>
+            <img src={`${meta.image}`} alt='リンク先のイメージ画像'/>
+            <span>
+              {meta?.title}
+            </span>
+          </span>
+          <span className='block ml-8'>
+            {meta.description}
+          </span>
+          <span>
+            <img src={`${meta.favicon}`}/>
+            {}
+          </span>
         </span>
       </a>
-      {description}
+
     </>
   );
 };
