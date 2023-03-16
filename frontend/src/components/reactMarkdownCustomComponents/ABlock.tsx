@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { Node } from 'unist';
 import axios from 'axios';
-import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export interface AProps {
   node?: Node;
@@ -26,33 +26,23 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
   const elementNode = node as ElementNode;
   const url = elementNode?.properties?.href;
   const [meta, setMeta] = useState<MetaState>({
-    title: '仮タイトル', description: 'ロード中...', favicon: '/favicon.ico', image: ''
+    title: '', description: 'ロード中...', favicon: '', image: ''
   });
+  const router = useRouter();
+  const postId = router.query.postId;
   useEffect(() => {
     const fetchMeta = async (url: string) => {
       try {
         const data = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/ogp`,{
             url,
+            postId,
           }
           );
-        console.log(data);
-        const { title, description, favicon, image } = data.data.hybridGraph;
+        const { title, description, favicon, image } = data.data;
         setMeta({
           title, image, favicon, description
         })
-        // const response = await fetch(url);
-        // const html = await response.text();
-        // const parser = new DOMParser();
-        // const doc = parser.parseFromString(html, 'text/html');
-        // const titleMeta = doc.querySelector('meta[property="og:title"]');
-        // const descMeta = doc.querySelector('meta[property="og:description"]');
-        // const faviconUrl = doc.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]');
-        // console.log(faviconUrl);
-        // setMeta({
-        //   title: titleMeta?.getAttribute('content'),
-        //   description: descMeta?.getAttribute('content'),
-        // });
       } catch (err) {
         setMeta({
           title: '',
@@ -66,27 +56,19 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
   }, []);
   //div等は使えない様子なので代用としてspan要素にblockを付与してスタイリング
   return (
-    <>
-      <a href={`${elementNode?.properties?.href}`}>
-        <span className='block border-2 h-32'>
-          <span className='block flex '>
-            <img src={`${meta.image}`} alt='リンク先のイメージ画像'/>
-            <span>
-              {meta?.title}
-            </span>
-          </span>
-          <span className='block ml-8'>
-            {meta.description}
-          </span>
-          <span>
-            <img src={`${meta.favicon}`}/>
-            {}
-          </span>
+    <a href={`${elementNode?.properties?.href}`} className="flex items-center space-x-3 border-2 rounded">
+      <img src={`${meta.image}`} alt='リンク先のイメージ画像' className="w-24 h-24 object-cover rounded-lg"/>
+      <span className="block flex-1 flex flex-col space-y-1">
+        <span className="font-bold text-lg truncate">{meta?.title}</span>
+        <span className="text-gray-500 text-sm truncate">{meta.description}</span>
+        <span className="block flex items-center space-x-2">
+          <img src={`${meta.favicon}`} alt='Favicon' className="w-4 h-4"/>
+          <span className="text-xs truncate">{url}</span>
         </span>
-      </a>
-
-    </>
+      </span>
+    </a>
   );
+
 };
 
 export default ABlock;

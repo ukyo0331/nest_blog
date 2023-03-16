@@ -5,7 +5,7 @@ import { PrismaService } from '../prisma/prisma.service';
 @Injectable()
 export class OgpService {
   constructor(private readonly prisma: PrismaService) {}
-  async getOgpData(url: string): Promise<Omit<OgpMetaData, 'id'>> {
+  async getOgpData(url: string): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
     const response = await fetch(
       `https://opengraph.io/api/1.1/site/${encodeURIComponent(url)}?app_id=${
         process.env.OGP_API_KEY
@@ -14,7 +14,7 @@ export class OgpService {
     const data = await response.json();
     const { hybridGraph } = data;
     const { title, image, description, favicon } = hybridGraph;
-    const ogpMetaData: Omit<OgpMetaData, 'id'> = {
+    const ogpMetaData: Omit<OgpMetaData, 'id' | 'postId'> = {
       title,
       image,
       description,
@@ -25,7 +25,10 @@ export class OgpService {
     return ogpMetaData;
   }
   //取得したOGPをDBに格納
-  async setOgpData(data: Omit<OgpMetaData, 'id'>): Promise<OgpMetaData> {
+  async setOgpData(
+    data: Omit<OgpMetaData, 'id' | 'postId'>,
+    postId: string,
+  ): Promise<OgpMetaData> {
     const { title, image, description, encodedUrl, favicon } = data;
     const meta = await this.prisma.ogpMetaData.create({
       data: {
@@ -34,6 +37,7 @@ export class OgpService {
         description,
         encodedUrl,
         favicon,
+        postId,
       },
     });
     return meta;
@@ -41,28 +45,42 @@ export class OgpService {
 
   //urlからデータベースにOGPが格納されていないかチェック
   async checkOgpExistenceByUrl(url: string): Promise<OgpMetaData> {
+    const encodedUrl = encodeURIComponent(url); // URL をエンコードする
     const meta = await this.prisma.ogpMetaData.findFirst({
       where: {
-        encodedUrl: url,
+        encodedUrl,
       },
     });
     return meta;
   }
 
   //OGPがデータベースに存在しない場合、OGPを取得してデータベースに格納する
-  async getOrCreateOgpData(url: string): Promise<Omit<OgpMetaData, 'id'>> {
-    const meta = await this.checkOgpExistenceByUrl(encodeURIComponent(url));
+  async getOrCreateOgpData(
+    url: string,
+    postId: string,
+  ): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
+    const meta = await this.checkOgpExistenceByUrl(url); // エンコードした URL を使用する
     if (!meta) {
       const createdMeta = await this.getOgpData(url);
-      await this.setOgpData(createdMeta);
+      await this.setOgpData(createdMeta, postId);
       return createdMeta;
     }
     return meta;
   }
   //OGPの内容を更新
-  async updateOgp(url: string): Promise<any> {
+  async updateOgp(url: string, postId: string): Promise<any> {
     const meta = await this.getOgpData(url);
-    await this.setOgpData(meta);
+    await this.setOgpData(meta, postId);
     return meta;
   }
+
+  // async deleteOgp(url: string) {
+  //   await this.prisma.ogpMetaData.deleteMany({
+  //     where: {
+  //       encodedUrl: {
+  //         equals: url,
+  //       },
+  //     },
+  //   });
+  // }
 }
