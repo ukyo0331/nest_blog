@@ -7,23 +7,21 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller('ogp')
 export class OgpController {
   constructor(private readonly ogpService: OgpService) {}
-  @UseGuards(AuthGuard('jwt'))
-  @Post()
-  getOgpData(@Body() dto: GetOgpDto): Promise<Omit<OgpMetaData, 'postId'>> {
-    return this.ogpService.getOgpData(dto.url);
-  }
+  // @Post()
+  // getOgpData(@Body() dto: GetOgpDto): Promise<Omit<OgpMetaData, 'id'>> {
+  //   return this.ogpService.getOgpData(dto.url);
+  // }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post()
   getOrCreateOgpData(
     @Body() dto: CreateOgpDto,
-  ): Promise<Omit<OgpMetaData, 'postId'>> {
-    return this.ogpService.getOrCreateOgpData(dto.url, dto.postId);
+  ): Promise<Omit<OgpMetaData, 'id'>> {
+    return this.ogpService.getOrCreateOgpData(dto.url);
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Patch()
-  updateOgp(@Body() dto: CreateOgpDto): Promise<Omit<OgpMetaData, 'postId'>> {
-    return this.ogpService.updateOgp(dto.url, dto.postId);
+  updateOgp(@Body() dto: CreateOgpDto): Promise<OgpMetaData> {
+    return this.ogpService.updateOgp(dto.url);
   }
 }

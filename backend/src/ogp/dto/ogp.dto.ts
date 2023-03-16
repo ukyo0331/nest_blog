@@ -10,8 +10,4 @@ export class CreateOgpDto {
   @IsString()
   @IsNotEmpty()
   url: string;
-
-  @IsString()
-  @IsNotEmpty()
-  postId: string;
 }

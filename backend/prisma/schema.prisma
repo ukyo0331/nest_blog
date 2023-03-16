@@ -35,7 +35,6 @@ model Post {
     user        User @relation(fields: [userId], references: [id])
     comments    Comment[]
     categories  CategoriesOnPosts[]
-    ogpMetaData OgpMetaData[]
 }
 
 model Comment {
@@ -76,6 +75,4 @@ model OgpMetaData {
   image       String
   favicon     String
   description String
-  postId      String
-  post        Post @relation(fields: [postId], references: [id], onDelete: Cascade)
 }

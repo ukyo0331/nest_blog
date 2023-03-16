@@ -33,7 +33,7 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
       try {
         const data = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/ogp`,{
-            url
+            url,
           }
           );
         console.log(data);
@@ -62,7 +62,7 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
         })
       }
     }
-    url && fetchMeta(url );
+    url && fetchMeta(url);
   }, []);
   //div等は使えない様子なので代用としてspan要素にblockを付与してスタイリング
   return (
