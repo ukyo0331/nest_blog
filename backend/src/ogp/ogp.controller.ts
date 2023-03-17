@@ -14,17 +14,17 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller('ogp')
 export class OgpController {
   constructor(private readonly ogpService: OgpService) {}
-  @Post()
-  getOgpData(@Body() dto: GetOgpDto): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
-    return this.ogpService.getOgpData(dto.url);
-  }
-
   // @Post()
-  // getOrCreateOgpData(
-  //   @Body() dto: CreateOgpDto,
-  // ): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
-  //   return this.ogpService.getOrCreateOgpData(dto.url, dto.postId);
+  // getOgpData(@Body() dto: GetOgpDto): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
+  //   return this.ogpService.getOgpData(dto.url);
   // }
+
+  @Post()
+  getOrCreateOgpData(
+    @Body() dto: CreateOgpDto,
+  ): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
+    return this.ogpService.getOrCreateOgpData(dto.url, dto.postId);
+  }
 
   @UseGuards(AuthGuard('jwt'))
   @Patch()

@@ -71,7 +71,7 @@ model CategoriesOnPosts {
 
 model OgpMetaData {
   id          String @id @default(uuid())
-  encodedUrl  String @unique
+  encodedUrl  String
   title       String
   image       String
   favicon     String

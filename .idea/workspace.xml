@@ -3,30 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221005051306_first_migration/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221006121156_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221008152918_v1/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221009134552_v2/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221010115746_v3/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221012085505_v4/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221013052148_v5/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221013054150_v5/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221013063027_v6/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221015094820_v7/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221015143312_v8/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221018155158_v8/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20221101052558_v9/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20230203124816_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20230315083920_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20230315084548_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20230315132140_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20230315140324_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20230316111812_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/migration_lock.toml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/backend/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/vercel.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/ogp/ogp.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/ogp/ogp.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/ogp/ogp.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/ogp/ogp.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/signUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/signUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/prisma/schema.prisma" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +108,7 @@
       <workItem from="1678883577231" duration="5439000" />
       <workItem from="1678889031591" duration="10107000" />
       <workItem from="1678967683374" duration="7311000" />
-      <workItem from="1678975772867" duration="7539000" />
+      <workItem from="1678975772867" duration="12834000" />
     </task>
     <servers />
   </component>

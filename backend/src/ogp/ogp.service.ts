@@ -30,17 +30,22 @@ export class OgpService {
     postId: string,
   ): Promise<OgpMetaData> {
     const { title, image, description, encodedUrl, favicon } = data;
-    const meta = await this.prisma.ogpMetaData.create({
-      data: {
-        title,
-        image,
-        description,
-        encodedUrl,
-        favicon,
-        postId,
-      },
-    });
-    return meta;
+    try {
+      const meta = await this.prisma.ogpMetaData.create({
+        data: {
+          title,
+          image,
+          description,
+          encodedUrl,
+          favicon,
+          postId,
+        },
+      });
+      return meta;
+    } catch (err) {
+      console.error(err);
+      return;
+    }
   }
 
   //urlからデータベースにOGPが格納されていないかチェック
