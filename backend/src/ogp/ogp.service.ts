@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { OgpMetaData } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import fetch from 'node-fetch';
-
+import axios from 'axios';
 
 interface HybridGraphData {
   title: string;
@@ -19,12 +18,12 @@ interface Data {
 export class OgpService {
   constructor(private readonly prisma: PrismaService) {}
   async getOgpData(url: string): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
-    const response = await fetch(
+    const response = await axios.get(
       `https://opengraph.io/api/1.1/site/${encodeURIComponent(url)}?app_id=${
         process.env.OGP_API_KEY
       }`,
     );
-    const data: Data = await response.json();
+    const data: Data = await response.data;
     if (!data.hybridGraph) {
       throw new Error('Unexpected API response');
     }
@@ -66,7 +65,7 @@ export class OgpService {
 
   //urlからデータベースにOGPが格納されていないかチェック
   async checkOgpExistenceByUrl(url: string): Promise<OgpMetaData> {
-    const encodedUrl = encodeURIComponent(url); // URL をエンコードする
+    const encodedUrl = encodeURIComponent(url);
     const meta = await this.prisma.ogpMetaData.findFirst({
       where: {
         encodedUrl,
