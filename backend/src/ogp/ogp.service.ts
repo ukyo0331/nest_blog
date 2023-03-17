@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { OgpMetaData } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import fetch from 'node-fetch';
 
 @Injectable()
 export class OgpService {
@@ -11,7 +12,7 @@ export class OgpService {
         process.env.OGP_API_KEY
       }`,
     );
-    const data = await response.json();
+    const data: any = await response.json();
     const { hybridGraph } = data;
     const { title, image, description, favicon } = hybridGraph;
     const ogpMetaData: Omit<OgpMetaData, 'id' | 'postId'> = {
