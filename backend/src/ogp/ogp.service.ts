@@ -3,6 +3,18 @@ import { OgpMetaData } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import fetch from 'node-fetch';
 
+
+interface HybridGraphData {
+  title: string;
+  image: string;
+  description: string;
+  favicon: string;
+}
+
+interface Data {
+  hybridGraph?: HybridGraphData;
+}
+
 @Injectable()
 export class OgpService {
   constructor(private readonly prisma: PrismaService) {}
@@ -12,7 +24,10 @@ export class OgpService {
         process.env.OGP_API_KEY
       }`,
     );
-    const data: any = await response.json();
+    const data: Data = await response.json();
+    if (!data.hybridGraph) {
+      throw new Error('Unexpected API response');
+    }
     const { hybridGraph } = data;
     const { title, image, description, favicon } = hybridGraph;
     const ogpMetaData: Omit<OgpMetaData, 'id' | 'postId'> = {
