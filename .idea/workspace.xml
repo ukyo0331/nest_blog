@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/backend/vercel.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
     </list>
@@ -54,7 +55,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
     "settings.editor.selected.configurable": "terminal",
-    "ts.external.directory.path": "/Users/yuta-higa/myblog/my_blog/frontend/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/yuta-higa/myblog/my_blog/backend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -104,7 +105,7 @@
       <workItem from="1678883577231" duration="5439000" />
       <workItem from="1678889031591" duration="10107000" />
       <workItem from="1678967683374" duration="7311000" />
-      <workItem from="1678975772867" duration="2660000" />
+      <workItem from="1678975772867" duration="3690000" />
     </task>
     <servers />
   </component>
