@@ -12,9 +12,9 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const configService = app.get(ConfigService);
   config.update({
-    accessKeyId: configService.get('aws.accessKey'),
-    secretAccessKey: configService.get('aws.secretKey'),
-    region: configService.get('aws.region'),
+    accessKeyId: configService.get(process.env.AWS_ACCESS_KEY),
+    secretAccessKey: configService.get(process.env.AWS_SECRET_KEY),
+    region: configService.get(process.env.AWS_REGION),
   });
   app.disable('x-powered-by');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
