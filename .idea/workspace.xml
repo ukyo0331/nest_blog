@@ -25,6 +25,7 @@
       <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/20230316111812_/migration.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/prisma/migrations/migration_lock.toml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/backend/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/vercel.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +127,7 @@
       <workItem from="1678883577231" duration="5439000" />
       <workItem from="1678889031591" duration="10107000" />
       <workItem from="1678967683374" duration="7311000" />
-      <workItem from="1678975772867" duration="7209000" />
+      <workItem from="1678975772867" duration="7539000" />
     </task>
     <servers />
   </component>
