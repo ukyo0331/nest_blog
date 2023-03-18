@@ -12,9 +12,9 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const configService = app.get(ConfigService);
   config.update({
-    accessKeyId: configService.get(process.env.AWS_ACCESS_KEY),
-    secretAccessKey: configService.get(process.env.AWS_SECRET_KEY),
-    region: configService.get(process.env.AWS_REGION),
+    accessKeyId: configService.get('aws.accessKey'),
+    secretAccessKey: configService.get('aws.secretKey'),
+    region: configService.get('aws.region'),
   });
   app.disable('x-powered-by');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
@@ -28,7 +28,7 @@ async function bootstrap() {
       cookie: {
         httpOnly: true,
         sameSite: 'none',
-        secure: true,
+        secure: false,
       },
       value: (req: Request) => {
         return req.header('csrf-token');

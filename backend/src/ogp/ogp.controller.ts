@@ -1,10 +1,12 @@
 import {
   Body,
+  CacheInterceptor,
   Controller,
   Delete,
   Patch,
   Post,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { OgpService } from './ogp.service';
 import { CreateOgpDto, GetOgpDto } from './dto/ogp.dto';
@@ -20,6 +22,7 @@ export class OgpController {
   // }
 
   @Post()
+  @UseInterceptors(CacheInterceptor)
   getOrCreateOgpData(
     @Body() dto: CreateOgpDto,
   ): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
