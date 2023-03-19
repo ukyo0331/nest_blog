@@ -57,13 +57,13 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
   //div等は使えない様子なので代用としてspan要素にblockを付与してスタイリング
   return (
     <a href={`${elementNode?.properties?.href}`} className="flex items-center space-x-3 border-2 rounded">
-      <img src={`${meta.image}`} alt='リンク先のイメージ画像' className="w-24 h-24 object-cover rounded-lg"/>
-      <span className="block flex-1 flex flex-col space-y-1">
-        <span className="font-bold text-lg truncate">{meta?.title}</span>
-        <span className="text-gray-500 text-sm truncate">{meta.description}</span>
-        <span className="block flex items-center space-x-2">
+      <img src={`${meta.image}`} alt='リンク先のイメージ画像' className="w-24 h-24 object-cover rounded-lg object-cover"/>
+      <span className="block flex-1 flex flex-col space-y-1 w-1">
+        <span className="font-bold text-lg truncate pr-3">{meta?.title}</span>
+        <span className="text-gray-500 text-sm truncate pr-3">{meta.description}</span>
+        <span className="block flex items-center space-x-2 justify-end mr-3">
           <img src={`${meta.favicon}`} alt='Favicon' className="w-4 h-4"/>
-          <span className="text-xs truncate">{url}</span>
+          <span className="text-xs truncate">{(url as any).match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[1]}</span>
         </span>
       </span>
     </a>
