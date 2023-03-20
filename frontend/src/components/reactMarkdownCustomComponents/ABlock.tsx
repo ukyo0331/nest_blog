@@ -24,7 +24,7 @@ type MetaState = {
 
 const ABlock: FC<AProps> = ({ node, children = '' }) => {
   const elementNode = node as ElementNode;
-  const url = elementNode?.properties?.href;
+  const url = elementNode?.properties?.href as string;
   const [meta, setMeta] = useState<MetaState>({
     title: '', description: 'ロード中...', favicon: '', image: ''
   });
@@ -68,7 +68,7 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
             <img src={`${meta.favicon}`} alt='Favicon' className="w-4 h-4"/>
           )
           : null}
-          <span className="text-xs truncate">{(url as any).match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[1]}</span>
+          <span className="text-xs truncate">{(url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/) || [])[1] || ''}</span>
         </span>
       </span>
     </a>
