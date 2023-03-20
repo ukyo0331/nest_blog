@@ -1,8 +1,7 @@
-import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { OgpMetaData } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import axios from 'axios';
-import { Cache } from 'cache-manager';
 
 interface HybridGraphData {
   title: string;
@@ -17,24 +16,17 @@ interface Data {
 
 @Injectable()
 export class OgpService {
-  constructor(
-    private readonly prisma: PrismaService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
-  ) {}
-
+  constructor(private readonly prisma: PrismaService) {}
+  private ogpRequestLocks: Map<
+    string,
+    Promise<Omit<OgpMetaData, 'id' | 'postId'>>
+  > = new Map();
   async getOgpData(url: string): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
-    const key = `ogp: ${url}`;
-    let response: any = await this.cacheManager.get(key);
-    if (!response) {
-      response = await this.cacheManager.set(
-        'ogp',
-        await axios.get(
-          `https://opengraph.io/api/1.1/site/${encodeURIComponent(
-            url,
-          )}?app_id=${process.env.OGP_API_KEY}`,
-        ),
-      );
-    }
+    const response = await axios.get(
+      `https://opengraph.io/api/1.1/site/${encodeURIComponent(url)}?app_id=${
+        process.env.OGP_API_KEY
+      }`,
+    );
     const data: Data = await response.data;
     if (!data.hybridGraph) {
       throw new Error('Unexpected API response');
@@ -57,6 +49,15 @@ export class OgpService {
     postId: string,
   ): Promise<OgpMetaData> {
     const { title, image, description, encodedUrl, favicon } = data;
+
+    // Check if the data already exists in the database
+    const existingMeta = await this.checkOgpExistenceByUrl(
+      decodeURIComponent(encodedUrl),
+    );
+    if (existingMeta) {
+      return existingMeta;
+    }
+
     try {
       const meta = await this.prisma.ogpMetaData.create({
         data: {
@@ -75,12 +76,13 @@ export class OgpService {
     }
   }
 
+
   //urlからデータベースにOGPが格納されていないかチェック
   async checkOgpExistenceByUrl(url: string): Promise<OgpMetaData> {
     const encodedUrl = encodeURIComponent(url);
     const meta = await this.prisma.ogpMetaData.findFirst({
       where: {
-        encodedUrl,
+        encodedUrl: url,
       },
     });
     return meta;
@@ -91,29 +93,27 @@ export class OgpService {
     url: string,
     postId: string,
   ): Promise<Omit<OgpMetaData, 'id' | 'postId'>> {
-    const meta = await this.checkOgpExistenceByUrl(url);
-    if (!meta) {
-      const createdMeta = await this.getOgpData(url);
-      await this.setOgpData(createdMeta, postId);
-      return createdMeta;
+    const encodedUrl = encodeURIComponent(url);
+    const meta = await this.checkOgpExistenceByUrl(encodedUrl);
+    if (meta) {
+      return meta;
     }
-    return meta;
-  }
+    let ongoingRequest = this.ogpRequestLocks.get(encodedUrl);
+    if (!ongoingRequest) {
+      ongoingRequest = this.getOgpData(url).then((createdMeta) => {
+        this.setOgpData(createdMeta, postId);
+        this.ogpRequestLocks.delete(encodedUrl);
+        return createdMeta;
+      });
+      this.ogpRequestLocks.set(encodedUrl, ongoingRequest);
+    }
 
+    return ongoingRequest;
+  }
   //OGPの内容を更新
   async updateOgp(url: string, postId: string): Promise<any> {
     const meta = await this.getOgpData(url);
     await this.setOgpData(meta, postId);
     return meta;
   }
-
-  // async deleteOgp(url: string) {
-  //   await this.prisma.ogpMetaData.deleteMany({
-  //     where: {
-  //       encodedUrl: {
-  //         equals: url,
-  //       },
-  //     },
-  //   });
-  // }
 }

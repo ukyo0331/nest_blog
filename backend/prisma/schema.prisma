@@ -71,11 +71,11 @@ model CategoriesOnPosts {
 
 model OgpMetaData {
   id          String @id @default(uuid())
-  encodedUrl  String
-  title       String
-  image       String
-  favicon     String
-  description String
+  encodedUrl  String @unique
+  title       String?
+  image       String?
+  favicon     String?
+  description String?
   postId      String
   post        Post @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
