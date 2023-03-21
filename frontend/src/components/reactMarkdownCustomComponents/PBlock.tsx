@@ -12,7 +12,7 @@ const PBlock: FC<PProps> = ({ node, children = '' }) => {
     <>
       {childrenArray.map((_: string, index) => {
         return (
-          <div key={index}>
+          <div key={index} className='ml-5'>
             <p>{_}</p>
           </div>
         )

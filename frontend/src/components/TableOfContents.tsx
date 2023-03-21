@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 type TableOfContentsProps = {
@@ -7,11 +7,13 @@ type TableOfContentsProps = {
 type CustomH1Props = {
   node?: any;
   children?: React.ReactNode;
+  activeHeading: string;
 }
 
-const CustomH1: FC<CustomH1Props> = ({node, children= ''}) => {
+const CustomH1: FC<CustomH1Props> = ({node, children= '', activeHeading}) => {
   //行数を取得してidに格納する
   const id = node.position?.start.line.toString();
+  const isActive = id === activeHeading;
   return (
     <li>
       <a href={`#${id}`}>
@@ -19,15 +21,19 @@ const CustomH1: FC<CustomH1Props> = ({node, children= ''}) => {
           <div className='absolute top-1'>
             <span className='block w-2 h-2 rounded bg-blue-400'/>
           </div>
-          <p className='ml-3 text-gray-400 border-l-2 border-blue-400 translate-y-2 translate-x-[-9px] pl-3 hover:text-black'>{children}</p>
+          <p className={`${isActive && 'text-amber-700'} ml-3 text-gray-400 border-l-2 border-blue-400 translate-y-2 translate-x-[-9px] pl-3 hover:text-black`}>
+            {children}
+          </p>
         </div>
       </a>
     </li>
   );
 };
-const CustomH2: FC<CustomH1Props> = ({node, children= ''}) => {
+const CustomH2: FC<CustomH1Props> = ({node, children= '', activeHeading}) => {
   //行数を取得してidに格納する
   const id = node.position?.start.line.toString();
+  const isActive = id === activeHeading;
+  console.log(isActive);
   return (
     <li>
       <a href={`#${id}`}>
@@ -36,7 +42,9 @@ const CustomH2: FC<CustomH1Props> = ({node, children= ''}) => {
             <span className='block w-1.5 h-1.5 rounded bg-blue-400 ml-[1px]'/>
             <span className='block w-0.5 h-5 bg-blue-300 ml-[3px]'/>
           </div>
-          <p className='ml-3 text-gray-400 border-l-2 border-blue-400 translate-y-3 translate-x-[-9px] pl-3 hover:text-black'>{children}</p>
+          <p className={`${isActive && 'text-amber-400'} ml-3 text-gray-400 border-l-2 border-blue-400 translate-y-3 translate-x-[-9px] pl-3 hover:text-black`}>
+            {children}
+          </p>
         </div>
       </a>
     </li>
@@ -45,6 +53,30 @@ const CustomH2: FC<CustomH1Props> = ({node, children= ''}) => {
 
 //記事の見出しコンポーネント
 const TableOfContents: FC<TableOfContentsProps> = ({desc}) => {
+  const [activeHeading, setActiveHeading] = useState('');
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHeading(entry.target.id);
+          }
+        });
+      },
+      {threshold: 1},
+    );
+    const heading = document.querySelectorAll('h3, h2');
+
+    heading.forEach((heading) => {
+      observer.observe(heading);
+    });
+
+    return () => {
+      heading.forEach((heading) => {
+        observer.unobserve(heading);
+      });
+    };
+  }, []);
   return (
     <>
       <section>
@@ -56,8 +88,8 @@ const TableOfContents: FC<TableOfContentsProps> = ({desc}) => {
             <ReactMarkdown
               allowedElements={['h1', 'h2']}
               components={{
-                h1: (props: CustomH1Props) => <CustomH1 {...props}/>,
-                h2: (props: CustomH1Props) => <CustomH2 {...props}/>,
+                h1: (props: CustomH1Props) => <CustomH1 {...props} activeHeading={activeHeading}/>,
+                h2: (props: CustomH1Props) => <CustomH2 {...props} activeHeading={activeHeading}/>,
               }}
             >
               {desc}

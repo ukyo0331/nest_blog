@@ -44,7 +44,9 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const { setRenderScreen } = useHandleMenuClick();
     return (
         <article key={id} className='sm:w-[95%] w-full'>
-          <TableOfContents desc={desc}/>
+          <div className='fixed z-50'>
+            <TableOfContents desc={desc}/>
+          </div>
           <div>
               <div>
                   <CategoryIconButton categories={categories}/>
@@ -86,7 +88,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
                 h1: (props: H1Props) => <H1Block {...props}/>,
                 h2: (props: H2Props) => <H2Block {...props}/>,
                 a: (props: AProps) => <ABlock {...props}/>,
-                p: (props: PProps) => <PBlock {...props}/>
+                p: (props: PProps) => <PBlock {...props}/>,
               }}
             >
               {desc}
