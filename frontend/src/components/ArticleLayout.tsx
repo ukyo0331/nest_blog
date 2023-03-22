@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import useStore from "../store/postStore";
 import { useMutatePost } from "../hooks/post/useMutatePost";
 import { useRouter } from "next/router";
@@ -17,6 +17,8 @@ import TableOfContents from './TableOfContents';
 import H2Block, { H2Props } from './reactMarkdownCustomComponents/H2Block';
 import ABlock, { AProps } from './reactMarkdownCustomComponents/ABlock';
 import PBlock, { PProps } from './reactMarkdownCustomComponents/PBlock';
+import { entries } from 'next/dist/server/dev/on-demand-entry-handler';
+import Toc from './toc';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -42,11 +44,13 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     //カテゴリを配列で取得
     const categoryNames = categories?.map((c) => c.category.name).join(", ") || "";
     const { setRenderScreen } = useHandleMenuClick();
+
     return (
         <article key={id} className='sm:w-[95%] w-full'>
-          <div className='fixed z-50'>
-            <TableOfContents desc={desc}/>
-          </div>
+          {/*<div className='fixed z-50'>*/}
+          {/*  <TableOfContents desc={desc}/>*/}
+          {/*</div>*/}
+          <Toc/>
           <div>
               <div>
                   <CategoryIconButton categories={categories}/>

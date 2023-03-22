@@ -33,7 +33,6 @@ const CustomH2: FC<CustomH1Props> = ({node, children= '', activeHeading}) => {
   //行数を取得してidに格納する
   const id = node.position?.start.line.toString();
   const isActive = id === activeHeading;
-  console.log(isActive);
   return (
     <li>
       <a href={`#${id}`}>
@@ -63,7 +62,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({desc}) => {
           }
         });
       },
-      {threshold: 1},
+      {threshold: 1, rootMargin: '0% 0px -80% 0px', root: null},
     );
     const heading = document.querySelectorAll('h3, h2');
 
