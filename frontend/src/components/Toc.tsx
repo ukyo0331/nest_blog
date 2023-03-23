@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import TocItem from './toxItem';
+import TocItem from './TocItem';
 
-const toc = () => {
+const Toc = () => {
   const headingRef = useRef<Element[]>();
   const scrollRef = useRef(0);
   const [active, setActive] = useState('');
@@ -25,10 +25,10 @@ const toc = () => {
           const currentIndex = ids.indexOf(id);
           const prevEntry = ids[currentIndex - 1];
           if (isScrollingUp) {
-            const id = prevEntry;
-            setActive(id);
+            setActive(prevEntry);
           }
-        });
+          scrollRef.current = window.scrollY;
+        })
       },
       {
         rootMargin: '0% 0% -85% 0%',
@@ -36,6 +36,9 @@ const toc = () => {
       }
     );
     headings.forEach((e) => observer.observe(e));
+    return () => {
+      headings.forEach((e) => observer.unobserve(e));
+    }
   }, []);
 
   const handleTocItemClick = (id: string) => {
@@ -70,4 +73,4 @@ const toc = () => {
   )
 
 }
-export default toc;
+export default Toc;

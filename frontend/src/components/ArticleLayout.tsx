@@ -18,7 +18,7 @@ import H2Block, { H2Props } from './reactMarkdownCustomComponents/H2Block';
 import ABlock, { AProps } from './reactMarkdownCustomComponents/ABlock';
 import PBlock, { PProps } from './reactMarkdownCustomComponents/PBlock';
 import { entries } from 'next/dist/server/dev/on-demand-entry-handler';
-import Toc from './toc';
+import Toc from './Toc';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
