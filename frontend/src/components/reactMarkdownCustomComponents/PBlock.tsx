@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Node } from 'unist';
 
 export interface PProps {
@@ -7,18 +7,28 @@ export interface PProps {
 }
 
 const PBlock: FC<PProps> = ({ node, children = '' }) => {
-  const childrenArray = React.Children.toArray(children)[0]?.toString().split('\n') || [];
+  const childrenArray = React.Children.toArray(children);
   return (
     <>
-      {childrenArray.map((_: string, index) => {
-        return (
-          <div key={index} className='ml-5'>
-            <p>{_}</p>
-          </div>
-        )
+      {childrenArray.map((element: ReactNode, index1) => {
+        if (typeof element === 'string') {
+          const textArray = element.split('\n');
+          return (
+            <React.Fragment key={index1}>
+              {textArray.map((stringElement, index2) => {
+                return (
+                  <div className="ml-5" key={`${index1}-${index2}`}>
+                    <p>{stringElement}</p>
+                  </div>
+                );
+              })}
+            </React.Fragment>
+          );
+        }
+        return <div key={index1}>{element}</div>;
       })}
     </>
-  )
+  );
 };
 
 export default PBlock;

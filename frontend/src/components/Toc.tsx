@@ -15,7 +15,7 @@ const Toc = () => {
       (entries) => {
         entries.forEach((entry) => {
           const id = entry.target.getAttribute('id') ?? '';
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting) { //entry: 監視対象の要素　が入った状態
             setActive(id);
             scrollRef.current = window.scrollY;
             return;
@@ -27,7 +27,6 @@ const Toc = () => {
           if (isScrollingUp) {
             setActive(prevEntry);
           }
-          scrollRef.current = window.scrollY;
         })
       },
       {
@@ -35,10 +34,10 @@ const Toc = () => {
         threshold: 0.2,
       }
     );
-    headings.forEach((e) => observer.observe(e));
+    headings.forEach((element) => observer.observe(element));
     return () => {
-      headings.forEach((e) => observer.unobserve(e));
-    }
+      headings.forEach((element) => observer.unobserve(element));
+    };
   }, []);
 
   const handleTocItemClick = (id: string) => {
@@ -49,13 +48,13 @@ const Toc = () => {
       <aside className='p-4'>
         <div className='flex gap-4 items-center'>
           <h2 className='text-md  uppercase tracking-widest'>
-            Table Contents
+            Table Of Contents
           </h2>
         </div>
         <ol>
           {headingRef.current?.map((e, index) => {
             const id = e.id;
-            const isActive = active == id;
+            const isActive = active === id;
             return (
               <li key={index} className='my-3'>
                 <TocItem
