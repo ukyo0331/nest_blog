@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import TocItem from './TocItem';
 import { useRouter } from 'next/router';
 
@@ -49,18 +49,26 @@ const Toc = () => {
     highlightToc();
   }, [headingRef.current]);
 
-  const handleTocItemClick = (id: string) => {
+  //smooth scrollの実装
+  const handleTocItemClick = (id: string, e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     setActive(id);
-  }
+    e.preventDefault();
+    const href = e.currentTarget.href;
+    const targetId = href.replace(/.*\#/, "");
+    const elem = document.getElementById(targetId);
+    elem?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  };
   return (
     <section className='toc-card sticky top-4 z-40'>
       <aside className='p-4'>
         <div className='flex gap-4 items-center'>
-          <h2 className='text-md  uppercase tracking-widest'>
+          <h2 className='text-md tracking-widest'>
             Table Of Contents
           </h2>
         </div>
-        <ol>
+        <ol className='border-l-4'>
           {headingRef.current?.map((e, index) => {
             const id = e.id;
             const isActive = active === id;
@@ -70,7 +78,7 @@ const Toc = () => {
                   text={e.textContent ?? ''}
                   active={isActive}
                   id={id}
-                  onClick={() => handleTocItemClick(id)}
+                  onClick={(id, e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleTocItemClick(id, e)}
                 />
               </li>
             )
