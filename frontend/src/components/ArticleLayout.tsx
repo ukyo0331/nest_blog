@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC } from 'react';
 import useStore from "../store/postStore";
 import { useMutatePost } from "../hooks/post/useMutatePost";
 import { useRouter } from "next/router";
@@ -13,11 +13,9 @@ import CodeBlock from './reactMarkdownCustomComponents/CodeBlock';
 import { CodeProps } from './reactMarkdownCustomComponents/CodeBlock';
 import { H1Props } from './reactMarkdownCustomComponents/H1Block';
 import H1Block from './reactMarkdownCustomComponents/H1Block';
-import TableOfContents from './TableOfContents';
 import H2Block, { H2Props } from './reactMarkdownCustomComponents/H2Block';
 import ABlock, { AProps } from './reactMarkdownCustomComponents/ABlock';
 import PBlock, { PProps } from './reactMarkdownCustomComponents/PBlock';
-import { entries } from 'next/dist/server/dev/on-demand-entry-handler';
 import Toc from './Toc';
 
 //個々のブログ記事のレイアウト
