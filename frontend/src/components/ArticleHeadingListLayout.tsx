@@ -38,7 +38,7 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
                   }}
                 >
                   <div
-                    className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3'
+                    className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 bg-white max-w-[320px]'
                     ref={tiltRefs.current[index]}
                   >
                     <div className='h-full flex flex-col'>

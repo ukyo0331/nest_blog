@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/ProfileArea.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Toc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Toc.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/heroImage.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/heroImage.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticleHeadingListLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticleHeadingListLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/HeroArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HeroArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TableOfContents.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/TocItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TocItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +33,6 @@
     <setting file="file://$PROJECT_DIR$/backend/src/post/post.service.ts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/frontend/src/components/ArticleLayout.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/frontend/src/components/RightBar.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/frontend/src/components/TableOfContents.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/frontend/src/components/reactMarkdownCustomComponents/ABlock.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -61,6 +67,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/frontend/src/components/reactMarkdownCostom" />
       <recent name="$PROJECT_DIR$/frontend/public/static" />
       <recent name="$PROJECT_DIR$/frontend/src/components" />
@@ -108,7 +115,7 @@
       <workItem from="1678975772867" duration="32034000" />
       <workItem from="1679203300745" duration="4386000" />
       <workItem from="1679234381269" duration="47515000" />
-      <workItem from="1679738942691" duration="2422000" />
+      <workItem from="1679738942691" duration="12043000" />
     </task>
     <servers />
   </component>

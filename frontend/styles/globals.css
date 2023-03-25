@@ -28,6 +28,7 @@
 @layer base {
     html {
         font-family: 'Montserrat', sans-serif;
+        background: #F5F5F5;
     }
     code {
         display: block;

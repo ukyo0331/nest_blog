@@ -14,7 +14,7 @@ const Layout: FC<Props> = ({children, title = 'Next.js', desc}) => {
                 <title>{title}</title>
                 <meta name="description" content={desc} />
             </Head>
-            <main className='flex w-screen flex-1 flex-col items-center justify-center'>
+            <main className='flex w-screen flex-1 flex-col items-center justify-center bg-[#F5F5F5]'>
                 {children}
             </main>
         </div>

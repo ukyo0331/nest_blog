@@ -13,7 +13,7 @@ const TocItem: FC<TocItemProps> = (
 ) => {
   return (
     <div className='flex items-center'>
-      <span className={`block w-1 h-full ${true && 'bg-blue-400 rounded'}`}/>
+      <span className={`block w-1 h-8 translate-x-[-4px] ${active && 'bg-blue-400 rounded'}`}/>
       <Link
         href={`#${id}`}
         className={`${active && 'text-amber-700'} pl-3 hover:brightness-125 hover:capitalize hover:transition-colors`}
