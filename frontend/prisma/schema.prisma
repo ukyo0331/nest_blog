@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgres"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -12,11 +12,10 @@ model CategoriesOnPosts {
   categoryId String
   assignedAt DateTime @default(now())
   assignedBy String
-  Category   Category @relation(fields: [categoryId], references: [id])
+  Category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   Post       Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@id([postId, categoryId])
-  @@index([categoryId], map: "CategoriesOnPosts_categoryId_fkey")
 }
 
 model Category {
@@ -25,8 +24,6 @@ model Category {
   userId            String
   CategoriesOnPosts CategoriesOnPosts[]
   User              User                @relation(fields: [userId], references: [id])
-
-  @@index([userId], map: "Category_userId_fkey")
 }
 
 model Comment {
@@ -39,9 +36,17 @@ model Comment {
   userId    String
   Post      Post     @relation(fields: [postId], references: [id])
   User      User     @relation(fields: [userId], references: [id])
+}
 
-  @@index([postId], map: "Comment_postId_fkey")
-  @@index([userId], map: "Comment_userId_fkey")
+model OgpMetaData {
+  id          String  @id
+  encodedUrl  String
+  title       String?
+  image       String?
+  favicon     String?
+  description String?
+  postId      String
+  Post        Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
 model Post {
@@ -49,16 +54,15 @@ model Post {
   createdAt         DateTime            @default(now())
   updatedAt         DateTime
   title             String
-  desc              String              @db.Text
+  desc              String
   image             String?
   likes             Int                 @default(0)
-  userId            String
   status            String
+  userId            String
   CategoriesOnPosts CategoriesOnPosts[]
   Comment           Comment[]
+  OgpMetaData       OgpMetaData[]
   User              User                @relation(fields: [userId], references: [id])
-
-  @@index([userId], map: "Post_userId_fkey")
 }
 
 model User {
