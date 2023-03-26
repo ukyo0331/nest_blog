@@ -18,7 +18,7 @@ const PBlock: FC<PProps> = ({ node, children = '' }) => {
               {textArray.map((stringElement, index2) => {
                 return (
                   <div className="ml-5" key={`${index1}-${index2}`}>
-                    <p>{stringElement}</p>
+                    <p className='text-xl'>{stringElement}</p>
                   </div>
                 );
               })}

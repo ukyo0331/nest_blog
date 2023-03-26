@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0988a0b-7d1c-450e-a0f7-9e53aa52ba22" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/ProfileArea.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/heroImage.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/heroImage.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticleHeadingListLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticleHeadingListLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ArticleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ArticleLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/HeroArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HeroArea.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TableOfContents.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TocItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TocItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProfileArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProfileArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/reactMarkdownCustomComponents/PBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/reactMarkdownCustomComponents/PBlock.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +55,7 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "terminal",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/yuta-higa/myblog/my_blog/backend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -115,7 +110,7 @@
       <workItem from="1678975772867" duration="32034000" />
       <workItem from="1679203300745" duration="4386000" />
       <workItem from="1679234381269" duration="47515000" />
-      <workItem from="1679738942691" duration="12816000" />
+      <workItem from="1679738942691" duration="26837000" />
     </task>
     <servers />
   </component>

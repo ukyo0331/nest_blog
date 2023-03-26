@@ -45,9 +45,6 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
 
     return (
         <article key={id} className='sm:w-[95%] w-full'>
-          {/*<div className='fixed z-50'>*/}
-          {/*  <TableOfContents desc={desc}/>*/}
-          {/*</div>*/}
           <Toc/>
           <div>
               <div>
