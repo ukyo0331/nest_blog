@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 
 
-const ProfileArea = () => {
+const ProfileArea: FC = () => {
   return (
     <section className='bg-amber-700'>
       <div className=''>
@@ -15,6 +15,7 @@ const ProfileArea = () => {
             sizes='40vw'
             style={
             { objectFit: 'cover' }}
+            priority={true}
             loading='eager'
             className=''
           />
