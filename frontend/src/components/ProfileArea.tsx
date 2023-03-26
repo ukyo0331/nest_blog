@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 
 
-const ProfileArea: FC = () => {
+const ProfileArea = () => {
   return (
     <section className='bg-amber-700'>
       <div className=''>
