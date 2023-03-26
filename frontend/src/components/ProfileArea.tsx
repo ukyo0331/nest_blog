@@ -15,7 +15,7 @@ const ProfileArea: FC = () => {
             sizes='40vw'
             style={
             { objectFit: 'cover' }}
-            priority={true}
+            loading='eager'
             className=''
           />
         </figure>
