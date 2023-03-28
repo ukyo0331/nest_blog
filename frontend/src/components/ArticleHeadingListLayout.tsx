@@ -19,13 +19,13 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
 
   return (
     <section className='pt-[100px] pl-0 pr-0 w-[80%]'>
-      <div className='m-auto'>
+      <div className='m-auto max-w-[1024px]'>
         <h2 className='min-h-0 font-light text-[clamp(40px,5.2vw,70px)] ml-8'>
           Recent Posts
           <span className='block text-lg text-[#666]'>最近の投稿</span>
         </h2>
         <div className='flex justify-center'>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 m-3 w-full'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 m-3 w-full max-w-[1024px]'>
             {recentPostData?.map((headline: PostType, index) => {
               const { id, title, categories, likes, createdAt } = headline;
               return (

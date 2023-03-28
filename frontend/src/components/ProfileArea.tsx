@@ -20,7 +20,7 @@ const ProfileArea: FC = () => {
             className=''
           />
         </figure>
-        <div className=''>
+        <div className='bg-[#2B3C5B] text-white'>
           <h2 className=''>
             Profile
           </h2>
