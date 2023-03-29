@@ -42,6 +42,7 @@ const Dashboard: NextPage = () => {
     return (
         <>
             {/*ログインユーザのみ表示*/}
+            {user?.id === process.env.NEXT_PUBLIC_USER_ID ?
               <Layout title='ダッシュボード' desc='ダッシュボードです'>
                   <div className='flex bg-amber-600 w-full h-screen relative'>
                       <DashboardHamburgerMenu handleMenuClick={handleMenuClick} />
@@ -59,6 +60,8 @@ const Dashboard: NextPage = () => {
                       </div>
                   </div>
               </Layout>
+              : <Loader />
+            }
         </>
     )
 }
