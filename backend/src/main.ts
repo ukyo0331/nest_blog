@@ -1,12 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import { Req, ValidationPipe } from '@nestjs/common';
 import { Request } from 'express';
 import * as cookieParser from 'cookie-parser';
 import * as csurf from 'csurf';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { ConfigService } from '@nestjs/config';
 import { config } from 'aws-sdk';
+import { Csrf } from './auth/interfaces/auth.interface';
+
+const getCsrfToken = (req: any) => {
+  return req.csrfToken();
+};
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -30,9 +35,7 @@ async function bootstrap() {
         sameSite: 'none',
         secure: true,
       },
-      value: (req: Request) => {
-        return req.header('csrf-token');
-      },
+      value: getCsrfToken,
     }),
   );
   await app.listen(process.env.PORT || 3005);
