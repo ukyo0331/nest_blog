@@ -30,6 +30,7 @@ const Dashboard: NextPage = () => {
     const { renderScreen, handleMenuClick } = useHandleMenuClick();
     //ログインユーザ情報取得
     const { data: user, status } = useQueryUser();
+    console.log(user?.id)
 
     if (status === 'loading') {
         return (
