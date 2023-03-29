@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) 
     const take = defaultPostsPerPage;
     const skip = (page - 1) * take;
 
-    const data = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}/category/${categoryName}`,{
+    const data = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}/category/${encodeURI(categoryName)}`,{
         data: {
             skip,
             take,
