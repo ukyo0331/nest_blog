@@ -58,6 +58,9 @@
         color: #fff;
         border-radius: 50%;
     }
+    .aspect-ratio-square {
+        position: relative;
+    }
 }
 
 @layer base {

@@ -17,7 +17,7 @@ const CategoryIconButton: FC<CategoryProps> = ({categories}) => {
                             e.preventDefault();
                             router.push(`/blog/category/${arg.category.name}`)
                         }}
-                        className='h-8 rounded-[16px] flex justify-between m-0 bg-amber-20　border-black border border-solid-1 cursor-pointer hover:bg-blue-50 hover:scale-105'
+                        className='transition-all duration-500 ease-out h-8 rounded-[16px] flex justify-between m-0 bg-amber-20 border border-solid-1 cursor-pointer hover:bg-blue-50 hover:scale-105'
                     >
                         <figure className='mt-1 ml-1 w-6 h-6 mr-2 rounded-[100%] flex justify-center'>
                             <ImageComponent imageKey={`${arg.category.name}.png`}/>
