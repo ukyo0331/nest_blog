@@ -18,14 +18,14 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
   const { tiltRefs } = useTilt(recentPostData, options);
 
   return (
-    <section className='pt-[100px] pl-0 pr-0 w-[80%]'>
+    <section className='pt-[100px] pl-0 pr-0 w-screen'>
       <div className='m-auto max-w-[1024px]'>
         <h2 className='min-h-0 font-light text-[clamp(40px,5.2vw,70px)] ml-8'>
           Recent Posts
           <span className='block text-lg text-[#666]'>最近の投稿</span>
         </h2>
         <div className='flex justify-center'>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 m-3 w-full max-w-[1024px]'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 m-3 w-full max-w-[1024px]'>
             {recentPostData?.map((headline: PostType, index) => {
               const { id, title, categories, likes, createdAt } = headline;
               return (
@@ -38,7 +38,7 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
                   }}
                 >
                   <div
-                    className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 bg-white max-w-[320px]'
+                    className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 bg-white max-w-[320px] mx-auto'
                     ref={tiltRefs.current[index]}
                   >
                     <div className='h-full flex flex-col'>
