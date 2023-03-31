@@ -52,10 +52,8 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
     const { handleMenuClick } = useHandleMenuClick();
     return (
         <>
-            {/*<DashboardHamburgerMenu handleMenuClick={e => handleMenuClick(e)}/>*/}
-            {/*<DashboardSidebar handleMenuClick={e => handleMenuClick(e)}/>*/}
-            <div className='flex min-h-full'>
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-full lg:max-w-4xl'>
+          <div className='flex min-h-full bg-amber-400'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-full lg:max-w-4xl bg-amber-700 mx-auto'>
                     <ArticleList articles={recentPostData} options={options}/>
                 </div>
                 <RightBar />
