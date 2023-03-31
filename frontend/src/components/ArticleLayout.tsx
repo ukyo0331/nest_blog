@@ -44,7 +44,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const { setRenderScreen } = useHandleMenuClick();
 
     return (
-        <article key={id} className='sm:w-[95%] w-full'>
+        <article key={id} className='sm:w-[95%] w-full max-w-[1024px]'>
           <Toc/>
           <div>
               <div>

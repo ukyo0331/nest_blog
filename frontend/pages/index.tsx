@@ -5,6 +5,7 @@ import ArticleHeadingListLayout from "../src/components/ArticleHeadingListLayout
 import Layout from '../src/components/Layout';
 import HeroArea from '../src/components/HeroArea';
 import ProfileArea from '../src/components/ProfileArea';
+import AboutThisPageArea from '../src/components/AboutThisPageArea';
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     //最新の記事を6件取得
@@ -38,6 +39,7 @@ const Home: NextPage<SSRProps> = ({recentPostData}) => {
         <Layout title='YUTA code .' desc='YUTAのエンジニアブログです'>
           <HeroArea/>
           <ProfileArea/>
+          <AboutThisPageArea/>
           <ArticleHeadingListLayout
             recentPostData={recentPostData}
             options={options}
