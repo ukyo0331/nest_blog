@@ -7,6 +7,7 @@ import { ArticleLayout } from "../../src/components/ArticleLayout";
 import Layout from "../../src/components/Layout";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types";
+import RightBar from '../../src/components/RightBar';
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
@@ -36,11 +37,11 @@ const ArticlePage: NextPage = () => {
         return (
           <div className='h-full flex justify-center items-center'>
               <Loader/>
+              <RightBar/>
           </div>
     )
     }
     if (error || postId === 'category' || !data) return <Custom404/>
-
 
     try {
         const {id, title, categories, desc, image, likes, status, createdAt, updatedAt, comments} = data;
@@ -61,8 +62,8 @@ const ArticlePage: NextPage = () => {
                             image={image}
                         />
                     </div>
+                    <RightBar/>
                 </Layout>
-
             </>
         );
     } catch (err) {
