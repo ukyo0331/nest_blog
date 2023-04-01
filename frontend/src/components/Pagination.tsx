@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 
 type PaginationPropsType = {
@@ -16,7 +16,7 @@ const Pagination: FC<PaginationPropsType> = ({totalPage,onPageChange}) => {
     const pageNumberArray = Array.from({length: end - start + 1}, (_, i) => i + start);
 
     return (
-        <ul className='flex cursor-pointer justify-center my-3'>
+        <ul className='flex cursor-pointer justify-center my-3 h-fit'>
             <li className=''>
                 <a
                     onClick={(e) => {

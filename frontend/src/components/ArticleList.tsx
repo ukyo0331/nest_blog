@@ -28,8 +28,9 @@ const ArticleList: FC<ArticleListProps> = ({ articles, options }) => {
                         status === 'published'
                           ? router.push(`/blog/${id}`)
                           : router.push(`/draft/${id}`)
-                     }
-                     }
+                       }
+                    }
+                    className='w-fit h-fit'
                   >
                       <div
                         className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs bg-white w-60'

@@ -52,13 +52,17 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
     const { handleMenuClick } = useHandleMenuClick();
     return (
         <>
-          <div className='flex min-h-full bg-amber-400'>
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-full lg:max-w-4xl bg-amber-700 mx-auto'>
-                    <ArticleList articles={recentPostData} options={options}/>
+            <div className='min-h-screen h-screen'>
+                <div className='min-h-screen h-screen md:mr-64'>
+                    <div className='w-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto gap-x-0 content-start'>
+                        <ArticleList articles={recentPostData} options={options}/>
+                    </div>
+                    <div className='flex items-end justify-center w-full'>
+                        <Pagination totalPage={totalPage} onPageChange={ handlePageChange }/>
+                    </div>
                 </div>
                 <RightBar />
             </div>
-            <Pagination totalPage={totalPage} onPageChange={handlePageChange}/>
         </>
     )
 }

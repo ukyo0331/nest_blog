@@ -20,7 +20,7 @@ const AboutThisPageArea: FC = () => {
           />
         </figure>
         <div className='bg-[#2B3C5B] mb-6 text-white h-fit w-[90vw] rounded sm:absolute sm:w-[45%] sm:mb-0 sm:left-[50%] sm:bg-white sm:text-[#2B3C5B]'>
-          <h2 className='font-bold text-3xl pt-6 pl-6 sm:text-5xl sm:after:block sm:after:w-[30%] sm:after:h-0.5 sm:after:bg-[#2B3C5B] sm:after:mt-3'>
+          <h2 className='font-light text-3xl pt-6 pl-6 sm:text-5xl sm:after:block sm:after:w-[30%] sm:after:h-0.5 sm:after:bg-[#2B3C5B] sm:after:mt-3'>
             About this site
           </h2>
           <p className='text-xl p-3'>

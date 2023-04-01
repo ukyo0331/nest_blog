@@ -18,7 +18,7 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
   const { tiltRefs } = useTilt(recentPostData, options);
 
   return (
-    <section className='pt-[100px] pl-0 pr-0 w-screen'>
+    <section className='pt-24 px-0 w-screen'>
       <div className='m-auto max-w-[1024px]'>
         <h2 className='min-h-0 font-light text-[clamp(40px,5.2vw,70px)] ml-8'>
           Recent Posts

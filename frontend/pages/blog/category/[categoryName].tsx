@@ -8,6 +8,7 @@ import { defaultPostsPerPage } from '../../../src/defaultPostsPerPage';
 import Pagination from '../../../src/components/Pagination';
 import usePagination from '../../../src/hooks/pagination/usePagination'
 import Custom404 from '../../404';
+import RightBar from '../../../src/components/RightBar';
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     const categoryName = context.params?.categoryName as string;
@@ -52,8 +53,15 @@ const CategoryPostListPage: NextPage<SSRProps> = ({recentPostData, categoryName}
     if (recentPostData.length === 0) return <Custom404 />
       return (
         <>
-            <ArticleList articles={recentPostData} options={options}></ArticleList>
-            <Pagination totalPage={totalPage} onPageChange={handlePageChange}/>
+            <div className='min-h-screen h-screen'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto'>
+                    <ArticleList articles={recentPostData} options={options}/>
+                </div>
+                <div className='flex items-end justify-center w-full'>
+                    <Pagination totalPage={totalPage} onPageChange={ handlePageChange }/>
+                </div>
+                <RightBar />
+            </div>
         </>
     )
 };
