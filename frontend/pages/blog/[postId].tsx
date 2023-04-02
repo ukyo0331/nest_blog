@@ -8,6 +8,8 @@ import Layout from "../../src/components/Layout";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types";
 import RightBar from '../../src/components/RightBar';
+import ArticleList from '../../src/components/ArticleList';
+import Pagination from '../../src/components/Pagination';
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
@@ -35,11 +37,18 @@ const ArticlePage: NextPage = () => {
     // /blog/categoryにアクセスされた場合も404を返す
     if (loading) {
         return (
-          <div className='h-full flex justify-center items-center'>
-              <Loader/>
+          <div className='min-h-screen h-screen md:flex md:justify-center'>
+              <div className='min-h-screen h-screen bg-blue-300'>
+                  <div className='w-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto gap-x-0 content-start'>
+                      zzz
+                  </div>
+                  <div className='flex items-end justify-center w-full'>
+                      bbb
+                  </div>
+              </div>
               <RightBar/>
           </div>
-    )
+        )
     }
     if (error || postId === 'category' || !data) return <Custom404/>
 
@@ -48,21 +57,23 @@ const ArticlePage: NextPage = () => {
         return (
             <>
                 <Layout title={title} desc='ブログのdescription'>
-                    <div className='flex justify-center sm:w-[80%] w-full'>
-                        <ArticleLayout
-                            title={title}
-                            categories={categories}
-                            desc={desc}
-                            comments={comments}
-                            updatedAt={updatedAt}
-                            status={status}
-                            createdAt={createdAt}
-                            id={id}
-                            likes={likes}
-                            image={image}
-                        />
+                    <div className='md:flex md:justify-center'>
+                        <div className='flex justify-center sm:w-[80%] w-full'>
+                            <ArticleLayout
+                              title={title}
+                              categories={categories}
+                              desc={desc}
+                              comments={comments}
+                              updatedAt={updatedAt}
+                              status={status}
+                              createdAt={createdAt}
+                              id={id}
+                              likes={likes}
+                              image={image}
+                            />
+                        </div>
+                        <RightBar/>
                     </div>
-                    <RightBar/>
                 </Layout>
             </>
         );
