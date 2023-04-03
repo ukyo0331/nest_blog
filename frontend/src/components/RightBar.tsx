@@ -4,7 +4,7 @@ import Toc from './Toc';
 const RightBar = () => {
   return (
     <div className='hidden md:inline-block sm:w-64 md:h-screen bg-amber-600'>
-      <div className='bg-amber-400 flex flex-col items-center fixed h-screen'>
+      <div className='bg-amber-400 w-64 flex flex-col items-center fixed h-screen'>
         <Image
           src='/profile02.jpg'
           alt='hero image'

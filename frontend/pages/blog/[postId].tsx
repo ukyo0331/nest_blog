@@ -10,6 +10,8 @@ import { PostType } from "../../types";
 import RightBar from '../../src/components/RightBar';
 import ArticleList from '../../src/components/ArticleList';
 import Pagination from '../../src/components/Pagination';
+import CategoryButton from '../../src/components/CategoryIconButton';
+import { format } from 'timeago.js';
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
@@ -37,17 +39,18 @@ const ArticlePage: NextPage = () => {
     // /blog/categoryにアクセスされた場合も404を返す
     if (loading) {
         return (
-          <div className='min-h-screen h-screen md:flex md:justify-center'>
-              <div className='min-h-screen h-screen bg-blue-300'>
-                  <div className='w-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto gap-x-0 content-start'>
-                      zzz
+          <Layout title={`ロード中`} desc={`ロード画面です`}>
+              <div className='min-h-screen h-screen md:flex md:justify-center'>
+                  <div className='min-h-screen h-screen bg-blue-300'>
+                      <div className='lg:max-w-[calc(1024px-16rem)] w-screen min-h-[calc(100%-3.75rem)] sm:max-w-[33rem] mx-auto'>
+                          <div className='flex h-screen w-full justify-center items-center bg-amber-200'>
+                              <Loader/>
+                          </div>
+                      </div>
                   </div>
-                  <div className='flex items-end justify-center w-full'>
-                      bbb
-                  </div>
+                  <RightBar/>
               </div>
-              <RightBar/>
-          </div>
+          </Layout>
         )
     }
     if (error || postId === 'category' || !data) return <Custom404/>
@@ -57,8 +60,46 @@ const ArticlePage: NextPage = () => {
         return (
             <>
                 <Layout title={title} desc='ブログのdescription'>
-                    <div className='md:flex md:justify-center'>
-                        <div className='flex justify-center sm:w-[80%] w-full'>
+                    {/*<div className='min-h-screen h-screen md:flex md:justify-center w-[calc(100vw-16rem)] max-w-[1024px]'>*/}
+                    {/*    <div className='min-h-screen h-screen bg-blue-300 w-full max-w-[calc(1024px-16rem)]'>*/}
+                    {/*        <div className='w-full mx-auto bg-red-300 md:p-10'>*/}
+                    {/*            <ArticleLayout*/}
+                    {/*              title={title}*/}
+                    {/*              categories={categories}*/}
+                    {/*              desc={desc}*/}
+                    {/*              comments={comments}*/}
+                    {/*              updatedAt={updatedAt}*/}
+                    {/*              status={status}*/}
+                    {/*              createdAt={createdAt}*/}
+                    {/*              id={id}*/}
+                    {/*              likes={likes}*/}
+                    {/*              image={image}*/}
+                    {/*            />*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*    <RightBar/>*/}
+                    {/*</div>*/}
+                    {/*上記だとtable of content 読み込みバグあり*/}
+                    {/*<div className='md:flex md:justify-center'>*/}
+                    {/*    <div className='flex justify-center sm:w-[80%] w-full'>*/}
+                    {/*        <ArticleLayout*/}
+                    {/*          title={title}*/}
+                    {/*          categories={categories}*/}
+                    {/*          desc={desc}*/}
+                    {/*          comments={comments}*/}
+                    {/*          updatedAt={updatedAt}*/}
+                    {/*          status={status}*/}
+                    {/*          createdAt={createdAt}*/}
+                    {/*          id={id}*/}
+                    {/*          likes={likes}*/}
+                    {/*          image={image}*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
+                    {/*    <RightBar/>*/}
+                    {/*</div>*/}
+                    {/*上記はリセット用*/}
+                    <div className='w-screen sm:w-[80%] flex max-w-[1024px]'>
+                        <div className='w-screen sm:w-[48rem] max-w-[32rem] md:min-w-[40rem] lg:min-w-[48rem] bg-teal-200'>
                             <ArticleLayout
                               title={title}
                               categories={categories}

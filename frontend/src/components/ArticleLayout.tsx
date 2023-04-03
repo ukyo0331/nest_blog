@@ -16,7 +16,6 @@ import H1Block from './reactMarkdownCustomComponents/H1Block';
 import H2Block, { H2Props } from './reactMarkdownCustomComponents/H2Block';
 import ABlock, { AProps } from './reactMarkdownCustomComponents/ABlock';
 import PBlock, { PProps } from './reactMarkdownCustomComponents/PBlock';
-import Toc from './Toc';
 
 //個々のブログ記事のレイアウト
 export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
@@ -44,7 +43,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const { setRenderScreen } = useHandleMenuClick();
 
     return (
-        <article key={id} className='md:w-[calc(95%-16rem)] md:mr-64 w-full max-w-[calc(1024px-16rem)]'>
+        <article key={id} className='p-5'>
           <div>
               <div>
                   <CategoryIconButton categories={categories}/>

@@ -1,5 +1,6 @@
 import { ReactNode, FC } from "react";
 import Head from "next/head";
+import Header from './Header';
 
 type Props = {
     children: ReactNode,
@@ -14,9 +15,10 @@ const Layout: FC<Props> = ({children, title = 'Next.js', desc}) => {
                 <title>{title}</title>
                 <meta name="description" content={desc} />
             </Head>
-            <main className='flex w-screen flex-1 flex-col items-center justify-center bg-[#F5F5F5]'>
+          <Header/>
+          <main className='flex w-screen flex-1 flex-col items-center justify-center bg-[#F5F5F5] mt-16'>
                 {children}
-            </main>
+          </main>
         </div>
     )
 }

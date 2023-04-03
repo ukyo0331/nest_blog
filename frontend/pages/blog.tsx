@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
 import usePagination from '../src/hooks/pagination/usePagination';
 import RightBar from '../src/components/RightBar';
+import Layout from '../src/components/Layout';
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
     const page = parseInt(context.query.page as string) || 1;
@@ -49,20 +50,22 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
         }
     };
     //レンダリングする画面のコントロール
-    const { handleMenuClick } = useHandleMenuClick();
+    // const { handleMenuClick } = useHandleMenuClick();
     return (
         <>
-            <div className='min-h-screen h-screen md:flex md:justify-center'>
-                <div className='min-h-screen h-screen bg-blue-300'>
-                    <div className='w-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto gap-x-0 content-start'>
-                        <ArticleList articles={recentPostData} options={options}/>
+            <Layout title={`article list`} desc={`ブログ記事一覧ページです`}>
+                <div className='min-h-screen h-screen md:flex md:justify-center'>
+                    <div className='min-h-screen h-screen bg-blue-300 max-w-[calc(1024px-16rem)'>
+                        <div className='w-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto content-start'>
+                            <ArticleList articles={recentPostData} options={options}/>
+                        </div>
+                        <div className='flex items-end justify-center w-full'>
+                            <Pagination totalPage={totalPage} onPageChange={ handlePageChange }/>
+                        </div>
                     </div>
-                    <div className='flex items-end justify-center w-full'>
-                        <Pagination totalPage={totalPage} onPageChange={ handlePageChange }/>
-                    </div>
+                    <RightBar/>
                 </div>
-                <RightBar/>
-            </div>
+            </Layout>
         </>
     )
 }

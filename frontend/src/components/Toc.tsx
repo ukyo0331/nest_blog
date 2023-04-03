@@ -42,11 +42,17 @@ const Toc = () => {
         headings.forEach((element) => observer.unobserve(element));
       };
     }
-    router.events.on('routeChangeComplete', () => {
+    const handleRouteChangeComplete = () => {
       highlightToc();
-    });
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChangeComplete);
 
     highlightToc();
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChangeComplete);
+    };
   }, [headingRef.current]);
 
   //smooth scrollの実装
@@ -65,7 +71,7 @@ const Toc = () => {
       <aside className='p-4'>
         <div className='flex gap-4 items-center'>
           <h2 className='text-md tracking-widest'>
-            Table Of Contents
+            目次
           </h2>
         </div>
         <ol className='border-l-4'>
