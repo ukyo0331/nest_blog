@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import SiteLogo from '../../public/SiteLogo.svg';
 
 const headerItems = [
   {
@@ -21,12 +22,15 @@ const headerItems = [
 
 const Header = () => {
   const router = useRouter();
+  console.log(SiteLogo)
   return (
     <>
       <header className='w-screen h-16 bg-[#2B3C5B] flex items-center fixed top-0 left-0 z-50'>
         <div className='text-white h-14 w-full max-w-[1024px] flex items-center m-auto justify-between'>
           <div>
-            YUTA CODE.
+            <SiteLogo
+              width={250}
+            />
           </div>
           <div>
             <ul className={`flex`}>

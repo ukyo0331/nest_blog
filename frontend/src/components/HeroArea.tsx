@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import SiteLogo from '../../public/SiteLogo.svg';
 
 const HeroArea = () => {
   const router = useRouter();
@@ -18,15 +19,17 @@ const HeroArea = () => {
              loading='eager'
       />
       <section className='w-full h-full flex flex-col justify-center items-center absolute'>
-        <h1 className='text-white min-h-0 font-bold mb-10 text-center text-[clamp(48px,5vw,68px)]'>
-          YUTA code .（仮）
-        </h1>
         <button
           onClick={(e: React.MouseEvent) => handleClick(e)}
           className='top-button uppercase mt-12'
         >
           article list
         </button>
+        <h1 className='absolute bottom-6'>
+          <SiteLogo
+            width={600}
+          />
+        </h1>
       </section>
     </div>
   );
