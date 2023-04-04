@@ -54,8 +54,8 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
     return (
         <>
             <Layout title={`article list`} desc={`ブログ記事一覧ページです`}>
-                <div className='min-h-screen h-screen md:flex md:justify-center'>
-                    <div className='min-h-screen h-screen bg-blue-300 max-w-[calc(1024px-16rem)'>
+                <div className='min-h-screen md:flex md:justify-center'>
+                    <div className='min-h-screen max-w-[calc(1024px-16rem)'>
                         <div className='w-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto content-start'>
                             <ArticleList articles={recentPostData} options={options}/>
                         </div>

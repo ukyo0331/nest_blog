@@ -23,7 +23,7 @@ const Header = () => {
   const router = useRouter();
   return (
     <>
-      <div className='w-screen h-16 bg-[#2B3C5B] flex items-center fixed top-0 left-0 z-50'>
+      <header className='w-screen h-16 bg-[#2B3C5B] flex items-center fixed top-0 left-0 z-50'>
         <div className='text-white h-14 w-full max-w-[1024px] flex items-center m-auto justify-between'>
           <div>
             YUTA CODE.
@@ -45,7 +45,7 @@ const Header = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </header>
     </>
   )
 }

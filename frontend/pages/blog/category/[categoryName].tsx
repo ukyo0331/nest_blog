@@ -55,8 +55,8 @@ const CategoryPostListPage: NextPage<SSRProps> = ({recentPostData, categoryName}
       return (
         <>
             <Layout title={`カテゴリ検索`} desc={`カテゴリ検索の画面です`}>
-                <div className='min-h-screen h-screen md:flex md:justify-center'>
-                    <div className='min-h-screen h-screen bg-blue-300'>
+                <div className='min-h-screen md:flex md:justify-center'>
+                    <div className='min-h-screen bg-blue-300'>
                         <div className='w-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto gap-x-0 content-start'>
                             <ArticleList articles={recentPostData} options={options}/>
                         </div>
