@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import SiteLogo from '../../public/SiteLogo.svg';
+import Logo from './AnimationLogo';
 
 const HeroArea = () => {
   const router = useRouter();
@@ -19,6 +20,7 @@ const HeroArea = () => {
              loading='eager'
       />
       <section className='w-full h-full flex flex-col justify-center items-center absolute'>
+        <Logo/>
         <button
           onClick={(e: React.MouseEvent) => handleClick(e)}
           className='top-button uppercase mt-12'

@@ -29,7 +29,7 @@ const Header = () => {
         <div className='text-white h-14 w-full max-w-[1024px] flex items-center m-auto justify-between'>
           <div>
             <SiteLogo
-              width={250}
+              width={200}
             />
           </div>
           <div>
