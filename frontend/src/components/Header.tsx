@@ -22,21 +22,22 @@ const headerItems = [
 
 const Header = () => {
   const router = useRouter();
-  console.log(SiteLogo)
   return (
     <>
       <header className='w-screen h-16 bg-[#2B3C5B] flex items-center fixed top-0 left-0 z-50'>
         <div className='text-white h-14 w-full max-w-[1024px] flex items-center m-auto justify-between'>
           <div>
-            <SiteLogo
-              width={200}
-            />
+            <a href={'/'}>
+              <SiteLogo
+                width={200}
+              />
+            </a>
           </div>
           <div>
             <ul className={`flex`}>
               {headerItems.map((item, index) => {
                 return (
-                  <li key={index} className={`cursor-pointer`}>
+                  <li key={index} className={`cursor-pointer mx-3`}>
                     <a onClick={(e: React.MouseEvent) =>{
                       e.preventDefault();
                       router.push(item.link)

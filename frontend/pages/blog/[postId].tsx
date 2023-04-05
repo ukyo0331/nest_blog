@@ -80,26 +80,8 @@ const ArticlePage: NextPage = () => {
                     {/*    <RightBar/>*/}
                     {/*</div>*/}
                     {/*上記だとtable of content 読み込みバグあり*/}
-                    {/*<div className='md:flex md:justify-center'>*/}
-                    {/*    <div className='flex justify-center sm:w-[80%] w-full'>*/}
-                    {/*        <ArticleLayout*/}
-                    {/*          title={title}*/}
-                    {/*          categories={categories}*/}
-                    {/*          desc={desc}*/}
-                    {/*          comments={comments}*/}
-                    {/*          updatedAt={updatedAt}*/}
-                    {/*          status={status}*/}
-                    {/*          createdAt={createdAt}*/}
-                    {/*          id={id}*/}
-                    {/*          likes={likes}*/}
-                    {/*          image={image}*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
-                    {/*    <RightBar/>*/}
-                    {/*</div>*/}
-                    {/*上記はリセット用*/}
-                    <div className='w-screen sm:w-[80%] flex max-w-[1024px]'>
-                        <div className='w-screen sm:w-[48rem] max-w-[32rem] md:min-w-[40rem] lg:min-w-[48rem] bg-teal-200'>
+                    <div className='md:flex md:justify-center'>
+                        <div className='flex justify-center sm:w-[80%] w-full'>
                             <ArticleLayout
                               title={title}
                               categories={categories}
