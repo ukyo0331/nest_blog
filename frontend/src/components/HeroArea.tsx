@@ -28,9 +28,6 @@ const HeroArea = () => {
           article list
         </button>
         <h1 className='absolute bottom-6'>
-          <SiteLogo
-            width={600}
-          />
         </h1>
       </section>
     </div>

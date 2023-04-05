@@ -1,18 +1,52 @@
 import { motion } from 'framer-motion';
 
-const svgVariants = {
+const logoAnimationVariants_1 = {
   hidden: {
-    rotate: -180,
-    width: 0,
+    rotate: -360,
+    rx: 0,
+    ry: 0,
   },
   visible: {
-    width: 300,
     rotate: 0,
+    rx: 36,
+    ry: 100.5,
     transition: {
-      duration: 1
+      duration: 1,
+      ease: 'easeInOut'
     },
   },
 };
+const logoAnimationVariants_2 = {
+  hidden: {
+    rotate: -360,
+    rx: 0,
+    ry: 0,
+  },
+  visible: {
+    rotate: 0,
+    rx: 100.5,
+    ry: 36,
+    transition: {
+      duration: 1,
+      ease: 'easeInOut'
+    },
+  },
+};
+
+const circleAnimationVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+
+    transition: {
+      delay: 1,
+      duration: 1,
+      ease: 'easeIn'
+    }
+  }
+}
 
 const pathVariants = {
   hidden: {
@@ -32,15 +66,11 @@ const pathVariants = {
 const AnimationLogo = () => {
   return (
     <div>
-      <motion.svg
-        width="100%"
-        height="100%"
+      <svg
+        className={`w-screen px-6 sm:w-[32rem]`}
         viewBox="0 0 2164 510"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
-        variants={svgVariants}
-        initial={`hidden`}
-        animate={`visible`}
       >
     <g transform="matrix(1.33333,0,0,1.33333,0,0)">
         <g id="レイヤー_2" transform="matrix(1,0,0,1,315,-56)">
@@ -124,6 +154,16 @@ const AnimationLogo = () => {
                     />
                 </g>
             </g>
+          <g transform="matrix(1,0,0,1,-135,157)" id='dot'>
+            <g transform="matrix(288,0,0,288,1378.35,183.521)">
+              <path
+                d="M0.106,-0L0.106,-0.082L0.136,-0.082L0.136,-0L0.106,-0ZM0.04,-0L0.04,-0.082L0.07,-0.082L0.07,-0L0.04,-0Z"
+                fill={`rgb(225, 225, 225)`}
+                fillRule={'nonzero'}
+              />
+            </g>
+          </g>
+          {/*以下ロゴデザイン*/}
           <g>
                 <g transform="matrix(1.62343,-0.86129,0.971674,1.439,-1368.77,249.148)">
                     <motion.ellipse
@@ -134,44 +174,128 @@ const AnimationLogo = () => {
                       fill={`none`}
                       stroke={`rgb(203,246,255)`}
                       strokeWidth={`2.93px`}
-                      variants={pathVariants}
+                      variants={logoAnimationVariants_2}
                       initial={`hidden`}
                       animate={`visible`}
                     />
                 </g>
             <g transform="matrix(1.62343,-0.86129,0.971674,1.439,-1368.77,249.148)">
-                    <ellipse cx="566.4" cy="338.11" rx="100.5" ry="36" fill={`none`} stroke={`rgb(203,246,255)`} strokeWidth={`2.93px`}/>
+                    <motion.ellipse
+                      cx="566.4"
+                      cy="338.11"
+                      rx="100.5"
+                      ry="36"
+                      fill={`none`}
+                      stroke={`rgb(203,246,255)`}
+                      strokeWidth={`2.93px`}
+                      variants={logoAnimationVariants_2}
+                      initial={`hidden`}
+                      animate={`visible`}
+                    />
                 </g>
             <g transform="matrix(0.971674,-1.439,1.62343,0.86129,-1222.99,776.375)">
-                    <ellipse cx="568.07" cy="340.91" rx="36" ry="100.5" fill={`none`} stroke={`rgb(203,246,255)`} strokeWidth={`2.93px`}/>
+                    <motion.ellipse
+                      cx="568.07"
+                      cy="340.91"
+                      rx="36"
+                      ry="100.5"
+                      fill={`none`}
+                      stroke={`rgb(203,246,255)`}
+                      strokeWidth={`2.93px`}
+                      variants={logoAnimationVariants_1}
+                      initial={`hidden`}
+                      animate={`visible`}
+                    />
                 </g>
             <g transform="matrix(0.971674,-1.439,1.62343,0.86129,-1222.99,776.375)">
-                    <ellipse cx="568.07" cy="340.91" rx="36" ry="100.5" id={`ring1`} fill={`none`} stroke={`rgb(203,246,255)`} strokeWidth={`2.93px`}/>
+                    <motion.ellipse
+                      cx="568.07"
+                      cy="340.91"
+                      rx="36"
+                      ry="100.5"
+                      id={`ring1`}
+                      fill={`none`}
+                      stroke={`rgb(203,246,255)`}
+                      strokeWidth={`2.93px`}
+                      variants={logoAnimationVariants_1}
+                      initial={`hidden`}
+                      animate={`visible`}
+                    />
                 </g>
             <g transform="matrix(0.971674,-1.439,1.62343,0.86129,-1222.99,776.375)">
-                    <ellipse cx="568.07" cy="340.91" rx="36" ry="100.5" id={`ring2`} fill={`none`} stroke={`rgb(203,246,255)`} strokeWidth={`2.93px`}/>
+                    <motion.ellipse
+                      cx="568.07"
+                      cy="340.91"
+                      rx="36"
+                      ry="100.5"
+                      id={`ring2`}
+                      fill={`none`}
+                      stroke={`rgb(203,246,255)`}
+                      strokeWidth={`2.93px`}
+                      variants={logoAnimationVariants_1}
+                      initial={`hidden`}
+                      animate={`visible`}
+                    />
                 </g>
             <g transform="matrix(0.0577026,-1.67613,1.89094,0.0511475,-796.205,1182.91)">
-                    <ellipse cx="566.4" cy="339.91" rx="100.5" ry="36" id={`ring3`} fill={`none`} stroke={`rgb(203,246,255)`} strokeWidth={`3.07px`}/>
+                    <motion.ellipse
+                      cx="566.4"
+                      cy="339.91"
+                      rx="100.5"
+                      ry="36"
+                      id={`ring3`}
+                      fill={`none`}
+                      stroke={`rgb(203,246,255)`}
+                      strokeWidth={`3.07px`}
+                      variants={logoAnimationVariants_2}
+                      initial={`hidden`}
+                      animate={`visible`}
+                    />
                 </g>
             <g transform="matrix(1.89189,0,0,1.67697,-1192.37,-319.136)">
-                    <circle cx="597.83" cy="284.1" r="10.4" fill={`white`} stroke={`rgb(203, 246, 255)`} strokeWidth={`3.08px`}/>
+                    <motion.circle
+                      cx="597.83"
+                      cy="284.1"
+                      r="10.4"
+                      fill={`white`}
+                      stroke={`rgb(203, 246, 255)`}
+                      strokeWidth={`3.08px`}
+                      variants={circleAnimationVariants}
+                      initial={`hidden`}
+                      animate={`visible`}
+                    />
                 </g>
             <g transform="matrix(1.89189,0,0,1.67697,-1192.37,-319.136)">
-                    <circle cx="506.29" cy="338.08" r="10.4" fill={`white`} stroke={`rgb(203, 246, 255)`} strokeWidth={`3.08px`}/>
+                    <motion.circle
+                      cx="506.29"
+                      cy="338.08"
+                      r="10.4"
+                      fill={`white`}
+                      stroke={`rgb(203, 246, 255)`}
+                      strokeWidth={`3.08px`}
+                      variants={circleAnimationVariants}
+                      initial={`hidden`}
+                      animate={`visible`}
+                    />
                 </g>
             <g transform="matrix(1.89189,0,0,1.67697,-1192.37,-319.136)">
-                    <circle cx="597.83" cy="390.63" r="10.4"  fill={`white`} stroke={`rgb(203, 246, 255)`} strokeWidth={`3.08px`}/>
+                    <motion.circle
+                      cx="597.83"
+                      cy="390.63"
+                      r="10.4"
+                      fill={`white`}
+                      stroke={`rgb(203, 246, 255)`}
+                      strokeWidth={`3.08px`}
+                      variants={circleAnimationVariants}
+                      initial={`hidden`}
+                      animate={`visible`}
+              />
                 </g>
             </g>
-          <g transform="matrix(1,0,0,1,-135,157)" id='dot'>
-                <g transform="matrix(288,0,0,288,1378.35,183.521)">
-                    <path d="M0.106,-0L0.106,-0.082L0.136,-0.082L0.136,-0L0.106,-0ZM0.04,-0L0.04,-0.082L0.07,-0.082L0.07,-0L0.04,-0Z" fill={`rgb(225, 225, 225)`} fillRule={'nonzero'}/>
-                </g>
-            </g>
+
         </g>
     </g>
-</motion.svg>
+</svg>
 
     </div>
   )
