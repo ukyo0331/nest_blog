@@ -9,10 +9,12 @@ const headerItems = [
   {
     title: 'About this site',
     link: '/',
+    href: '#this_site'
   },
   {
     title: 'Profile',
     link: '/',
+    href: '#profile'
   },
   {
     title: 'Articles',
@@ -25,7 +27,7 @@ const Header = () => {
   return (
     <>
       <header className='w-screen h-16 bg-[#2B3C5B] flex items-center fixed top-0 left-0 z-50'>
-        <div className='text-white h-14 w-full max-w-[1024px] flex items-center m-auto justify-between'>
+        <div className='text-white h-14 w-full lg:max-w-[1024px] sm:max-w-[50rem] flex items-center m-auto justify-between'>
           <div>
             <a href={'/'}>
               <SiteLogo
@@ -40,8 +42,9 @@ const Header = () => {
                   <li key={index} className={`cursor-pointer mx-3`}>
                     <a onClick={(e: React.MouseEvent) =>{
                       e.preventDefault();
-                      router.push(item.link)
-                    }}>
+                      router.push(item.href ? `${item.link}${item.href}` : `${item.link}`)
+                    }}
+                    >
                       {item.title}
                     </a>
                   </li>
