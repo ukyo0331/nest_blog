@@ -1,8 +1,10 @@
 import { useRouter } from 'next/router';
 import SiteLogo from '../../public/SiteLogo.svg';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import HamburgerMenu from './HamburgerMenu';
 
-const headerItems = [
+export const headerItems = [
   {
     title: 'HOME',
     link: '/',
@@ -47,6 +49,7 @@ const Header = () => {
               <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity ${isOpenMenu ? `opacity-0` : `opacity-1`}`}/>
               <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity transition-transform ${isOpenMenu ? `rotate-[-45deg] translate-y-[-10px]` : ``}`}/>
             </div>
+           <HamburgerMenu isOpenMenu={isOpenMenu}/>
             <nav>
               <ul className={`sm:flex hidden mr-5`}>
                 {headerItems.map((item, index) => {
