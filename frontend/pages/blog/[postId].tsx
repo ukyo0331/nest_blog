@@ -8,10 +8,6 @@ import Layout from "../../src/components/Layout";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types";
 import RightBar from '../../src/components/RightBar';
-import ArticleList from '../../src/components/ArticleList';
-import Pagination from '../../src/components/Pagination';
-import CategoryButton from '../../src/components/CategoryIconButton';
-import { format } from 'timeago.js';
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
@@ -41,9 +37,9 @@ const ArticlePage: NextPage = () => {
         return (
           <Layout title={`ロード中`} desc={`ロード画面です`}>
               <div className='min-h-screen h-screen md:flex md:justify-center'>
-                  <div className='min-h-screen h-screen bg-blue-300'>
+                  <div className='min-h-screen h-screen'>
                       <div className='lg:max-w-[calc(1024px-16rem)] w-screen min-h-[calc(100%-3.75rem)] sm:max-w-[33rem] mx-auto'>
-                          <div className='flex h-screen w-full justify-center items-center bg-amber-200'>
+                          <div className='flex h-screen w-full justify-center items-center'>
                               <Loader/>
                           </div>
                       </div>
@@ -80,8 +76,26 @@ const ArticlePage: NextPage = () => {
                     {/*    <RightBar/>*/}
                     {/*</div>*/}
                     {/*上記だとtable of content 読み込みバグあり*/}
-                    <div className='md:flex md:justify-center'>
-                        <div className='flex justify-center sm:w-[80%] w-full'>
+                    {/*<div className='md:flex md:justify-center'>*/}
+                    {/*    <div className='flex justify-center sm:w-[80%] w-full'>*/}
+                    {/*        <ArticleLayout*/}
+                    {/*          title={title}*/}
+                    {/*          categories={categories}*/}
+                    {/*          desc={desc}*/}
+                    {/*          comments={comments}*/}
+                    {/*          updatedAt={updatedAt}*/}
+                    {/*          status={status}*/}
+                    {/*          createdAt={createdAt}*/}
+                    {/*          id={id}*/}
+                    {/*          likes={likes}*/}
+                    {/*          image={image}*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
+                    {/*    <RightBar/>*/}
+                    {/*</div>*/}
+                    {/*上記はリセット用*/}
+                    <div className='w-screen sm:w-[80%] flex max-w-[1024px]'>
+                        <div className='w-screen sm:w-[48rem] max-w-[32rem] md:min-w-[40rem] lg:min-w-[48rem]'>
                             <ArticleLayout
                               title={title}
                               categories={categories}
