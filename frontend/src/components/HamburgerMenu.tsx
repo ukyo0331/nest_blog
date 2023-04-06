@@ -16,7 +16,7 @@ const HamburgerMenu: FC<HamburgerMenuProps> = ({ isOpenMenu }) => {
   const router = useRouter();
   return (
     <motion.div
-      className={`fixed mt-4 w-[50vw] h-[30vh] bg-[#2B3C5B] ${isOpenMenu ? `block` : `hidden`} sm:hidden`}
+      className={`fixed mt-4 w-[50vw] h-[35vh] bg-[#2B3C5B] ${isOpenMenu ? `block` : `hidden`} sm:hidden`}
       animate={ isOpenMenu ? 'open' : 'closed'}
       variants={variants}
     >
@@ -24,7 +24,7 @@ const HamburgerMenu: FC<HamburgerMenuProps> = ({ isOpenMenu }) => {
         <ul>
           {headerItems.map((item, index: number) => {
             return (
-              <li key={index} className={`text-2xl cursor-pointer font-bold p-4`}>
+              <li key={index} className={`text-xl cursor-pointer font-bold p-4`}>
                 <a onClick={(e: React.MouseEvent) =>{
                   e.preventDefault();
                   router.push(item.href ? `${item.link}${item.href}` : `${item.link}`)
