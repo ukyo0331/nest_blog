@@ -53,13 +53,16 @@
         width: 30px;
         height: 30px;
         content: '→';
-        transform: translateX(480%);
+        transform: translateX(500%);
 
         color: #fff;
         border-radius: 50%;
     }
     .aspect-ratio-square {
         position: relative;
+    }
+    .rotate45deg {
+        rotate: 45deg;
     }
 }
 

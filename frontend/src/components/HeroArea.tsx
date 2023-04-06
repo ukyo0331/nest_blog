@@ -25,7 +25,7 @@ const HeroArea = () => {
           onClick={(e: React.MouseEvent) => handleClick(e)}
           className='top-button uppercase mt-12'
         >
-          article list
+          articles list
         </button>
         <h1 className='absolute bottom-6'>
         </h1>

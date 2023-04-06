@@ -33,7 +33,7 @@ const ArticleList: FC<ArticleListProps> = ({ articles, options }) => {
                     className='w-fit h-fit'
                   >
                       <div
-                        className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 max-w-xs bg-white w-60'
+                        className='rounded-lg shadow-lg h-48 cursor-pointer break-all relative m-3 bg-white sm:w-60 max-w-[320px] w-screen'
                         ref={tiltRefs.current[index]}
                       >
                           <div className='h-full flex flex-col'>

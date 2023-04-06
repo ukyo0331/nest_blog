@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import SiteLogo from '../../public/SiteLogo.svg';
+import { useState } from 'react';
 
 const headerItems = [
   {
@@ -24,6 +25,7 @@ const headerItems = [
 
 const Header = () => {
   const router = useRouter();
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   return (
     <>
       <header className='w-screen h-16 bg-[#2B3C5B] flex items-center fixed top-0 left-0 z-50'>
@@ -32,25 +34,36 @@ const Header = () => {
             <a href={'/'}>
               <SiteLogo
                 width={200}
+                className={`p-3`}
               />
             </a>
           </div>
           <div>
-            <ul className={`flex`}>
-              {headerItems.map((item, index) => {
-                return (
-                  <li key={index} className={`cursor-pointer mx-3`}>
-                    <a onClick={(e: React.MouseEvent) =>{
-                      e.preventDefault();
-                      router.push(item.href ? `${item.link}${item.href}` : `${item.link}`)
-                    }}
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
+            <div
+              className={`sm:hidden mr-8 border-[1px] rounded`}
+              onClick={() => setIsOpenMenu(!isOpenMenu)}
+            >
+              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity transition-transform ${isOpenMenu ? `rotate-45 translate-y-[10px]` : ``}`}/>
+              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity ${isOpenMenu ? `opacity-0` : `opacity-1`}`}/>
+              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity transition-transform ${isOpenMenu ? `rotate-[-45deg] translate-y-[-10px]` : ``}`}/>
+            </div>
+            <nav>
+              <ul className={`sm:flex hidden mr-5`}>
+                {headerItems.map((item, index) => {
+                  return (
+                    <li key={index} className={`cursor-pointer mx-3 font-bold`}>
+                      <a onClick={(e: React.MouseEvent) =>{
+                        e.preventDefault();
+                        router.push(item.href ? `${item.link}${item.href}` : `${item.link}`)
+                      }}
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </nav>
           </div>
         </div>
       </header>
