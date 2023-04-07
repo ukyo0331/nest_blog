@@ -3,6 +3,7 @@ import SiteLogo from '../../public/SiteLogo.svg';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import HamburgerMenu from './HamburgerMenu';
+import useHandleClickToCloseMenu from '../hooks/dashboard/useHandleClickToCloseMenu';
 
 export const headerItems = [
   {
@@ -27,7 +28,9 @@ export const headerItems = [
 
 const Header = () => {
   const router = useRouter();
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  // const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+  const {isMenuOpen, setIsMenuOpen, menuListRef} = useHandleClickToCloseMenu();
+  console.log(isMenuOpen)
   return (
     <>
       <header className='w-screen h-16 bg-[#2B3C5B] flex items-center fixed top-0 left-0 z-50'>
@@ -42,14 +45,17 @@ const Header = () => {
           </div>
           <div>
             <div
-              className={`sm:hidden mr-8 border-[1px] rounded`}
-              onClick={() => setIsOpenMenu(!isOpenMenu)}
+              className={`sm:hidden mr-8 border-[1px] rounded cursor-pointer`}
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                setIsMenuOpen(state => !state)
+              }}
             >
-              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity transition-transform ${isOpenMenu ? `rotate-45 translate-y-[10px]` : ``}`}/>
-              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity ${isOpenMenu ? `opacity-0` : `opacity-1`}`}/>
-              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity transition-transform ${isOpenMenu ? `rotate-[-45deg] translate-y-[-10px]` : ``}`}/>
+              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity transition-transform ${isMenuOpen ? `rotate-45 translate-y-[10px]` : ``}`}/>
+              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity ${isMenuOpen ? `opacity-0` : `opacity-1`}`}/>
+              <span className={`bg-white block w-6 h-0.5 m-2 transition-opacity transition-transform ${isMenuOpen ? `rotate-[-45deg] translate-y-[-10px]` : ``}`}/>
             </div>
-           <HamburgerMenu isOpenMenu={isOpenMenu}/>
+           <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} menuListRef={menuListRef}/>
             <nav>
               <ul className={`sm:flex hidden mr-5`}>
                 {headerItems.map((item, index) => {
