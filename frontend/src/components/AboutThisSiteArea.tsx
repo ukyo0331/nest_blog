@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 
 
-const AboutThisPageArea: FC = () => {
+const AboutThisSiteArea: FC = () => {
   return (
     <section id='this_site' className='h-fit w-full flex justify-center items-center sm:h-[60vh] sm:bg-white'>
       <div className='h-full w-screen max-w-[1024px] flex flex-col justify-center items-center relative gap-7'>
@@ -33,4 +33,4 @@ const AboutThisPageArea: FC = () => {
   )
 };
 
-export default AboutThisPageArea;
+export default AboutThisSiteArea;

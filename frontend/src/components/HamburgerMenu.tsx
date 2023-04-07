@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 type HamburgerMenuProps = {
   isMenuOpen: boolean;
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-  menuListRef: RefObject<HTMLUListElement>;
 }
 
 const variants = {
@@ -14,7 +13,7 @@ const variants = {
   closed: { opacity: 0, x: "100%" },
 }
 
-const HamburgerMenu: FC<HamburgerMenuProps> = ({ isMenuOpen, setIsMenuOpen, menuListRef }) => {
+const HamburgerMenu: FC<HamburgerMenuProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   const router = useRouter();
   return (
     <motion.div
@@ -22,7 +21,6 @@ const HamburgerMenu: FC<HamburgerMenuProps> = ({ isMenuOpen, setIsMenuOpen, menu
       animate={ isMenuOpen ? 'open' : 'closed'}
       variants={variants}
       transition={{ duration: 0.3 }}
-      // ref={menuListRef}
     >
       <nav>
         <ul>

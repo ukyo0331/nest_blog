@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import SiteLogo from '../../public/SiteLogo.svg';
 import Logo from './AnimationLogo';
 
 const HeroArea = () => {
