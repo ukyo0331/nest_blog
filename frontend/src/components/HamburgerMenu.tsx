@@ -16,7 +16,7 @@ const HamburgerMenu: FC<HamburgerMenuProps> = ({ isOpenMenu }) => {
   const router = useRouter();
   return (
     <motion.div
-      className={`fixed mt-4 w-[50vw] h-[35vh] bg-[#2B3C5B] ${isOpenMenu ? `block` : `hidden`} sm:hidden`}
+      className={`fixed mt-4 w-[50vw] h-fit bg-[#2B3C5B] ${isOpenMenu ? `block` : `hidden`} sm:hidden`}
       animate={ isOpenMenu ? 'open' : 'closed'}
       variants={variants}
     >
