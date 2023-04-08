@@ -7,7 +7,7 @@ import { ArticleLayout } from "../../src/components/ArticleLayout";
 import Layout from "../../src/components/Layout";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types";
-import RightBar from '../../src/components/RightBar';
+import RightSidebar from '../../src/components/RightSidebar';
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
@@ -44,7 +44,7 @@ const ArticlePage: NextPage = () => {
                           </div>
                       </div>
                   </div>
-                  <RightBar/>
+                  <RightSidebar/>
               </div>
           </Layout>
         )
@@ -73,7 +73,7 @@ const ArticlePage: NextPage = () => {
                     {/*            />*/}
                     {/*        </div>*/}
                     {/*    </div>*/}
-                    {/*    <RightBar/>*/}
+                    {/*    <RightSidebar/>*/}
                     {/*</div>*/}
                     {/*上記だとtable of content 読み込みバグあり*/}
                     {/*<div className='md:flex md:justify-center'>*/}
@@ -91,7 +91,7 @@ const ArticlePage: NextPage = () => {
                     {/*          image={image}*/}
                     {/*        />*/}
                     {/*    </div>*/}
-                    {/*    <RightBar/>*/}
+                    {/*    <RightSidebar/>*/}
                     {/*</div>*/}
                     {/*上記はリセット用*/}
                     <div className='w-screen sm:w-[80%] flex max-w-[1024px]'>
@@ -109,7 +109,7 @@ const ArticlePage: NextPage = () => {
                               image={image}
                             />
                         </div>
-                        <RightBar/>
+                        <RightSidebar/>
                     </div>
                 </Layout>
             </>

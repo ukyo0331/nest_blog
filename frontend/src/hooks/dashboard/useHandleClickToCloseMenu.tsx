@@ -4,21 +4,19 @@ const useHandleClickToCloseMenu = () => {
   //メニューボタンが押されたかどうかを判定するstate
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   //メニュー枠外がクリックされた場合にメニューを閉じるロジック
-  const menuListRef = useRef<HTMLUListElement>(null);
   useEffect(() => {
     const handleClickToCloseMenu = (e: any) => {
-      const element = menuListRef.current;
-      if (!isMenuOpen || element?.contains(e.target)) return;
+      if (!isMenuOpen) return;
       setIsMenuOpen(false);
     };
     window.addEventListener('click', handleClickToCloseMenu);
     return () => {
       window.removeEventListener('click', handleClickToCloseMenu);
     };
-  }, [isMenuOpen, menuListRef])
+  }, [isMenuOpen])
 
   return {
-    isMenuOpen, menuListRef, setIsMenuOpen,
+    isMenuOpen, setIsMenuOpen,
   }
 }
 

@@ -7,7 +7,7 @@ import Pagination from "../src/components/Pagination";
 import { useRouter } from 'next/router';
 import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
 import usePagination from '../src/hooks/pagination/usePagination';
-import RightBar from '../src/components/RightBar';
+import RightSidebar from '../src/components/RightSidebar';
 import Layout from '../src/components/Layout';
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
@@ -53,7 +53,7 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
     // const { handleMenuClick } = useHandleMenuClick();
     return (
         <>
-            <Layout title={`article list`} desc={`ブログ記事一覧ページです`}>
+            <Layout title={`articles list`} desc={`ブログ記事一覧ページです`}>
                 <div className='min-h-screen md:flex md:justify-center'>
                     <div className='min-h-screen max-w-[calc(1024px-16rem)'>
                         <div className='w-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[calc(100%-3.75rem)] max-w-[1024px] mx-auto content-start'>
@@ -63,7 +63,7 @@ const Blog: NextPage<SSRProps> = ({recentPostData}) => {
                             <Pagination totalPage={totalPage} onPageChange={ handlePageChange }/>
                         </div>
                     </div>
-                    <RightBar/>
+                    <RightSidebar/>
                 </div>
             </Layout>
         </>

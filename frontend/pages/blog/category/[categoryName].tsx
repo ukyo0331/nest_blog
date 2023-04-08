@@ -8,7 +8,7 @@ import { defaultPostsPerPage } from '../../../src/defaultPostsPerPage';
 import Pagination from '../../../src/components/Pagination';
 import usePagination from '../../../src/hooks/pagination/usePagination'
 import Custom404 from '../../404';
-import RightBar from '../../../src/components/RightBar';
+import RightSidebar from '../../../src/components/RightSidebar';
 import Layout from '../../../src/components/Layout';
 
 export const getServerSideProps: GetServerSideProps<SSRProps> = async (context) => {
@@ -64,7 +64,7 @@ const CategoryPostListPage: NextPage<SSRProps> = ({recentPostData, categoryName}
                             <Pagination totalPage={totalPage} onPageChange={ handlePageChange }/>
                         </div>
                     </div>
-                    <RightBar/>
+                    <RightSidebar/>
                 </div>
             </Layout>
         </>
