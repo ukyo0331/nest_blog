@@ -67,7 +67,7 @@ const Toc = () => {
     });
   };
   return (
-    <section className='toc-card sticky top-4 z-40'>
+    <section className='toc-card overflow-y-scroll hidden-scrollbar'>
       <aside className='p-4'>
         <div className='flex gap-4 items-center'>
           <h2 className='text-md tracking-widest'>

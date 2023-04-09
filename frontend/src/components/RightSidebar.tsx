@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import RightSidebarCategoryMenu from './RightSidebarCategoryMenu';
+import Toc from './Toc';
 
 type Category = {
   name: string;
@@ -67,6 +68,9 @@ const RightSidebar = () => {
         <div className={`w-52 mt-3 h-[30vh] overflow-scroll hidden-scrollbar rounded border-2`}>
           <RightSidebarCategoryMenu
             categories={categoryArray}/>
+        </div>
+        <div>
+          <Toc/>
         </div>
       </div>
     </div>

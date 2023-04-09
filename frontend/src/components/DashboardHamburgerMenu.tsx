@@ -9,9 +9,9 @@ type HamburgerMenuType = {
 const DashboardHamburgerMenu: FC<HamburgerMenuType> = ({handleMenuClick}) => {
   const router = useRouter();
   //menu枠外をクリックした際にmenuを閉じるHook
-  const { menuListRef, isMenuOpen, setIsMenuOpen } = useHandleClickToCloseMenu();
+  const { isMenuOpen, setIsMenuOpen } = useHandleClickToCloseMenu();
   return (
-    <aside ref={menuListRef}>
+    <aside>
       <button
         onClick={() => setIsMenuOpen(state => !state)}
         className='fixed absolute right-0 bg-blue-800 md:hidden'
