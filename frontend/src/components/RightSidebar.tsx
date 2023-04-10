@@ -6,6 +6,7 @@ import Toc from './Toc';
 
 type Category = {
   name: string;
+  posts: string[];
 }
 
 const RightSidebar = () => {
@@ -13,13 +14,17 @@ const RightSidebar = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios.get<Array<Category>>(`${process.env.NEXT_PUBLIC_API_URL}/category/${process.env.NEXT_PUBLIC_USER_ID}`).then((_ => _.data));
+      console.log(data);
       setCategoryData(data);
     }
     fetchData();
   }, [])
-  const categoryArray = categoryData.map((arg) => arg.name);
+  const categoryArray = categoryData.map((arg) => {
+    if (arg.posts.length === 0) return null;
+    return arg.name;
+  });
   return (
-    <div className='hidden md:flex md:justify-center md:w-64 md:h-auto text-[#2B3C5B] bg-amber-300'>
+    <div className='hidden md:flex md:justify-center md:w-64 md:h-auto text-[#2B3C5B] bg-amber-300 flex-none'>
       <div className='w-52 flex flex-col items-center fixed h-fit mt-3 bg-amber-200 sticky top-16'>
         <div className={`rounded border-2`}>
           <div className={`flex`}>

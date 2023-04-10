@@ -12,8 +12,9 @@ const RightSidebarCategoryMenu: FC<RightSidebarCategoryMenuProps> = ({ categorie
   return (
     <div className='w-52 h-fit'>
       {categories?.map((arg: string, index:number) => {
+        if (!arg) return null;
         return (
-          <div className={`inline-block p-1`}>
+          <div className={`inline-block p-1`} key={index}>
             <div
               key={index}
               onClick={(e) => {

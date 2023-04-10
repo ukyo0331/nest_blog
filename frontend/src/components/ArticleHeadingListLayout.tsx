@@ -19,7 +19,7 @@ const ArticleHeadingListLayout = (prop: ArticleHeadingListLayoutType) => {
 
   return (
     <section className='pt-24 px-0 w-screen'>
-      <div className='m-auto max-w-[1024px]'>
+      <div className='m-auto max-w-[1024px] mb-5'>
         <h2 className='min-h-0 font-light text-[clamp(40px,5.2vw,70px)] ml-8'>
           Recent Posts
           <span className='block text-lg text-[#666]'>最近の投稿</span>
