@@ -72,7 +72,7 @@ const RightSidebar = () => {
         </div>
         <div className={`w-52 mt-3 h-[30vh] overflow-scroll hidden-scrollbar rounded border-2`}>
           <RightSidebarCategoryMenu
-            categories={categoryArray}/>
+            categories={categoryArray as string[]}/>
         </div>
         <div>
           <Toc/>
