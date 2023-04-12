@@ -8,7 +8,7 @@ export type H2Props = {
 
 const H2Block: FC<H2Props> = ({ node, children = '' }) => {
   return (
-    <div className='block'>
+    <div className='block lg:max-w-[calc(1024px-16rem)] sm:max-w-[calc(768px-16rem)] w-screen'>
       <h3
         className='text-xl border-l-4 m-4 pl-4'
         id={node?.position?.start.line.toString()}
