@@ -9,7 +9,7 @@ type Props = {
     desc: string,
 }
 //共通のレイアウト
-const Layout: FC<Props> = ({children, title = 'Next.js', desc}) => {
+const Layout: FC<Props> = ({children, desc, title = 'YUTA CODE.'}) => {
     return (
         <div className='flex min-h-screen flex-col items-center justify-center'>
             <Head>
