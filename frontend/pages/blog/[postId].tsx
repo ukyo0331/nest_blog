@@ -94,8 +94,8 @@ const ArticlePage: NextPage = () => {
                     {/*    <RightSidebar/>*/}
                     {/*</div>*/}
                     {/*上記はリセット用*/}
-                    <div className='w-screen h-screen flex max-w-[1024px]'>
-                        <div className='w-screen md:max-w-[768px] sm:max-w-[640px-40px]'>
+                    <div className='min-h-screen flex'>
+                        <div className=''>
                             <ArticleLayout
                               title={title}
                               categories={categories}

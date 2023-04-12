@@ -56,7 +56,7 @@ const ABlock: FC<AProps> = ({ node, children = '' }) => {
   }, []);
   //div等は使えない様子なので代用としてspan要素にblockを付与してスタイリング
   return (
-    <a href={`${elementNode?.properties?.href}`} className="flex items-center space-x-3 border-2 rounded">
+    <a href={`${elementNode?.properties?.href}`} className="flex items-center space-x-3 border-2 rounded lg:max-w-[calc(1024px-16rem)] sm:max-w-[calc(768px-16rem)] w-screen">
       {meta.image ? (
         <img src={`${meta.image}`} alt='リンク先のイメージ画像' className="w-24 h-24 object-cover rounded-lg object-cover"/>
       ) : null}
