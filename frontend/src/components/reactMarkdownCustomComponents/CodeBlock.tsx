@@ -24,7 +24,7 @@ const CodeBlock: FC<CodeProps> = ({ className, children = '' }) => {
     }, 3000);
   };
   return (
-    <div className='lg:max-w-[calc(1024px-16rem)] sm:max-w-[calc(768px-16rem)] w-screen'>
+    <div className='lg:max-w-[calc(1024px-16rem)] sm:max-w-[calc(768px-16rem)] w-screen text-sm'>
       {filename && (
         <div className='table bg-[#334155] text-[#f8fafc] max-w-full text-sm rounded-t-md pt-2 px-4 pb-6 mb-[-20px]'>
           <span className=''>{filename}</span>

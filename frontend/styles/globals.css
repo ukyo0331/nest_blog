@@ -13,13 +13,14 @@
         display: none;
     }
     .toc-card {
+        width: 13rem;
+        height: 30vh;
         margin: 1rem;
-        padding: 1.5rem;
         text-align: left;
         color: inherit;
         text-decoration: none;
-        border: 1px solid #eaeaea;
-        border-radius: 10px;
+        border: 2px solid #eaeaea;
+        border-radius: 0.25rem;
         transition: color 0.15s ease, border-color 0.15s ease;
         max-width: 300px;
     }
@@ -75,12 +76,7 @@
         display: block;
         overflow-x:scroll;
         background: #343434;
-        color: #fff;
         padding: 30px;
-        line-height: 2rem;
-        border-radius: 5px;
-        font-size: 16px;
-        font-family: VL Gothic Font Family, serif;
     }
     * {
         overflow-wrap: break-word;

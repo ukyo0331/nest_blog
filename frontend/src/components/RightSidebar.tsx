@@ -24,8 +24,8 @@ const RightSidebar = () => {
     return arg.name;
   });
   return (
-    <div className='hidden md:flex md:justify-center md:w-64 md:h-auto text-[#2B3C5B] bg-amber-300 flex-none'>
-      <div className='w-52 flex flex-col items-center fixed h-fit mt-3 bg-amber-200 sticky top-16'>
+    <div className='hidden md:flex md:justify-end md:w-64 md:h-auto text-[#2B3C5B] flex-none'>
+      <div className='w-52 flex flex-col items-center h-fit mt-3 sticky top-[5rem]'>
         <div className={`rounded border-2`}>
           <div className={`flex`}>
             <figure className={`m-5`}>

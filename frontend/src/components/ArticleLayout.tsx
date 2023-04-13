@@ -43,12 +43,14 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const { setRenderScreen } = useHandleMenuClick();
 
     return (
-        <article key={id} className=''>
+        <article key={id} className='lg:max-w-[calc(1024px-16rem)] sm:max-w-[calc(768px-16rem)] w-screen'>
           <div>
               <div>
                   <CategoryIconButton categories={categories}/>
               </div>
-              <h2>{title}{status === 'draft' && '（下書き）'}</h2>
+              <h1 className={`p-4 text-3xl`}>
+                {title}{status === 'draft' && '（下書き）'}
+              </h1>
               <small>
                   更新:{updateTime.getFullYear()}年{updateTime.getMonth()+1}月{updateTime.getDate()}日<br />
                   作成:{createTime.getFullYear()}年{createTime.getMonth()+1}月{createTime.getDate()}日
