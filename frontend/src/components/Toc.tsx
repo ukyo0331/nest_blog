@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import TocItem from './TocItem';
-import { useRouter } from 'next/router';
 import useTOC from '../hooks/toc/useTOC';
 
 const Toc = () => {
   const { active, headingRef, handleTocItemClick } = useTOC();
+  console.log(headingRef);
   return (
     <section className='toc-card overflow-y-scroll hidden-scrollbar'>
       <aside className='p-4'>

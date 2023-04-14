@@ -14,7 +14,6 @@ const RightSidebar = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios.get<Array<Category>>(`${process.env.NEXT_PUBLIC_API_URL}/category/${process.env.NEXT_PUBLIC_USER_ID}`).then((_ => _.data));
-      console.log(data);
       setCategoryData(data);
     }
     fetchData();
