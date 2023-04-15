@@ -3,7 +3,7 @@ import TocItem from './TocItem';
 import useTOC from '../hooks/toc/useTOC';
 
 const Toc = () => {
-  const { active, headingRef, handleTocItemClick } = useTOC();
+  const { active, observedHeadings, handleTocItemClick } = useTOC();
   return (
     <section className='toc-card overflow-y-scroll hidden-scrollbar'>
       <aside className='p-4'>
@@ -13,7 +13,7 @@ const Toc = () => {
           </h2>
         </div>
         <ol className='border-l-4'>
-          {headingRef.current?.map((e, index) => {
+          {observedHeadings.map((e, index) => {
             const id = e.id;
             const isActive = active === id;
             return (
