@@ -2,7 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['yuta-blog-bucket.s3.ap-northeast-3.amazonaws.com'],
+    domains: [
+      'yuta-blog-bucket.s3.ap-northeast-3.amazonaws.com',
+      's3.ap-northeast-3.amazonaws.com'
+    ],
     disableStaticImages: true
   },
   webpack(config) {
