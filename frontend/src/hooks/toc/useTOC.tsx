@@ -7,14 +7,12 @@ const useTOC = () => {
   const headingRef = useRef<Element[]>();
   const scrollRef = useRef(0);
   const [active, setActive] = useState('');
-  const [observedHeadings, setObservedHeadings] = useState<Element[]>([]);
 
   useEffect(() => {
     const highlightToc = () => {
       const headings = Array.from(
         document.querySelectorAll('h2[id], h3[id]')
       );
-      setObservedHeadings(headings);
       const ids = headings.map((e) => e.id);
       headingRef.current = headings;
       const observer = new IntersectionObserver(
@@ -70,7 +68,7 @@ const useTOC = () => {
     });
   };
   return {
-    observedHeadings,
+    headingRef,
     active,
     handleTocItemClick,
   }

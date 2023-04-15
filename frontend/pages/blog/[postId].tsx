@@ -8,7 +8,6 @@ import Layout from "../../src/components/Layout";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types";
 import RightSidebar from '../../src/components/RightSidebar';
-import useTOC from '../../src/hooks/toc/useTOC';
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
