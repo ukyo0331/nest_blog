@@ -11,8 +11,8 @@ import RightSidebar from '../../src/components/RightSidebar';
 import useTOC from '../../src/hooks/toc/useTOC';
 
 const ArticlePage: NextPage = () => {
-    const {active, headingRef, handleTocItemClick} = useTOC();
-    console.log(headingRef)
+    const {active, observedHeadings, handleTocItemClick} = useTOC();
+    console.log(observedHeadings)
     const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
