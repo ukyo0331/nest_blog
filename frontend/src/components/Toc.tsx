@@ -7,7 +7,7 @@ const Toc = () => {
   const [headings, setHeadings] = useState<any>();
   useEffect(() => {
     setHeadings(headingRef);
-  })
+  }, [headingRef]);
   return (
     <section className='toc-card overflow-y-scroll hidden-scrollbar'>
       <aside className='p-4'>
