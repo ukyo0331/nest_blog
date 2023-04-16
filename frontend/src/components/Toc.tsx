@@ -17,7 +17,7 @@ const Toc = () => {
           </h2>
         </div>
         <ol className='border-l-4'>
-          {headings.current?.map((e: any, index: any) => {
+          {headings?.current?.map((e: any, index: any) => {
             const id = e.id;
             const isActive = active === id;
             return (
