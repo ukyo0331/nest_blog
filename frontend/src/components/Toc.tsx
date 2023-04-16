@@ -4,10 +4,10 @@ import useTOC from '../hooks/toc/useTOC';
 
 const Toc = () => {
   const { active, headingRef, handleTocItemClick } = useTOC();
-  const [headings, setHeadings] = useState<Element[]>();
+  const [headings, setHeadings] = useState<any>();
   useEffect(() => {
-    setHeadings(headingRef as any);
-  }, [headingRef]);
+    setHeadings(headingRef);
+  })
   return (
     <section className='toc-card overflow-y-scroll hidden-scrollbar'>
       <aside className='p-4'>
@@ -17,7 +17,7 @@ const Toc = () => {
           </h2>
         </div>
         <ol className='border-l-4'>
-          {headings?.current?.map((e, index) => {
+          {headings.current?.map((e: any, index: any) => {
             const id = e.id;
             const isActive = active === id;
             return (
