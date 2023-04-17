@@ -143,4 +143,8 @@ export class PostController {
   ): Promise<number> {
     return this.postService.getNumberOfPostsByCategoryId(userId, categoryId);
   }
+  @Patch('likes/:id')
+  incrementLikes(@Param('id') postId: string): Promise<UserPost> {
+    return this.postService.incrementLikes(postId);
+  }
 }

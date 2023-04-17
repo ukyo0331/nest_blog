@@ -288,4 +288,18 @@ export class PostService {
   //     },
   //   });
   // }
+
+  //いいね
+  incrementLikes(postId: string): Promise<Post> {
+    return this.prisma.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        likes: {
+          increment: 1,
+        },
+      },
+    });
+  }
 }
