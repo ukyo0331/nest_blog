@@ -48,7 +48,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
               <div>
                   <CategoryIconButton categories={categories}/>
               </div>
-              <h1 className={`p-4 text-3xl`}>
+              <h1 className={`p-4 text-3xl`} id={`0`}>
                 {title}{status === 'draft' && '（下書き）'}
               </h1>
               <small>
@@ -92,7 +92,6 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
             >
               {desc}
             </ReactMarkdown>
-              <p>{likes}人が拍手しました</p>
           </div>
         </article>
     )

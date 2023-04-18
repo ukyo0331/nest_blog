@@ -1,10 +1,20 @@
-const LikeButton = () => {
-  const onClickButton = () => {
+import axios from 'axios';
+import { FC, useState } from 'react';
 
+type LikesButtonPropsType = {
+  postId: string;
+  initialLikes: number;
+}
+
+const LikesButton: FC<LikesButtonPropsType> = ({ postId, initialLikes }) => {
+  const [likes, setLikes] = useState<number>(initialLikes);
+  const onClickButton = async () => {
+    const response = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/post/likes/${postId}`);
+    setLikes(response.data.likes);
   }
   return (
     <>
-      <button>
+      <button onClick={() => onClickButton()}>
         <figure>
           <svg xmlns="http://www.w3.org/2000/svg"
                className="w-6 h-6"
@@ -20,8 +30,9 @@ const LikeButton = () => {
           </svg>
         </figure>
       </button>
+      <span>{likes}</span>
     </>
   )
 }
 
-export default LikeButton;
+export default LikesButton;

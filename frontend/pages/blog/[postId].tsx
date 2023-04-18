@@ -8,6 +8,7 @@ import Layout from "../../src/components/Layout";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types";
 import RightSidebar from '../../src/components/RightSidebar';
+import LikesButton from '../../src/components/LikesButton';
 
 const ArticlePage: NextPage = () => {
     const router = useRouter();
@@ -15,7 +16,7 @@ const ArticlePage: NextPage = () => {
     const [error, setError] = useState(false);
     const [data, setData] = useState<PostType | null>(null);
     //param postIdの利用
-    const {postId} = router.query;
+    const { postId } = router.query;
     useEffect(() => {
         //postIdが取得される前なら脱出
         if (!postId) return;
@@ -96,6 +97,7 @@ const ArticlePage: NextPage = () => {
                     {/*上記はリセット用*/}
                     <div className='min-h-screen flex'>
                         <div className=''>
+                            <LikesButton postId={postId as string} initialLikes={likes}/>
                             <ArticleLayout
                               title={title}
                               categories={categories}

@@ -11,7 +11,7 @@ const useTOC = () => {
   useEffect(() => {
     const highlightToc = () => {
       const headings = Array.from(
-        document.querySelectorAll('h2[id], h3[id]')
+        document.querySelectorAll('h1[id], h2[id], h3[id]')
       );
       const ids = headings.map((e) => e.id);
       headingRef.current = headings;
