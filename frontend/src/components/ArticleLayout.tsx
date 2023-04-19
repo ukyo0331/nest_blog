@@ -43,7 +43,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
     const { setRenderScreen } = useHandleMenuClick();
 
     return (
-        <article key={id} className='lg:max-w-[calc(1024px-16rem)] sm:max-w-[calc(768px-16rem)] w-screen'>
+        <article key={id} className='lg:max-w-[calc(1024px-16rem)] sm:max-w-[calc(768px-16rem)] w-screen content'>
           <div>
               <div>
                   <CategoryIconButton categories={categories}/>
