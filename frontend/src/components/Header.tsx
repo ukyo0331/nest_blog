@@ -9,7 +9,7 @@ export const headerItems = [
     link: '/',
   },
   {
-    title: 'About this site',
+    title: 'About',
     link: '/',
     href: '#this_site'
   },
