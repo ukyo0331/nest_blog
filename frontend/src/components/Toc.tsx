@@ -4,17 +4,6 @@ import useTOC from '../hooks/toc/useTOC';
 import tocbot from 'tocbot';
 
 const Toc = () => {
-  // useEffect(() => {
-  //   tocbot.init({
-  //     tocSelector: '.js-toc',
-  //     contentSelector: '.content',
-  //     headingSelector: 'h2, h3',
-  //   })
-  //   return () => tocbot.destroy();
-  // }, [])
-  // return (
-  //   <div className={`js-toc w-36 `}></div>
-  // )
   const { active, headingRef, handleTocItemClick } = useTOC();
 
   return (
@@ -26,7 +15,12 @@ const Toc = () => {
           </h2>
         </div>
         <ol className='border-l-4'>
-          {headingRef.current?.map((e: any, index: any) => {
+          {headingRef.current?.map((e: Element, index: number) => {
+            if (index === 0) {
+              return (
+                <></>
+              )
+            }
             const id = e.id;
             const isActive = active === id;
             return (
