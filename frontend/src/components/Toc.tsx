@@ -7,16 +7,23 @@ import Head from 'next/head';
 
 const Toc = () => {
   useEffect(() => {
-    tocbot.init({
-      tocSelector: '.toc',
-      contentSelector: '.post',
-      headingSelector: 'h1, h2, h3'
-    })
+    setTimeout(() => {
+      tocbot.init({
+        tocSelector: '.toc',
+        contentSelector: '.post',
+        headingSelector: 'h1, h2, h3'
+      })
+    }, 3000);
+
     return () => tocbot.destroy();
   },[]);
   return (
     <>
-      <nav className={`toc w-32 h-32`}/>
+      <section className={`w-52 h-[30vh]`}>
+        <div>
+          <nav className={`toc w-full h-full`}/>
+        </div>
+      </section>
     </>
   )
 //   const { active, headingRef, handleTocItemClick } = useTOC();
