@@ -96,7 +96,7 @@ const ArticlePage: NextPage = () => {
                     {/*</div>*/}
                     {/*上記はリセット用*/}
                     <div className='min-h-screen flex'>
-                        <div className=''>
+                        <div className='post'>
                             <LikesButton postId={postId as string} initialLikes={likes}/>
                             <ArticleLayout
                               title={title}
