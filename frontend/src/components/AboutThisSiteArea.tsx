@@ -23,7 +23,7 @@ const AboutThisSiteArea: FC = () => {
           <h2 className='font-light text-3xl pt-6 pl-6 sm:text-5xl sm:after:block sm:after:w-[30%] sm:after:h-0.5 sm:after:bg-[#2B3C5B] sm:after:mt-3'>
             About this site
           </h2>
-          <p className='text-xl p-3'>
+          <p className='text-xl p-3 pb-6'>
             当サイトはYutaのポートフォリオを兼ねた個人ブログです。
             frontはNext.js × TypeScript × Tailwind CSS、backはNest.js × Prisma × PostgreSQL等で構築されています。
           </p>

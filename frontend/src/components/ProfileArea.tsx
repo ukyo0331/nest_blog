@@ -23,7 +23,7 @@ const ProfileArea: FC = () => {
           <h2 className='font-light text-3xl pt-6 pl-6 sm:text-5xl sm:after:block sm:after:w-[30%] sm:after:h-0.5 sm:after:bg-[#2B3C5B] sm:after:mt-3'>
             Profile
           </h2>
-          <p className='text-xl p-3'>
+          <p className='text-xl p-3 pb-6'>
             一匹の野良猫との出会いをきっかけに(?)、
             30代から小売業→エンジニア転職を目指し、勉強を始めました。
             将来はフルスタックで活躍できるエンジニアを目指します!
