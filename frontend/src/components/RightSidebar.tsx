@@ -25,7 +25,7 @@ const RightSidebar = () => {
   return (
     <div className='hidden md:flex md:justify-end md:w-64 md:h-auto text-[#2B3C5B] flex-none'>
       <div className='w-52 flex flex-col items-center h-fit mt-3 sticky top-[5rem]'>
-        <div className={`rounded border-2`}>
+        <div className={`rounded bg-white`}>
           <div className={`flex`}>
             <figure className={`m-5`}>
               <Image
@@ -69,7 +69,7 @@ const RightSidebar = () => {
             </p>
           </div>
         </div>
-        <div className={`w-52 mt-3 h-[30vh] overflow-scroll hidden-scrollbar rounded border-2`}>
+        <div className={`w-52 mt-3 h-[30vh] overflow-scroll hidden-scrollbar rounded bg-white`}>
           <RightSidebarCategoryMenu
             categories={categoryArray as string[]}/>
         </div>

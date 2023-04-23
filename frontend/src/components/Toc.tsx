@@ -15,7 +15,7 @@ const Toc = () => {
   },[]);
   return (
     <>
-      <section className={`w-52 h-fit rounded border-2 m-3`}>
+      <section className={`w-52 h-fit rounded m-3 bg-white`}>
         <div>
           <nav className={`toc w-full h-full p-3`}/>
         </div>
