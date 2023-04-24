@@ -2,8 +2,6 @@ import { useRouter } from "next/router";
 import { format } from "timeago.js";
 import CategoryButton from "./CategoryIconButton";
 import { PostType } from "../../types";
-import { useEffect, useRef, createRef, RefObject } from 'react';
-import VanillaTilt from 'vanilla-tilt';
 import useTilt from '../hooks/tilt/useTilt';
 
 type ArticleHeadingListLayoutType = {
