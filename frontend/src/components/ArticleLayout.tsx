@@ -44,7 +44,7 @@ export const ArticleLayout: FC<Omit<PostType, 'userId'>> = (
 
     return (
         <article key={id} className='lg:max-w-[calc(1024px-16rem)] sm:max-w-[calc(768px-16rem)] w-screen content'>
-          <div className={`bg-white relative h-fit pb-5 rounded`}>
+          <div className={`bg-white relative h-fit pb-5 rounded mt-5`}>
             <div className={`p-5 overflow-scroll hidden-scrollbar w-[80%]`}>
                 <CategoryIconButton categories={categories}/>
             </div>
