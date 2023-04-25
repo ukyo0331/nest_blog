@@ -8,6 +8,7 @@ import DashboardHamburgerMenu from '../src/components/DashboardHamburgerMenu';
 import DashboardSidebar from '../src/components/DashboardSidebar';
 import useHandleMenuClick from '../src/hooks/dashboard/useHandleMenuClick';
 import DraftList from '../src/components/DraftList';
+import AdminCommentList from '../src/components/AdminCommentList';
 
 //menu毎の表記させるコンポーネントを配列で管理
 const menuList = [
@@ -22,6 +23,10 @@ const menuList = [
     {
         renderScreen: 'addIcon',
         component: CategoryIconEditor,
+    },
+    {
+        renderScreen: 'commentList',
+        component: AdminCommentList,
     },
 ]
 

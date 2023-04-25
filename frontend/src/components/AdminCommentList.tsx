@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const AdminCommentList = () => {
-  const [ commentData, setCommentData] = useState<string[]>(null);
+  const [ commentData, setCommentData] = useState<string[]>();
   useEffect(() => {
     const getComment = async () => {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/post/${process.env.NEXT_PUBLIC_USER_ID}`);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/comment`);
       setCommentData(response.data);
     };
     getComment();
@@ -13,9 +13,9 @@ const AdminCommentList = () => {
   console.log(commentData);
   return (
     <>
-      {commentData.map((comment) => {
+      {commentData?.map((comment, index) => {
         return (
-          <p>{comment}</p>
+          <p key={index}>{comment}</p>
         )
       })}
     </>

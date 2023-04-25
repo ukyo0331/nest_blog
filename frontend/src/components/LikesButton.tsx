@@ -14,7 +14,10 @@ const LikesButton: FC<LikesButtonPropsType> = ({ postId, initialLikes }) => {
   }
   return (
     <>
-      <button onClick={() => onClickButton()}>
+      <button
+        onClick={() => onClickButton()}
+        className={`flex flex-col border-2 rounded-full w-10 h-10 items-center justify-center`}
+      >
         <figure>
           <svg xmlns="http://www.w3.org/2000/svg"
                className="w-6 h-6"
@@ -29,8 +32,8 @@ const LikesButton: FC<LikesButtonPropsType> = ({ postId, initialLikes }) => {
               d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
           </svg>
         </figure>
+        <span>{likes}</span>
       </button>
-      <span>{likes}</span>
     </>
   )
 }
