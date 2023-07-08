@@ -61,10 +61,10 @@ CREATE TABLE "CategoriesOnPosts" (
 CREATE TABLE "OgpMetaData" (
     "id" TEXT NOT NULL,
     "encodedUrl" TEXT NOT NULL,
-    "title" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
-    "favicon" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
+    "title" TEXT,
+    "image" TEXT,
+    "favicon" TEXT,
+    "description" TEXT,
     "postId" TEXT NOT NULL,
 
     CONSTRAINT "OgpMetaData_pkey" PRIMARY KEY ("id")

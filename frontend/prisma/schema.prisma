@@ -40,7 +40,7 @@ model Comment {
 
 model OgpMetaData {
   id          String  @id
-  encodedUrl  String
+  encodedUrl  String  @unique
   title       String?
   image       String?
   favicon     String?
