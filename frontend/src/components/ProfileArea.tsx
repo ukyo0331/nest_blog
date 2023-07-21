@@ -16,7 +16,6 @@ const ProfileArea: FC = () => {
             }
             priority={true}
             loading='eager'
-            className=''
           />
         </figure>
         <div className='bg-[#2B3C5B] mb-6 text-white h-fit w-[90vw] rounded sm:absolute sm:w-[45%] sm:mb-0 sm:left-[2%] sm:bg-white sm:text-[#2B3C5B]'>
@@ -24,9 +23,7 @@ const ProfileArea: FC = () => {
             Profile
           </h2>
           <p className='text-xl p-3 pb-6'>
-            一匹の野良猫との出会いをきっかけに(?)、
             30代から小売業→エンジニア転職を目指し、勉強を始めました。
-            将来はフルスタックで活躍できるエンジニアを目指します!
           </p>
         </div>
       </div>
