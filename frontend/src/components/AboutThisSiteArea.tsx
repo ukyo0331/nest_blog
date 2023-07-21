@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const AboutThisSiteArea: FC = () => {
   return (
-    <section id='this_site' className='h-fit w-full flex justify-center items-center sm:h-[60vh] sm:bg-white'>
+    <section id='this_site' className='h-fit w-full flex justify-center items-center md:h-[500px] sm:h-[400px] sm:bg-white pb-12'>
       <div className='h-full w-screen max-w-[1024px] flex flex-col justify-center items-center relative gap-7'>
         <figure className='mt-6 relative w-[90vw] h-[90vw] sm:absolute sm:w-[45%] sm:h-0 sm:aspect-w-2 sm:aspect-h-1 sm:mt-0 sm:left-[2%]'>
           <Image
@@ -16,7 +16,6 @@ const AboutThisSiteArea: FC = () => {
             }
             priority={true}
             loading='eager'
-            className=''
           />
         </figure>
         <div className='bg-[#2B3C5B] mb-6 text-white h-fit w-[90vw] rounded sm:absolute sm:w-[45%] sm:mb-0 sm:left-[50%] sm:bg-white sm:text-[#2B3C5B]'>
