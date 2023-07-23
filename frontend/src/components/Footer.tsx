@@ -8,6 +8,13 @@ const Footer = () => {
           <div className='flex justify-center items-center h-full'>
             YUTA CODE .　<small>(2023)</small>
           </div>
+          {/*<div>*/}
+          {/*  <ul>*/}
+          {/*    <li>*/}
+          {/*      <a href='https://github.com/yuta-0331'>github</a>*/}
+          {/*    </li>*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
           <div>
           </div>
         </div>
